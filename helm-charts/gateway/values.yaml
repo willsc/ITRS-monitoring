@@ -1,0 +1,86 @@
+# The name of the gateway.  Defaults to the Helm release name.
+# If demoMode is true, the name cannot be changed and this parameter is ignored.
+name: "{{ .Release.Name }}"
+
+setup:
+  # Optional initial Gateway setup configuration. Use the --set-file argument of "helm install" to pass the contents of a file to this value.
+  # If this value is not set, the default Gateway setup configuration will be used.
+  file: ""
+
+# Licence Daemon settings. This is required when not running in demo mode.
+licenceDaemon:
+  host: localhost
+  port: 7041
+  secure: false
+
+# Enable demo mode.  If true, the license daemon settings are ignored.
+demoMode: false
+
+# Persistence for the Gateway's configuration and cache.
+persistence:
+  # If false, all changes will be lost after the pod terminates.
+  enabled: true
+
+  # Leave empty to use the default storage class.
+  storageClassName: ""
+
+  # PVC size.
+  size: 1Gi
+
+# TLS (enabled by default).
+tls:
+  enabled: true
+
+  # Name of the TLS secret containing the server's private key and certificate.
+  # Required when TLS is enabled.
+  secret: ""
+
+# Container limits/requests.  It is strongly recommended to set this.  A good starting point is shown below.
+resources: {}
+#  limits:
+#    cpu: "1"
+#    memory: "1Gi"
+#  requests:
+#    cpu: "500m"
+#    memory: "768Mi"
+
+# Service.
+service:
+  type: ClusterIP
+  port: 7039
+  labels: {}
+  annotations: {}
+  # Optional static node port used only when service type is NodePort.
+  nodePort:
+
+# Image pull secret(s) required for connecting to the ITRS Docker registry.
+imagePullSecrets:
+- name: itrsdocker
+
+# Container image.
+image:
+  repository: docker.itrsgroup.com/gateway
+  tag: ""
+  pullPolicy: IfNotPresent
+
+# Optional pod settings.
+affinity: {}
+nodeSelector: {}
+tolerations: []
+podAnnotations: {}
+securityContext:
+  runAsUser: 100
+  fsGroup: 101
+
+serviceAccount:
+  # Whether to create an account.  If false, the "default" service account will
+  # be used unless a specific account is referenced via "name".
+  create: false
+
+  # Account name.
+  # If not set and create is true, a name is generated using the fullname template.
+  # To use a custom service account, set "create" to false and set the name.
+  name: ""
+
+  # Custom annotations.
+  annotations: {}

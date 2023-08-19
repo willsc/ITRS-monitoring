@@ -1,0 +1,75 @@
+{{- $api :=  .Values.api | default dict -}}
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "obcerv-app-grafana.fullname" . }}
+  labels:
+    {{- include "obcerv-app-grafana.labels" . | nindent 4 }}
+data:
+  datasources.yaml: |-
+    apiVersion: 1
+    deleteDatasources:
+    - name: Loki
+    - name: ITRS Obcerv
+    - name: ITRS Hub
+    datasources:
+    {{- if .Values.loki.enabled }}
+    - name: Loki
+      type: loki
+      access: proxy
+      url: {{ .Values.loki.url }}
+      editable: false
+    {{- end }}
+    - name: ITRS Obcerv
+      type: itrs-obcerv-datasource
+      isDefault: true
+      jsonData:
+        oauthPassThru: true
+        tlsSkipVerify: {{ .Values.api.tlsSkipVerify }}
+    {{- if $api.url }}
+      url: {{ $api.url }}
+    {{- else }}
+      url: {{ .Values.externalScheme }}://{{ .Values.externalHostname }}/obcerv-app-api-gateway/
+    {{- end }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "obcerv-app-grafana.fullname" . }}-dashboards
+  labels:
+    {{- include "obcerv-app-grafana.labels" . | nindent 4 }}
+data:
+  {{- $dashboards := .Values.dashboards | default "" }}
+  {{- if $dashboards}}
+  {{- range $dashboards  }}
+  {{- range $key, $value := .  }}
+  "{{ $key }}": |-
+    {{ $value | toJson }}
+  {{- end }}
+  {{- end }}
+  {{- end }}
+  dashboards.yaml: |-
+    apiVersion: 1
+    providers:
+    - name: "ITRS Obcerv dashboards"
+      # <int> Org id. Default to 1
+      orgId: 1
+      # <string> name of the dashboard folder.
+      folder: General
+      # <string> folder UID. will be automatically generated if not specified
+      folderUid: ""
+      # <string> provider type. Default to 'file'
+      type: file
+      # <bool> disable dashboard deletion
+      disableDeletion: true
+      # <int> how often Grafana will scan for changed dashboards
+      updateIntervalSeconds: 10
+      # <bool> allow updating provisioned dashboards from the UI
+      allowUiUpdates: true
+      options:
+        options:
+        # <string, required> path to dashboard files on disk. Required when using the 'file' type
+        path: /etc/grafana/provisioning/dashboards
+        # <bool> use folder names from filesystem to create folders in Grafana
+        foldersFromFilesStructure: true

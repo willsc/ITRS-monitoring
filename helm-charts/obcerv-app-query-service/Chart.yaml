@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: 1.7.0
+description: Obcerv Query Service App
+name: obcerv-app-query-service
+type: application
+version: 1.7.0

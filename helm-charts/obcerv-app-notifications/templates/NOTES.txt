@@ -1,0 +1,16 @@
+You have installed version {{ .Chart.Version }} of the {{ .Chart.Description }} as a release named {{ .Release.Name }}.
+
+To learn more about the release, run:
+
+  helm status {{ .Release.Name }}
+  helm get all {{ .Release.Name }}
+
+Accessing the {{ .Chart.Description }}:
+{{- if .Values.ingress.enabled | default true }}
+  https://{{ .Values.externalHostname | trim }}/app{{ .Values.ingress.path | trim }}
+{{- end }}
+
+To find out more about the app please refer to the official documentation:
+  {{ include "obcerv-app-notifications.docsUrl" . }}
+
+Note: The application might not be immediately accessible. Wait for the pod to become "ready" before connecting.

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "obcerv-app-capacity-planner-metrics.fullname" . }}
+  labels:
+  {{- include "obcerv-app-capacity-planner-metrics.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ (.Values.service).port | default 50052 }}
+      targetPort: {{ (.Values.service).port | default 50052 }}
+      protocol: TCP
+      name: http
+  selector:
+  {{- include "obcerv-app-capacity-planner-metrics.selectorLabels" . | nindent 4 }}

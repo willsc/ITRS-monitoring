@@ -1,0 +1,14 @@
+You have installed version {{ .Chart.Version }} of the {{ .Chart.Description }} as a release named {{ .Release.Name }}.
+
+To learn more about the release, run:
+
+  helm status {{ .Release.Name }}
+  helm get all {{ .Release.Name }}
+
+Accessing the {{ .Chart.Description }} UI:
+  https://{{ .Values.externalHostname }}/app{{ .Values.ingress.path | trimSuffix "/" }}
+
+Accessing the {{ .Chart.Description }} Swagger UI:
+  https://{{ .Values.externalHostname }}{{ include "obcerv-app-centralised-config-rest-server.ingressPath" .}}/swagger
+
+Note: The application might not be immediately accessible. Wait for the pod to become "ready" before connecting.

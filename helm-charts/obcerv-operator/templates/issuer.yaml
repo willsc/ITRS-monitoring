@@ -1,0 +1,10 @@
+{{- if .Values.webhook.tls.selfSigned }}
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: {{ include "obcerv-operator.fullname" . }}-selfsigned
+  labels:
+    {{- include "obcerv-operator.labels" . | nindent 4 }}
+spec:
+  selfSigned: {}
+{{- end }}

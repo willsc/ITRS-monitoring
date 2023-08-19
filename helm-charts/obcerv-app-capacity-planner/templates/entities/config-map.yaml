@@ -1,0 +1,80 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "obcerv-app-capacity-planner-entities.fullname" . }}
+data:
+  config.yaml: |-
+    # Entities App Daemon Dev Config
+    monitoring:
+      reporting-interval: 10000
+      health-probe:
+        enabled: true
+        listen-port: {{ .Values.healthProbePort | default 8080 }}
+
+    services:
+      - type: permissions
+        iam-service-name: {{ ((.Values.internal).iam).host | default "keycloak" }}
+        iam-service-port: {{ ((.Values.internal).iam).port | default 8080 }}
+        realm: {{ ((.Values.internal).iam).realm | default "obcerv" }}
+        client-application-name: {{ ((.Values.internal).iam).clientName | default "obcerv-apps" }}
+        public-key-cache-ttl-days: 1
+
+      - type: platform-client-supplier
+        services:
+          - type: consensus-key-value-service
+            hostname: kvstore.{{ .Release.Namespace }}.svc.cluster.local
+            port: 7160
+          - type: entity-service
+            hostname: entity.{{ .Release.Namespace }}.svc.cluster.local
+            port: 7159
+      - type: entities-processor
+        queue-directory: {{ ((.Values.entities).queue).directory | default "/tmp/obcerv-app-cp/queue" }}
+        queue-element-max-size-bytes:  {{ ((.Values.entities).queue).elementMaxSizeBytes | default 10000 }}
+        entity-publisher-flags:
+          frequency: {{ (.Values.entities).frequency | default "PT10S" }}
+          max-entities: {{ (.Values.entities).max | default 1000 }}
+          {{/*default does not work with boolean true see https://github.com/helm/helm/issues/3308*/}}
+          {{- if eq "false" ((.Values.entities).register | toString) }}
+          register-entities: false
+          {{ else }}
+          register-entities: true
+          {{- end }}
+          register-timeout: {{ ((.Values.geneosInfra).entities).registerTimeout | default "PT2M" }}
+        http-client-settings:
+          connection-timeout: {{ (.Values.httpClient).connectionTimeout | default "PT1M" }}
+          read-timeout: {{ (.Values.httpClient).readTimeout | default "PT1M" }}
+          write-timeout: {{ (.Values.httpClient).writeTimeout | default "PT1M" }}
+          {{/*default does not work with boolean true see https://github.com/helm/helm/issues/3308*/}}
+          {{- if eq "false" (((.Values.httpClient).compress) | toString) }}
+          compress: false
+          {{ else }}
+          compress: true
+          {{- end }}
+          {{- if (.Values.httpClient).outputDirectory }}
+          output-directory: {{ (.Values.httpClient).outputDirectory }}
+          {{- end }}
+        opsview-infra-entities-settings:
+          {{- if eq "false" (((.Values.opsviewInfra).enabled) | toString) }}
+          enabled: false
+          {{ else }}
+          enabled: true
+          {{- end }}
+        geneos-infra-entities-settings:
+          {{- if eq "false" (((.Values.geneosInfra).enabled) | toString) }}
+          enabled: false
+          {{ else }}
+          enabled: true
+          {{- end }}
+
+  logback.xml: |-
+    <configuration>
+      <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+          <pattern>%d{"yyyy-MM-dd'T'HH:mm:ss.SSSXXX", UTC} [%thread] %-5level %logger - %msg%n</pattern>
+        </encoder>
+      </appender>
+
+      <root level="{{ .Values.loglevel | default "INFO" }}">
+        <appender-ref ref="stdout"/>
+      </root>
+    </configuration>

@@ -1,0 +1,488 @@
+# Deployment mode. Can be either DaemonSet (default) or Deployment.
+#
+# In DaemonSet mode, the netprobe is deployed as a DaemonSet to all matching nodes.
+# Each DaemonSet pod collects metrics and logs for the pods on that node only.
+# An additional Deployment is launched, which collects metrics and events that are not
+# node-specific (e.g. ResourceQuotas). This is the only mode that supports log collection.
+#
+# In Deployment mode, the netprobe is deployed as a Deployment. In this mode,
+# one pod collects metrics for the entire cluster, and log collection is not supported.
+mode: DaemonSet
+
+# Name of the kube cluster (required).
+cluster: ""
+
+# One or more Geneos Gateways to which the Netprobe connects.
+# At least one is required.
+gateways:
+- host: ""  # Required hostname of the gateway.
+  port: 7039
+  secure: false
+
+# Optional. Managed entities the netprobe will connect to.
+# An example is provided below for a managed entity with a Health sampler type applied to all deployed netprobes.
+managedEntities:
+  # Managed entity name (required).
+  # - name: "Health-[[$env:POD_NAME]]"
+
+    # When in DaemonSet mode, sets the target where the managed entity should be applied. Possible values are:
+    #   allProbes           managed entity is applied to all probes
+    #   nodeLevelProbes     managed entity is applied to the node-level probes only
+    #   clusterLevelProbe   managed entity is applied to the cluster-level probe only
+    #
+    # This seting is ignored in Deployment mode, and defaults to clusterLevelProbe.
+    # target: allProbes
+
+    # Types referenced by the managed entity (array of strings).
+    # types:
+    # - Health
+
+    # Attribute key:value pairs.
+    # attributes:
+    #   Type: Static
+    #   Environment: Kubernetes
+    #   Application: geneos
+
+# Dynamic entity mappings.
+dynamicEntities:
+  mappingTypes:
+  - Kubernetes
+
+# Dimension key:value pairs to add to all data points.
+customDimensions:
+- cluster: "${env:CLUSTER_NAME}"
+
+# Namespaces for which to collect metrics and logs.
+# If undefined, all namespaces are collected.
+# Templated values may be defined here, e.g. "{{ .Release.Namespace }}".
+namespaces: []
+
+# Metric collection settings.
+metrics:
+  # Whether to collect metrics and events.
+  enabled: true
+
+  # Exclude metrics that are not part of a namespace (e.g. node metrics).
+  excludeNonNamespaced: false
+
+# Log collection settings.
+logs:
+  # Whether to enable log collection.
+  enabled: true
+
+  # Locations for logs produced by Kubernetes and Docker.
+  directories:
+    containerLogs: /var/log/containers
+    podLogs: /var/log/pods
+    dockerLogs: /var/lib/docker/containers
+
+  # Whether to read from beginning of a newly discovered log.
+  # If false, the file is tailed.
+  readFromBeginning: false
+
+# Persistence for the agent's store and log collector positions.
+persistence:
+
+  # If false, log collection and outbound routing will be disabled since they require persistence.
+  enabled: true
+
+  # Directory where DaemonSet persistence files are stored.
+  # This is a HostPath that will be created on each node.
+  directory: /var/lib/geneos/collection-agent-{{ .Release.Namespace }}-{{ .Release.Name }}
+
+  # Size of the PVC used by the deployment.
+  deploymentClaimSize: 10Gi
+
+# Fluentd settings
+fluentd:
+  # Whether to enable fluentd collection. Disabled by default.
+  enabled: false
+
+  # Required. Port on which to receive TCP (+ TLS/SSL) messages and UDP heartbeats.
+  port: 24224
+
+  # Acceptor thread pool size (default = 1)
+  acceptorThreadPoolSize: 1
+
+  # Worker thread pool size (default = 1)
+  workerThreadPoolSize: 1
+
+  # Optional TLS configuration.
+  tls:
+    # Disabled by default.
+    enabled: false
+
+    # Name of the TLS secret containing the plugin's private key and certificate.
+    # Required when TLS is enabled.
+    secret: ""
+
+    # Optional Certificate Authority secret. Must be set to enable mutual TLS.
+    caSecret: ""
+
+    # The key in the above secret that contains the CA certificate.
+    caSecretKey: ""
+
+  # Required. Name of event data key to use as the log event name.
+  nameKey: ""
+
+  # Optional tag mapping.
+  # Every batch of messages contains a tag which may be mapped into log events.
+  # Values:
+  #   - none (default): ignored the tag
+  #   - namespace: tag value is appended to the log event namespace
+  #   - name: tag value is prepended to the log event name
+  #   - dimension: tag value is added as a dimension
+  tagMapping: none
+
+  # Optional. Name of event data key to use to extract the log event message.
+  # Default is 'message'.
+  messageKey: message
+
+  # Optional. Event data keys to use as dimension keys.
+  # The key here is used as the search key in the event data and value (if any)
+  # is inserted as a dimension with key mapped as specified.
+  dimensions:
+  # Ex. If event data contains {host=www.myhost.com} then it is mapped to a dimension {host.name=www.myhost.com}.
+  #- host: host.name
+  #- pid: pid.number
+
+  # Optional. Event data key and optional mappings to extract severity from the event data.
+  severityMapping:
+    # Event data key to use to extract severity value.
+    key: ""
+
+    # Optional severity mapping value in case source system uses different values.
+    # Supported target values are: [none, trace, debug, info, warn, error, critical]
+    values:
+    # Ex. fatal severity will be mapped as critical severity
+    #- fatal: critical
+    #- warning: warn
+
+  # Fluentd service settings.
+  # Only applicable when deployment mode is "Deployment". In DaemonSet mode,
+  # the fluentd server is exposed directly on each node.
+  service:
+    # Optionally override the name of the fluentd service.  If undefined, the service
+    # name will be "<release_name>-fluentd".
+    name: ""
+
+# Open Telemetry settings
+opentelemetry: 
+  # Whether to enable Open Telemetry collection.
+  enabled: true
+  
+  # Optional. Default is 4317.
+  port: 4317
+  
+  # Optional. gRPC inbound queue capacity. Default is 64.
+  queueCapacity: 64
+  
+  # Optional. gRPC inbound queue processing threads. Default is 4.
+  threadPoolSize: 4
+
+  # Optional. Use to enable TLS.
+  # If omitted, the server accepts any connections over plain text.
+  # Otherwise the server enables TLS and can either authenticate clients
+  # (i.e. use mTLS) or not depending on whether the trust-chain-file is specified.
+  tls:
+    # Disabled by default.
+    enabled: false 
+    # Name of the TLS secret containing the plugin's private key and certificate.
+    # Required when TLS is enabled.
+    secret: ""
+
+    # Optional Certificate Authority secret. Must be set to enable mutual TLS.
+    caSecret: ""
+
+    # The key in the above secret that contains the CA certificate.
+    caSecretKey: ""
+
+    # Optional. List of TLS protocols to enable. Defaults to TLSv1.3 and TLSv1.2 only.
+    protocols: [ TLSv1.3, TLSv1.2 ]
+    
+  # Optional. Defaults to true.
+  # By default, metrics from each span are extracted and emitted.
+  # This flag allows toggling of that behavior.
+  emitTraceMetrics: true
+
+  # Optional. Trace metric aggregation and reporting interval in milliseconds. Defaults to 10 seconds.
+  # Trace metrics are aggregated and reported over windows at this interval.
+  traceMetricsInterval: 10000
+
+  # Optional. Trace metric expiry interval in milliseconds. Defaults to 10 minutes.
+  # Aggregated trace metrics that are not updated in this interval are purged.
+  traceMetricsExpiry: 600000
+
+  # Optional. Default is 200.
+  # For the resource and span attributes mapped (according to the rules below) that are mapped into dimensions,
+  # both attribute names and values are truncated to the length specified in order to pass data point validation.
+  # A value of 0 switches truncation off completely.
+  maxAttributeKeyValueLength: 200
+
+  # Optional. Defines which resource attributes to map to dimensions.
+  # For more details see resource-attributes in the opentelemetry plugin documentation
+  resourceAttributes:
+    metrics:
+      base: semantic
+      drop-excluded: false
+    logs:
+      base: semantic
+      drop-excluded: false
+    traces:
+      base: semantic
+      drop-excluded: false
+
+  # Optional. Defines which scope attributes to map to dimensions.
+  # For more details see scope-attributes in the opentelemetry plugin documentation
+  scopeAttributes:
+    metrics:
+      base: none
+      drop-excluded: false
+    logs:
+      base: none
+      drop-excluded: false
+    traces:
+      base: none
+      drop-excluded: false
+
+  # Optional. Custom metric unit mappings from external string to a known
+  # For more details see units in the opentelemetry plugin documentation
+  units:
+    # Map Otel metric unit 'By' to internal unit 'bytes'
+    # See below for a reference to available internal units.
+
+  # Open Telemetry service settings.
+  # Only applicable when deployment mode is "Deployment".  In DaemonSet mode,
+  # the opentelemetry server is exposed directly on each node.
+  service:
+    # Optionally override the name of the Open Telemetry service.  If undefined, the service
+    # name will be "<release_name>-opentelemetry".
+    name: ""
+
+# Statsd settings.
+statsd:
+  # Enabled by default.
+  enabled: true
+
+  # UDP or TCP.
+  protocol: UDP
+
+  # Server port.
+  port: 8125
+
+  # Timeout, in milliseconds, after which a stale metric is removed and no longer reported.
+  # Defaults to 30 minutes.
+  staleThreshold: 1800000
+
+  # Statsd service settings.
+  # Only applicable when deployment mode is "Deployment".  In DaemonSet mode, the statsd
+  # server is exposed directly on each node.
+  service:
+
+    # Optionally override the name of the statsd service.  If undefined, the service
+    # name will be "<release_name>-statsd".
+    name: ""
+
+# Data point routing, i.e. for chaining Collection Agents together.
+routing:
+
+  # Routing from this instance to another.
+  outbound:
+
+    # Disabled by default.
+    enabled: false
+
+    # Routing profiles.
+    profiles:
+
+      # The pipelines to which this profile should be applied.  Currently only "logs" is supported.
+      # Note that each pipeline can only appear once across all profiles - if a pipeline is
+      # erroneously defined multiple times, only the first instance will be used.
+    - pipelines:
+      - logs
+
+      # Route via 'first' (the first matching route) or 'all' (all matching routes).
+      routeType: first
+
+      # List of routes.
+      #
+      # There is an implicit catch-all route which matches any otherwise unmatched data points
+      # and sends them via the local netprobe.
+      routes:
+
+        # The target (only grpc supported).
+      - target:
+          grpc:
+            hostname: ""
+            port: 7624
+
+        # Match via 'any' matcher (OR) or 'all' matchers (AND)
+        match: any
+
+        # List of matchers evaluated in order.
+        matchers:
+          # Match by dimension. The pattern is parsed as regex.
+        - type: dimension
+          key: namespace
+          pattern: my-namespace
+
+  # Routing into this instance from another.
+  inbound:
+    # Disabled by default.
+    enabled: false
+    service:
+      port: 80
+
+# Image pull secret(s) required for connecting to the ITRS Docker registry.
+imagePullSecrets:
+- name: itrsdocker
+
+# Netprobe container settings.
+netprobe:
+  image:
+    repository: docker.itrsgroup.com/netprobe
+    tag: ""
+    pullPolicy: IfNotPresent
+
+  retryInterval: 30
+  requireReverseConnection: true
+
+  # TCP port used for communication between netprobe and agent.
+  # The port should also be set in the corresponding collection agent parameters section in the gateway setup.
+  reporterPort: 7137
+
+  # Name of the collection agent parameters section to be used in the gateway setup.
+  collectionAgentParameters: "Kubernetes Collection Agent Parameters"
+
+  # Container limits/requests.
+  # It is strongly recommended to set this.  A good starting point is shown below.
+  resources: {}
+  #  limits:
+  #    cpu: "1"
+  #    memory: "1Gi"
+  #  requests:
+  #    cpu: "500m"
+  #    memory: "768Mi"
+
+  # Container security context.
+  securityContext:
+    runAsUser: 1000
+
+# Agent container settings.
+agent:
+  image:
+    repository: docker.itrsgroup.com/collection/collection-agent
+    tag: ""
+    pullPolicy: IfNotPresent
+
+  # Logger configuration - should be changed only for troubleshooting.
+  logging:
+    rootLevel: "info"
+    loggers:
+      io.kubernetes.client: "off"
+
+  # Container limits/requests.
+  # It is strongly recommended to set this.  A good starting point is shown below.
+  resources: {}
+  #  limits:
+  #    cpu: "1"
+  #    memory: "1Gi"
+  #  requests:
+  #    cpu: "500m"
+  #    memory: "768Mi"
+
+  # Percentage of the container's memory limit allocated to the JVM heap.
+  # It is strongly recommended to set resource limits, otherwise this percentage
+  # applies to the available RAM on the node. The decimal place is required in Java 8.
+  heapSizePercent: "75.0"
+
+  # Size of the in-memory metrics queue.
+  metricsQueueSize: 8192
+
+  # Size of the in-memory attributes queue.
+  attributesQueueSize: 8192
+
+  # Size of the in-memory events queue.
+  # Only used if `agent.disableStorePersistence` is true or `persistence.enabled` is false.
+  eventsQueueSize: 8192
+
+  # Size of the in-memory logs queue.
+  # Only used if `agent.disableStorePersistence` is true or `persistence.enabled` is false.
+  logsQueueSize: 8192
+
+  # Disk buffering of data points in pipeline stores.
+  # If true, any undeliverable data points in the logs or events store will be lost if the store rolls over or if
+  # the pod is restarted.
+  # This setting is ignored if `persistence.enabled` is false.
+  disableStorePersistence: false
+
+  # Container security context.
+  securityContext: {}
+
+  # Collection agent self-metrics collection settings
+  selfMetrics:
+    # Whether to collect self-metrics.
+    enabled: true
+
+    # Dimension key:value pairs to add to self-metrics data points.
+    customDimensions:
+    - app: collection-agent
+
+# Pod settings for the DaemonSet.
+daemonSet:
+  # Name of the netprobe.
+  probeName: "<hostname/>"
+
+  # Pod assignment.
+  affinity: {}
+  nodeSelector: {}
+  tolerations: []
+
+# Pod settings for the Deployment.
+deployment:
+  # Name of the netprobe.
+  probeName: "<hostname/>"
+
+  # Pod assignment.
+  affinity: {}
+  nodeSelector: {}
+  tolerations: []
+
+# Custom annotations for all pods.
+podAnnotations: {}
+
+# ClusterRole required for accessing the kube API to read non-namespaced resources (e.g. nodes and nodes/proxy)
+# and to collect metrics/events across all namespaces.
+clusterRole:
+  # Whether to create the role.
+  create: true
+
+  # Role name.
+  # If not set and create is true, a name is generated using the fullname template.
+  # To use a custom role, set "create" to false and set the name.
+  name: ""
+
+# Role used when accessing the kube API to collect metrics/events for specific namespaces.
+# This is only created if one or more values are configured for "metrics.namespaces", otherwise
+# the ClusterRole is created with permission to access all namespaces.
+role:
+  # Whether to create the role.
+  create: true
+
+  # Role name.
+  # If not set and create is true, a name is generated using the fullname template.
+  # To use a custom role, set "create" to false and set the name.
+  name: ""
+
+# Service account used by all containers.
+serviceAccount:
+  # Whether to create the account.
+  create: true
+
+  # Account name.
+  # If not set and create is true, a name is generated using the fullname template.
+  # To use a custom service account, set "create" to false and set the name.
+  name: ""
+
+  # Custom annotations.
+  annotations: {}

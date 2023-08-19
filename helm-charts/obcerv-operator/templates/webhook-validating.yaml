@@ -1,0 +1,46 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  # The name includes the namespace so that releases with same name in different namespaces don't clash.
+  name: {{ include "obcerv-operator.fullname" . }}-{{ .Release.Namespace }}-validator
+  {{- if .Values.webhook.tls.selfSigned }}
+  annotations:
+    cert-manager.io/inject-ca-from: {{ .Release.Namespace }}/{{ include "obcerv-operator.fullname" . }}-webhook
+  {{- end }}
+webhooks:
+- name: validating-webhook.obcerv.itrsgroup.com
+  rules:
+  - apiGroups: [ "itrsgroup.com" ]
+    apiVersions: [ "*" ]
+    operations: [ "CREATE", "UPDATE" ]
+    resources: [ "obcervs" ]
+    scope: "Namespaced"
+  clientConfig:
+    service:
+      name: {{ include "obcerv-operator.fullname" . }}-webhook
+      namespace: {{ .Release.Namespace }}
+      path: /validate
+    {{- if not .Values.webhook.tls.selfSigned }}
+    caBundle: {{ .Values.webhook.tls.caCertificate }}
+    {{- end }}
+  admissionReviewVersions: [ "v1" ]
+  failurePolicy: Fail
+  sideEffects: None
+  timeoutSeconds: 30
+  {{- $namespaces := .Values.namespaces }}
+  {{- if and ($namespaces) (gt (len $namespaces) 0) }}
+  # Multiple operators can run in the same cluster and we want them to be fully isolated in their respective
+  # namespace(s).  We therefore need to restrict the scope of the webhook so that it doesn't fire for Obcervs in a
+  # namespace "owned" by a different operator instance.
+  #
+  # There isn't a way to match a namespace by name, only by label.  Since we don't have control over namespaces,
+  # the next best option is to add a label to our Obcerv resources and match it here.
+  objectSelector:
+    matchExpressions:
+    - key: "obcerv.itrsgroup.com/namespace"
+      operator: In
+      values:
+      {{- range $k,$ns := $namespaces }}
+      - {{ tpl $ns $ }}
+      {{- end }}
+  {{- end }}

@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "obcerv-app-query-service-db.fullname" . }}
+data:
+  PGDATA: /data/pgdata
+  POSTGRES_INITDB_WALDIR: /wal/pgwal
+  POSTGRES_DB: {{ include "obcerv-app-query-service-db.fullname" . }}
+  POSTGRES_USER: admin
+  POSTGRES_PASSWORD: admin
+
+  # postgresql.conf overrides
+  postgresql_overrides.conf: |
+    autovacuum_max_workers = {{ .Values.postgresql.config.autovacuum_max_workers }}
+    max_connections = {{ .Values.postgresql.config.max_connections }}
+    max_parallel_maintenance_workers = {{ .Values.postgresql.config.max_parallel_maintenance_workers }}
+    max_parallel_workers = {{ .Values.postgresql.config.max_parallel_workers }}
+    max_parallel_workers_per_gather = {{ .Values.postgresql.config.max_parallel_workers_per_gather }}
+    max_wal_senders = {{ .Values.postgresql.config.max_wal_senders }}
+    max_worker_processes = {{ .Values.postgresql.config.max_worker_processes }}
+    synchronous_commit = {{ .Values.postgresql.config.synchronous_commit }}
+    wal_level = {{ .Values.postgresql.config.wal_level }}
+    log_checkpoints = {{ .Values.postgresql.config.log_checkpoints }}
+    log_min_duration_statement = {{ .Values.postgresql.config.log_min_duration_statement }}
+    fsync = {{ .Values.postgresql.config.fsync }}
+    full_page_writes = {{ .Values.postgresql.config.full_page_writes }}
+    {{- range $key, $value := .Values.postgresql.config.additionalSettings }}
+    {{ $key }} = {{ $value }}
+    {{- end }}

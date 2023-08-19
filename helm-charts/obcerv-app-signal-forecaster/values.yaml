@@ -1,0 +1,82 @@
+# DNS name via which external clients will access the ui (required).
+externalHostname: ""
+
+docker:
+  registry: docker.itrsgroup.com
+
+image:
+  repository: /obcerv/app/obcerv-app-signal-forecaster-ui
+ingress:
+  path: /signal-forecaster/
+env:
+  - name: OBCERV_APP_QUERY_SERVICE_BFF_SERVICE_HOST
+    value: obcerv-app-query-service-bff
+
+forecaster:
+  name: obcerv-app-signal-forecaster-daemon
+  image:
+    repository: /obcerv/app/obcerv-app-signal-forecaster-daemon
+    pullPolicy: IfNotPresent
+    tag: ""
+
+iam:
+  image:
+    repository: /obcerv/iam-tools
+    tag: "1.0.0"
+    pullPolicy: IfNotPresent
+
+imagePullSecrets:
+  - name: itrsdocker
+
+service:
+  type: ClusterIP
+  port: 50052
+
+healthProbePort: 8080
+
+statsd:
+  protocol: UDP
+  port: 8125
+
+loglevel: INFO
+
+resources:
+  requests:
+    memory: "512Mi"
+    cpu: "400m"
+  limits:
+    memory: "2Gi"
+    cpu: "750m"
+
+internal:
+
+  # Identity Access Management settings.
+  iam:
+    # Whether to require authentication.
+    enabled: true
+
+    scheme: http
+    host: keycloak
+    port: 8080
+    realm: obcerv
+    clientName: obcerv-apps
+    clientSecret: iam-apps-credentials
+    disableTrustManager: true
+    publicClient: false
+
+    # There must be at least one resource entry
+    # otherwise all users will be denied access to the app.
+    resources:
+      - signal-forecaster
+
+podAnnotations:
+  linkerd.io/inject: enabled
+  config.linkerd.io/proxy-cpu-request: "0.2"
+  config.linkerd.io/proxy-cpu-limit: "0.2"
+  config.linkerd.io/proxy-memory-request: 256Mi
+  config.linkerd.io/proxy-memory-limit: 256Mi
+podSecurityContext: { }
+securityContext: { }
+nodeSelector: { }
+tolerations: [ ]
+affinity: { }

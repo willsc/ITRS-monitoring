@@ -1,0 +1,18 @@
+You have installed {{ .Chart.Name }} as a release named {{ .Release.Name }}.
+
+To learn more about the release, try:
+
+  $ helm status {{ .Release.Name }}
+  $ helm get all {{ .Release.Name }}
+
+PERSISTENCE:
+{{- if .Values.persistence.enabled }}
+Gateway configuration will be persisted via a PersistentVolumeClaim.
+
+Helm will not delete the PVC if the release is uninstalled.  This allows for reinstalling
+the chart and keeping your existing data - however you must use the same release name "{{ .Release.Name }}".
+
+If you do not wish keep any data, you must manually delete the PVC.
+{{- else }}
+Warning: Persistence is disabled - all Gateway configuration changes will be lost if the pod terminates.
+{{- end }}

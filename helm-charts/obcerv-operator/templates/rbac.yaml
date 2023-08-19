@@ -1,0 +1,70 @@
+{{- if .Values.rbac.serviceAccount.create }}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ include "obcerv-operator.serviceAccountName" . }}
+  labels:
+    {{- include "obcerv-operator.labels" . | nindent 4 }}
+{{- end }}
+{{- if .Values.rbac.clusterRole.create }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "obcerv-operator.clusterRoleName" . }}
+  labels:
+    {{- include "obcerv-operator.labels" . | nindent 4 }}
+rules:
+{{ toYaml .Values.rbac.rules.cluster }}
+{{ toYaml .Values.rbac.transitiveRules.cluster }}
+{{- if eq (len .Values.namespaces) 0 }}
+{{ toYaml .Values.rbac.rules.scoped }}
+{{ toYaml .Values.rbac.transitiveRules.scoped }}
+{{- end }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "obcerv-operator.clusterRoleName" . }}
+  labels:
+    {{- include "obcerv-operator.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "obcerv-operator.clusterRoleName" . }}
+subjects:
+- kind: ServiceAccount
+  name: {{ include "obcerv-operator.serviceAccountName" . }}
+  namespace: {{ .Release.Namespace }}
+{{- end }}
+{{- if gt (len .Values.namespaces) 0 }}
+{{- range $k,$ns := .Values.namespaces }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "obcerv-operator.fullname" $ }}
+  namespace: {{ tpl $ns $ }}
+  labels:
+    {{- include "obcerv-operator.labels" $ | nindent 4 }}
+rules:
+{{ toYaml $.Values.rbac.rules.scoped }}
+{{ toYaml $.Values.rbac.transitiveRules.scoped }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "obcerv-operator.fullname" $ }}
+  namespace: {{ tpl $ns $ }}
+  labels:
+    {{- include "obcerv-operator.labels" $ | nindent 4 }}
+subjects:
+- kind: ServiceAccount
+  name: {{ include "obcerv-operator.serviceAccountName" $ }}
+  namespace: {{ $.Release.Namespace }}
+roleRef:
+  kind: Role
+  name: {{ include "obcerv-operator.fullname" $ }}
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}
+{{- end }}

@@ -1,0 +1,19 @@
+{{- if and (eq .Values.mode "Deployment") .Values.opentelemetry.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  {{- if .Values.opentelemetry.service.name }}
+  name: {{ .Values.opentelemetry.service.name }}
+  {{- else }}
+  name: {{ include "netprobe.fullname" . }}-opentelemetry
+  {{- end }}
+  labels:
+    {{- include "netprobe.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  selector:
+    {{- include "netprobe.selectorLabels" . | nindent 4 }}
+  ports:
+  - protocol: TCP
+    port: {{ .Values.opentelemetry.port }}
+{{- end }}

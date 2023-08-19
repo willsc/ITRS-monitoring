@@ -1,0 +1,17 @@
+You have installed the {{ .Chart.Description }} as a release named {{ .Release.Name }}.
+
+To learn more about the release, try:
+
+  $ helm status {{ .Release.Name }}
+  $ helm get all {{ .Release.Name }}
+
+Accessing the {{ .Chart.Description }}:
+{{- if .Values.ingress.enabled }}
+  {{- if .Values.ingress.tls.enabled }}
+  https://{{ .Values.externalHostname | trim }}
+  {{- else }}
+  http://{{ .Values.externalHostname | trim }}
+  {{- end }}
+{{- end }}
+
+Note: The application might not be immediately accessible. Wait for the pod to become "ready" before connecting.

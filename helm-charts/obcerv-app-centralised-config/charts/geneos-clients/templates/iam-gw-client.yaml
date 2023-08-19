@@ -1,0 +1,47 @@
+{{- $jobName := printf "%s-create-iam-gw-client-job" .Chart.Name -}}
+{{- $secretName := ((.Values.iam).secretName) | default "iam-realm-admin-credentials" -}}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ $jobName }}
+  annotations:
+    helm.sh/hook: pre-install
+    helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
+spec:
+  backoffLimit: 1
+  activeDeadlineSeconds: 300
+  template:
+    spec:
+      imagePullSecrets:
+        - name: itrsdocker
+      restartPolicy: Never
+      containers:
+        - name: {{ $jobName }}
+          image: "{{ .Values.docker.registry }}{{ .Values.iam.image.repository }}:{{ .Values.iam.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.iam.image.pullPolicy | default "IfNotPresent"}}
+          env:
+            - name: IAM_ADMIN_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $secretName }}
+                  key: username
+            - name: IAM_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $secretName }}
+                  key: password
+          command:
+            - /bin/sh
+            - -c
+            - >
+              /scripts/setup-client.sh
+              -h {{ (.Values.iam).host | default "keycloak" }}
+              -p {{ (.Values.iam).port | default 8080 }}
+              -u $IAM_ADMIN_USERNAME
+              -w $IAM_ADMIN_PASSWORD
+              -m {{ (.Values.iam).realm | default "obcerv" }}
+              -c {{ (.Values.iam).gwClientName | default "geneos-gw" }}
+              -s {{ (.Values.iam).clientSecret | default "\"\"" }}
+              -r {{ .Chart.Name }}
+              -g

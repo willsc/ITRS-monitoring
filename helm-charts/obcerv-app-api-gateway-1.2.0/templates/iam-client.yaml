@@ -1,0 +1,44 @@
+{{- $secretName := ((.Values.iam).secretName) | default "iam-realm-admin-credentials" -}}
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Chart.Name }}-create-iam-client-job
+  annotations:
+    helm.sh/hook: pre-install
+    helm.sh/hook-delete-policy: before-hook-creation, hook-succeeded
+spec:
+  backoffLimit: 1
+  activeDeadlineSeconds: 300
+  template:
+    spec:
+      {{- if .Values.imagePullSecrets }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- else }}
+      imagePullSecrets:
+        - name: itrsdocker
+      {{- end }}
+      containers:
+      - name: {{ .Chart.Name }}-create-iam-client-job
+        image: "{{ .Values.docker.registry }}{{ .Values.iam.image.repository }}:{{ .Values.iam.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.iam.image.pullPolicy | default "IfNotPresent" }}
+        env:
+        - name: IAM_ADMIN_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: {{ $secretName }}
+              key: username
+        - name: IAM_ADMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ $secretName }}
+              key: password
+        command:
+        - /bin/sh
+        args:
+        - -c
+        - "/scripts/setup-client.sh -h {{ .Values.internal.iam.host }} -p {{ .Values.internal.iam.port }} -u $IAM_ADMIN_USERNAME -w $IAM_ADMIN_PASSWORD -m {{ .Values.internal.iam.realm }} -c api-gateway-client -i 'http://{{ .Values.externalHostname }}/*' -i 'https://{{ .Values.externalHostname }}/*' -P"
+      restartPolicy: Never

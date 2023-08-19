@@ -1,0 +1,16 @@
+apiVersion: "itrsgroup.com/v1"
+kind: Obcerv
+metadata:
+  name: {{ include "obcerv.fullname" . }}
+  labels:
+    {{- include "obcerv.labels" . | nindent 4 }}
+    # The namespace is added as a label in order to support the objectSelector on our Webhooks.
+    # This allows multiple operator+webhook instances to run in the same cluster but fully isolated
+    # in separate namespaces.
+    obcerv.itrsgroup.com/namespace: {{ .Release.Namespace }}
+  {{- if hasSuffix "-SNAPSHOT" .Values.version }}
+  annotations:
+    obcerv.itrsgroup.com/snapshot-revision: "{{ .Release.Revision }}"
+  {{- end }}
+spec:
+  {{- toYaml .Values | nindent 2 }}

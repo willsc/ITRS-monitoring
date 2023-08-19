@@ -1,0 +1,89 @@
+{{ $externalUrl:= .Values.notifier.externalUrl | default (include "obcerv-app-notifications-notifier.externalUrl" .) }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "obcerv-app-notifications-notifier.fullname" . }}
+data:
+  config.yaml: |-
+    monitoring:
+      health-probe:
+        listen-port: {{ .Values.healthProbePort | default 8080 }}
+
+    services:
+    - type: permissions
+      iam-service-name: {{ ((.Values.internal).iam).host | default "keycloak" }}
+      iam-service-port: {{ ((.Values.internal).iam).port | default 8080 }}
+      realm: {{ ((.Values.internal).iam).realm | default "obcerv" }}
+      client-application-name: {{ ((.Values.internal).iam).clientName | default "obcerv-apps" }}
+      public-key-cache-ttl-days: 1
+
+    - type: platform-client-supplier
+      services:
+      - type: consensus-key-value-service
+        hostname: kvstore.{{ .Release.Namespace }}.svc.cluster.local
+        port: 7160
+      - type: entity-service
+        hostname: entity.{{ .Release.Namespace }}.svc.cluster.local
+        port: 7159
+
+    - type: notifier
+      {{- if $externalUrl }}
+      externalUrl: {{ $externalUrl }}
+      {{- end }}
+      entityTtl: {{ .Values.notifier.entityTtl | default "P1D" }}
+      shutdownTimeout: {{ .Values.notifier.shutdownTimeout | default "PT30S" }}
+      readinessTimeout: {{ .Values.notifier.readinessTimeout | default "PT30S" }}
+      minEntityUpdateInterval: {{ .Values.notifier.minEntityUpdateInterval | default "PT1S" }}
+      maxEntityBootstrapDuration: {{ .Values.notifier.maxEntityBootstrapDuration | default "PT5M" }}
+      pollInterval: {{ .Values.notifier.pollInterval | default "PT5S" }}
+      clusterId: {{ .Values.externalHostname }}
+      notificationCacheBufferSizeKiB: {{ .Values.notifier.notificationCacheBufferSizeKiB | default 1024 }}
+      notificationPruningTimeout: {{ .Values.notifier.notificationPruningTimeout | default "PT30S" }}
+      notificationHousekeepingInterval: {{ .Values.notifier.notificationHousekeepingInterval | default "PT1H" }}
+      queue:
+        slack:
+          capacity: {{ ((.Values.notifier.queue).slack).capacity | default 300 }}
+          numThreads: {{ ((.Values.notifier.queue).slack).numThreads | default 1 }}
+          consumerTimeout: {{ ((.Values.notifier.queue).slack).consumerTimeout | default "PT10S" }}
+          shutdownTimeout: {{ ((.Values.notifier.queue).slack).shutdownTimeout | default "PT30S" }}
+      maxInboundGrpcMessageSizeMiB: {{ .Values.notifier.maxInboundGrpcMessageSizeMiB | default 15 }}
+  logback.xml: |-
+    <configuration>
+      <property name="DefaultLogFmt"
+                value="ts=%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX, UTC} thread=&quot;%thread&quot; level=%level logger=%logger message=&quot;%replace(%msg){'[\r\n\t]+', '\u2028'}&quot; stack_trace=&quot;%replace(%ex){'[\r\n\t]+', '\u2028'}%nopex&quot;%n"/>
+
+      <property name="NotificationQueueLogFmt"
+                value="ts=%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX, UTC} thread=&quot;%thread&quot; level=%level logger=%logger %kvp stack_trace=&quot;%replace(%ex){'[\r\n\t]+', '\u2028'}%nopex&quot;%n"/>
+
+      <appender name="Default" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+          <evaluator>
+            <expression>return logger.contains("NotificationQueue");</expression>
+          </evaluator>
+          <OnMismatch>NEUTRAL</OnMismatch>
+          <OnMatch>DENY</OnMatch>
+        </filter>
+        <encoder>
+          <pattern>${DefaultLogFmt}</pattern>
+        </encoder>
+      </appender>
+
+      <appender name="NotificationQueue" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+          <evaluator>
+            <expression>return logger.contains("NotificationQueue");</expression>
+          </evaluator>
+          <OnMismatch>DENY</OnMismatch>
+          <OnMatch>NEUTRAL</OnMatch>
+        </filter>
+        <encoder>
+          <pattern>${NotificationQueueLogFmt}</pattern>
+        </encoder>
+      </appender>
+
+      <root level="${loglevel:-INFO}">
+        <appender-ref ref="Default"/>
+        <appender-ref ref="NotificationQueue"/>
+      </root>
+
+    </configuration>

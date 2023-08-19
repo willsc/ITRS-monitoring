@@ -1,0 +1,93 @@
+# Host and scheme via which external clients will access grafana (required).
+externalHostname: ""
+externalScheme: https
+
+persistence:
+  # Set this to use an existing PVC so that data is retained after uninstall.
+  # If this is set, the other persistence settings are ignored.
+  existingClaim: ""
+
+  # Leave empty to use the default storage class.
+  storageClassName: ""
+  size: 1Gi
+
+# Loki data source.
+loki:
+  # Can be disabled if Loki is not enabled in the Hub.
+  enabled: true
+
+  # URL of the Loki API.
+  url: http://loki:3100
+
+# REST API GW. default value
+api:
+  url: http://obcerv-app-api-gateway:8080/obcerv-app-api-gateway/
+  tlsSkipVerify: false
+
+image:
+  repository: docker.itrsgroup.com/obcerv/app/grafana-geneos-datasource
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets:
+- name: itrsdocker
+
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podSecurityContext:
+  runAsUser: 472
+  fsGroup: 472
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 80
+  labels: {}
+  annotations: {}
+
+ingress:
+  enabled: true
+  tls:
+    enabled: true
+  annotations: {}
+  labels: {}
+  path: /grafana
+  pathType: Prefix
+
+  # Match a specific ingress controller.
+  # ingressClassName: ""
+
+resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+# Port on which Grafana listens inside the pod.
+containerPort: 3000
+
+internal:
+  mesh:
+    enabled: true
+    annotations:
+      linkerd.io/inject: enabled
+      config.linkerd.io/proxy-cpu-request: "0.4"
+      config.linkerd.io/proxy-cpu-limit: "1"
+      config.linkerd.io/proxy-memory-request: 512Mi
+      config.linkerd.io/proxy-memory-limit: 512Mi
+  # Identity Access Management settings.
+  iam:
+    # Whether to require authentication.
+    enabled: true
+    scheme: http
+    host: keycloak
+    port: 8080
+    realm: obcerv
+    clientName: obcerv-apps
+    disableTrustManager: true
+    publicClient: false
+    clientSecret: iam-apps-credentials

@@ -1,0 +1,181 @@
+# Restrict the operator's scope to one or more namespaces.
+# If empty, all namespaces will be watched.
+# Defaults to the installation namespace only.
+namespaces:
+- "{{ .Release.Namespace }}"
+
+# Container limits/requests.
+resources:
+  limits:
+    cpu: "500m"
+    memory: "768Mi"
+  requests:
+    cpu: "300m"
+    memory: "512Mi"
+
+# Whether to install the Obcerv CRD.
+# If installing a single operator in the cluster, this should always be true.
+# If installing multiple operators in the same cluster, this should be true for only one installation.
+installCRDs: true
+
+docker:
+  # Registry from which to pull images.  The ITRS registry requires an image pull secret.
+  # If you've copied our image(s) to a private registry and haven't changed the names, simply
+  # override this parameter with your registry.  Otherwise if the image name(s) have changed,
+  # override this parameter plus the `image.repository` parameter.
+  registry: docker.itrsgroup.com
+
+# Image pull secret(s) required for connecting to the ITRS Docker registry.
+imagePullSecrets:
+- name: itrsdocker
+
+# Container image.
+image:
+  repository: obcerv/operator
+  tag: ""
+  pullPolicy: IfNotPresent
+
+# Kube API timeouts (in milliseconds).  Defaults shown.
+apiConnectionTimeout: 10000
+apiRequestTimeout: 10000
+
+# Kube client settings
+apiDisableBackwardsCompatibilityInterceptor: true
+
+# RBAC settings.
+#
+# If the operator is configured to watch all namespaces, a ClusterRole will be created with the permissions below.
+#
+# Otherwise, if the operator is watching specific namespace(s), a Role with these permissions will be created in
+# each target namespace.
+rbac:
+  clusterRole:
+    # Whether to create the role.
+    create: true
+
+    # Role name.
+    # If not set and create is true, a name is generated using the fullname template.
+    # To use a custom role, set "create" to false and set the name.
+    name: ""
+
+  # Service account used by the operator pod.
+  serviceAccount:
+    # Whether to create the account.
+    create: true
+
+    # Account name.
+    # If not set and create is true, a name is generated using the fullname template.
+    # To use a custom service account, set "create" to false and set the name.
+    name: ""
+
+  # Permissions directly required by the operator.
+  rules:
+
+    # Minimally required cluster-scoped rules.
+    cluster:
+    # The operator creates a ClusterRole for the Collection Agent so it can collect node-level metrics.
+    - apiGroups: [ "rbac.authorization.k8s.io" ]
+      resources: [ "clusterroles", "clusterrolebindings" ]
+      verbs: [ "get", "create", "update", "patch", "delete" ]
+
+    # Rules that are either cluster-scoped (if watching all namespaces) or namespace-scoped.
+    scoped:
+    - apiGroups: [ "itrsgroup.com" ]
+      resources: [ "obcervs", "obcervs/status" ]
+      verbs: [ "get", "list", "watch", "update", "patch" ]
+    - apiGroups: [ "" ]
+      resources: [
+        "configmaps",
+        "endpoints",
+        "endpoints/restricted",  # required by patroni
+        "persistentvolumeclaims",
+        "pods", "secrets",
+        "serviceaccounts",
+        "services"
+      ]
+      verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
+    - apiGroups: [ "apps" ]
+      resources: [ "daemonsets", "deployments", "statefulsets" ]
+      verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
+    - apiGroups: [ "batch" ]
+      resources: [ "jobs", "cronjobs" ]
+      verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
+    - apiGroups: [ "networking.k8s.io" ]
+      resources: [ "ingresses" ]
+      verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
+    - apiGroups: [ "policy" ]
+      resources: [ "poddisruptionbudgets" ]
+      verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
+    - apiGroups: [ "rbac.authorization.k8s.io" ]
+      resources: [ "rolebindings", "roles" ]
+      verbs: [ "get", "create", "update", "patch", "delete" ]
+    - apiGroups: [ "cert-manager.io" ]
+      resources: [ "issuers", "certificates" ]
+      verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
+    # required for DPD Hazelcast discovery
+    - apiGroups: [ "discovery.k8s.io" ]
+      resources: [ "endpointslices" ]
+      verbs: [ "get", "list" ]
+
+  # Permissions transitively required by the operator because it creates roles (for the CA) which contain these rules.
+  transitiveRules:
+
+    # Minimally required cluster-scoped rules.
+    cluster:
+    - apiGroups: [ "" ]
+      resources: [ "nodes", "nodes/proxy", "namespaces" ]
+      verbs: [ "get", "list", "watch" ]
+
+    # Rules required by the CA that are either cluster-scoped (for all namespaces) or namespace-scoped.
+    scoped:
+    - apiGroups: [ "" ]
+      resources: [ "events", "resourcequotas" ]
+      verbs: [ "get", "list", "watch" ]
+    - apiGroups: [ "apps" ]
+      resources: [ "replicasets" ]
+      verbs: [ "get", "list", "watch" ]
+
+# Optional pod settings.
+podSecurityContext: {}
+affinity: {}
+nodeSelector: {}
+tolerations: []
+podAnnotations: {}
+securityContext: {}
+
+# Logger configuration - should be changed only for troubleshooting.
+logging:
+  rootLevel: "info"
+  loggers:
+    com.itrsgroup.platform: "debug"
+
+# Webhook sidecar container.
+webhook:
+  tls:
+    # To have cert-manager generate a self-signed webhook tls file, set to true.
+    # To provide your own webhook tls file, set to false.
+    selfSigned: true
+
+    # Remaining params used only if selfSigned: false.
+    # Default secret name containing customer provided pkcs12 file loaded in a secret.
+    keystoreSecret: '{{ include "obcerv-operator.fullname" . }}-webhook-tls'
+
+    # Default name of the pkcs12 file inside the above secret
+    keystoreSecretKey: "keystore.p12"
+
+    # Password used when generating the pkcs12 file.
+    keystorePasswordSecret: '{{ include "obcerv-operator.fullname" . }}-webhook-tls-password'
+
+    # Base64 encoded value of the CA certificate that signed the certification for the webhook server.
+    caCertificate: ""
+  resources:
+    limits:
+      cpu: "200m"
+      memory: "512Mi"
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+
+operator:
+  # Optionally install the operator. This is useful only for testing the webhook alone.
+  enabled: true

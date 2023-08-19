@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "obcerv-app-centralised-config-daemon.fullname" . }}
+  labels:
+  {{- include "obcerv-app-centralised-config-daemon.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+  - port: {{ (.Values.daemon).port | default 50052 }}
+    targetPort: {{ (.Values.daemon).port | default 50052 }}
+    protocol: TCP
+    name: http
+  selector:
+  {{- include "obcerv-app-centralised-config-daemon.selectorLabels" . | nindent 4 }}

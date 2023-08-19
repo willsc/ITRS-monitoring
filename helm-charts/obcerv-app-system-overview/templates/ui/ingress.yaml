@@ -1,0 +1,53 @@
+{{- $ingress := .Values.ingress | default dict -}}
+{{- $enabled := $ingress.enabled | default true -}}
+{{- if $enabled -}}
+{{- $apiV1 := .Capabilities.APIVersions.Has "networking.k8s.io/v1/Ingress" -}}
+{{- $fullName := include "obcerv-app-system-overview-ui.fullname" . -}}
+{{- $externalHostname  := required "externalHostname must be configured" .Values.externalHostname -}}
+{{- $service := .Values.service | default dict -}}
+{{- $defaultPath := printf "/%s/" .Release.Name -}}
+
+{{- if $apiV1 -}}
+apiVersion: networking.k8s.io/v1
+{{- else }}
+apiVersion: networking.k8s.io/v1beta1
+{{- end }}
+kind: Ingress
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "obcerv-app-system-overview-ui.labels" . | nindent 4 }}
+    {{- with $ingress.labels }}
+    {{ toYaml . | indent 4 }}
+    {{- end }}
+  {{- if $ingress.annotations }}
+  annotations:
+    {{- range $k, $v := $ingress.annotations }}
+    {{ $k }}: {{ tpl $v $ | quote }}
+    {{- end }}
+  {{- end }}
+spec:
+  {{- with $ingress.ingressClassName }}
+  ingressClassName: {{ . }}
+  {{- end }}
+
+  rules:
+  - http:
+      paths:
+      - path: {{ $ingress.path | default $defaultPath }}
+        pathType: {{ $ingress.pathType | default "Prefix" }}
+
+        backend:
+          {{- if $apiV1 }}
+          service:
+            name: {{ $fullName }}
+            port:
+              number: {{ $service.port | default 8080 }}
+          {{- else }}
+          serviceName: {{ $fullName }}
+          servicePort: {{ $service.port | default 8080 }}
+          {{- end }}
+    {{- with .Values.externalHostname }}
+    host: {{ $externalHostname }}
+    {{- end }}
+{{- end }}

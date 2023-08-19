@@ -1,0 +1,141 @@
+{{- $sinkOverrides := mergeOverwrite .Values.service .Values.sink -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "obcerv-app-query-service-sink.fullname" . }}
+  labels:
+    {{- include "obcerv-app-query-service-sink.labels" . | nindent 4 }}
+spec:
+  strategy:
+    type: Recreate
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "obcerv-app-query-service-sink.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- if .Values.podAnnotations }}
+      {{- with .Values.podAnnotations }}
+      annotations:
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- end }}
+      labels:
+        {{- include "obcerv-app-query-service-sink.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- if .Values.imagePullSecrets }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- else }}
+      imagePullSecrets:
+        - name: itrsdocker
+      {{- end }}
+      initContainers:
+        - name: init-obcerv-app-query-service-db
+          image: "{{ .Values.docker.thirdPartyRegistry }}{{ .Values.utils.image.repository }}:{{ .Values.utils.image.tag }}"
+          imagePullPolicy: {{ .Values.utils.image.pullPolicy | default "IfNotPresent" }}
+          # https://kubernetes.io/docs/concepts/workloads/pods/init-containers/#init-containers-in-use
+          command: [ 'sh', '-c', "until nslookup obcerv-app-query-service-db.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for obcerv-app-query-service-db; sleep 2; done" ]
+      containers:
+        - name: {{ include "obcerv-app-query-service-sink.fullname" . }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.docker.registry }}{{ .Values.sink.image.repository }}:{{ $sinkOverrides.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ $sinkOverrides.image.pullPolicy | default "IfNotPresent" }}
+          command:
+            - java
+            - -XX:+UseContainerSupport
+            - -XX:InitialRAMPercentage=75
+            - -XX:MaxRAMPercentage=75
+            - -Dlogback.configurationFile=/app/config/logback.xml
+            - -jar
+            - /app/obcerv-app-query-service-sink-daemon-{{ .Chart.AppVersion }}.jar
+            - /app/config/config.yaml
+
+          envFrom:
+            - configMapRef:
+                name: {{ include "obcerv-app-query-service-db.fullname" . }}
+
+          env:
+            - name: IAM_CLIENT_ID
+              value: {{ ((.Values.internal).iam).clientName | default "obcerv-apps" }}
+            - name: IAM_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: {{ ((.Values.internal).iam).clientSecret | default "iam-apps-credentials" }}
+                  key: client-secret
+            - name: NODE
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: CONTAINER
+              value: {{ include "obcerv-app-query-service-sink.fullname" . }}
+            - name: STATSD_SERVER
+              valueFrom:
+                fieldRef:
+                  {{- if(.Values.statsd).server }}
+                  fieldPath: {{ (.Values.statsd).server }}
+                  {{- else }}
+                  fieldPath: status.hostIP
+                  {{- end }}
+            - name: STATSD_PROTOCOL
+              value: "{{ (.Values.statsd).protocol | default "UDP" }}"
+            - name: STATSD_PORT
+              value: "{{ (.Values.statsd).port | default 8125 }}"
+
+          readinessProbe:
+            httpGet:
+              port: {{ .Values.healthProbePort | default 8080 }}
+              path: /healthcheck
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 6
+
+          livenessProbe:
+            httpGet:
+              port: {{ .Values.healthProbePort | default 8080 }}
+              path: /healthcheck
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 6
+
+          resources:
+            {{- if $sinkOverrides.resources }}
+            {{- toYaml $sinkOverrides.resources | nindent 12 }}
+            {{- else }}
+            requests:
+              memory: "512Mi"
+              cpu: "200m"
+            limits:
+              memory: "3Gi"
+              cpu: "3"
+          {{- end }}
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/config
+      volumes:
+        - name: config-volume
+          configMap:
+            name: {{ include "obcerv-app-query-service-sink.fullname" . }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

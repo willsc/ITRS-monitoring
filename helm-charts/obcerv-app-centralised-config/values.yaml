@@ -1,0 +1,168 @@
+######################################
+# Centralised Configuration Obcerv App
+######################################
+
+# Docker registry
+docker:
+  registry: docker.itrsgroup.com
+
+# DNS name via which external clients will access the UI (required).
+externalHostname: ""
+
+# UI Docker Image
+image:
+  repository: /obcerv/app/obcerv-app-centralised-config-ui
+
+#######################
+# Ingress Configuration
+#######################
+ingress:
+  path: /centralised-config/
+
+################################
+# gRPC Compression Configuration
+################################
+grpcCompression:
+  # Enables gRPC compression between the REST Server and the app's backend daemon.
+  enabled: true
+
+#############################################
+# gRPC Request/Response Logging Configuration
+#############################################
+grpcLogging:
+  # Enables gRPC request logging.
+  enabled: false
+  # Enables logging of gRPC responses
+  responses: false
+  # Service & Method Include/Exclude Filters
+  # If only an include filter is present then only services & methods defined in the filter will be logged.
+  # If an include and an exclude filter is present then only services & methods defined in the include
+  # filter and not defined in the exclude filter will be logged.
+  # If only an exclude filter is present then all services & methods besides the ones defined in the
+  # exclude filter will be logged.
+  # By default, calls to/from the ConsensusKeyValueService are excluded.
+  # In the following example only calls the ConsensusKeyValueService will be logged and its 'Get' and
+  # 'Put' methods will be excluded.
+  # and 'Put'.
+#  included:
+#    - name: "ConsensusKeyValueService"
+#    - name: "EntityService"
+#  excluded:
+#    - name: "ConsensusKeyValueService"
+#      methods:
+#       - "Get"
+#       - "Put"
+
+# The maximum amount of time to wait for gRPC calls to complete, expressed as an ISO-8601 duration.
+grpcTimeout: "PT30S"
+
+###################################
+# Backend gRPC Daemon Configuration
+###################################
+daemon:
+  # The daemon's log level
+  logLevel: INFO
+
+  # PVC settings for storage and caching of gateway archives and binaries
+  # used for Gateway validation.
+  persistence:
+    accessMode: "ReadWriteOnce"
+    size: "5Gi"
+  #  storageClass: ""
+
+  # The maximum amount of time a gateway validation can take before being aborted by the app,
+  # expressed as an ISO-8601 duration.
+  gatewayValidationTimeout: "PT30S"
+
+  # The number of gateway validation threads. Increasing this number can increase the number of
+  # validations that can occur in parallel. However, it may have a negative impact on performance
+  # if the app's allocated CPU resources are not sufficient, and it is being throttled by Kubernetes.
+  # Increase this parameter only if the CPU utilisation of the daemon's pod is not close to its limit.
+  numValidatorThreads: 3
+
+  # The app holds a cache of current and recent validations in order to avoid constantly interrogating
+  # the Obcerv Platform for its state. The purpose of the cache is to cover the most common use case
+  # when a user validates and saves the validated changes shortly after.
+  validationCache:
+    # How long to wait before evicting validations that have been created but not read after
+    # completion. This could happen if the client application unexpectedly terminated.
+    expireAfterCreate: "PT1H"
+    # How long to wait before evicting completed validations after they have been read for the last
+    # time. This timer resets every time a validation has been read after completion. The purpose of
+    # this setting is to accommodate the most common use case which is to perform a setup change
+    # shortly after a validation is completed.
+    expireAfterRead: "PT5M"
+
+  # The max inbound gRPC message size. Entries from the Obcerv Platform that are returned to the app
+  # in batches may exceed the default gRPC inbound message size. Increase this if the app backend
+  # logs or returns gRPC exceptions with status RESOURCE_EXHAUSTED.
+  # !! Note: The value must be quoted to prevent it from being converted to scientific notation
+  # !!       by the YAML parser.
+  maxInboundGrpcMessageSizeBytes: "20971520" # 20MiB
+
+  # How often to poll for gateway archives that have been copied into the pod.
+  gatewayArchivesPollInterval: "PT5S"
+
+  image:
+    repository: /obcerv/app/obcerv-app-centralised-config-daemon
+    tag: ""
+    pullPolicy: IfNotPresent
+
+###########################
+# REST Server Configuration
+###########################
+restServer:
+  # The REST server's log level
+  logLevel: INFO
+
+  # Enable to log all REST API requests. Note that this has
+  # a negative impact on performance and should only be used to
+  # diagnose an issue.
+  requestLogging: false
+
+  # The maximum request entity size
+  # !! Note: The value must be quoted to prevent it from being converted to scientific notation
+  # !!       by the YAML parser.
+  maxMessageSizeBytes: "10485760" # 10 MiB
+
+  image:
+    repository: /obcerv/app/obcerv-app-centralised-config-rest-server
+    tag: ""
+    pullPolicy: IfNotPresent
+
+##############################
+# IAM (Keycloak) Configuration
+##############################
+iam:
+  image:
+    repository: /obcerv/iam-tools
+    tag: "1.0.0"
+    pullPolicy: IfNotPresent
+
+###########
+# Utilities
+###########
+utils:
+  image:
+    repository: busybox
+    tag: "1.34.0"
+    pullPolicy: IfNotPresent
+
+########################
+# Internal Configuration
+########################
+internal:
+  mesh:
+    enabled: true
+    annotations:
+      linkerd.io/inject: enabled
+      config.linkerd.io/proxy-cpu-request: "0.4"
+      config.linkerd.io/proxy-cpu-limit: "1"
+      config.linkerd.io/proxy-memory-request: 512Mi
+      config.linkerd.io/proxy-memory-limit: 512Mi
+  daemon:
+    securityContext:
+      runAsUser: 10000
+      runAsGroup: 10000
+      fsGroup: 10000
+      fsGroupChangePolicy: "Always"

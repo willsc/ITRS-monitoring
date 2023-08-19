@@ -1,0 +1,103 @@
+# The scripts below are copied to the /docker-entrypoint-initdb.d folder.
+# Any scripts located in that folder are executed by Postgres when starting the first time.
+#
+# Please note that the scripts located in /docker-entrypoint-initdb.d are only executed if the DB is empty. I.e.
+# changing the config map and restarting the DB will not apply the changes if the DB contains data.
+#
+# The Postgres container log contains something like this
+# /usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/001_set_postgres_overrides.sh
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-scripts
+data:
+
+  # Creates the postgresql_overrides.conf file and adds it to postgres by adding
+  # the following line to postgresql.conf
+  #
+  # ```
+  # include 'postgresql_overrides.conf'
+  # ```
+  #
+  001_set_postgres_overrides.sh: |
+    #!/bin/bash
+    # Script used to append our postgres config settings to the end of the
+    # main postgres config file
+    BASE=/data/pgdata
+    # set postgres override parameters
+    cp /tmp/postgresql_overrides.conf $BASE/postgresql_overrides.conf
+    # add new-line
+    sed -i -e '$a\' $BASE/postgresql_overrides.conf
+    # include postgresql_overrides.conf in main config file
+    echo "include 'postgresql_overrides.conf'" >> $BASE/postgresql.conf
+  002_calculate_wal_settings.sh: |
+    #!/bin/bash
+    # Script used to calculate WAL settings based on the size of the WAL disk
+    set -e
+    BASE=/data/pgdata
+
+    # Assume there is a dedicated WAL Volume, and set max_wal_size to 80% of that.
+    # Retrieve the exact size of the dedicated WAL Volume.
+    WALMAX={{ .Values.db.walDiskSize }}
+    WALPERCENT=80
+
+    # Convert to bytes
+    if [[ $WALMAX == *Gi ]]; then
+      WALMAX_BYTES=$((${WALMAX::-2} * 1073741824))
+    else
+      WALMAX_BYTES=$((${WALMAX::-2} * 1048576))
+    fi
+
+    # WAL segments are 16MB in size, this gives us a value to the nearest 16MB.
+    WALMAX_ROUNDED_MI=$(( $WALMAX_BYTES / 100 * $WALPERCENT / 16777216 * 16 ))
+    WALMIN_ROUNDED_MI=$(( WALMAX_ROUNDED_MI / 2 ))
+
+    echo "Setting timezone=UTC"
+    echo "timezone=UTC" >> $BASE/postgresql_overrides.conf
+    echo "Setting max_wal_size=${WALMAX_ROUNDED_MI}MB"
+    echo "max_wal_size=${WALMAX_ROUNDED_MI}MB" >> $BASE/postgresql_overrides.conf
+    echo "Setting min_wal_size=${WALMIN_ROUNDED_MI}MB"
+    echo "min_wal_size=${WALMIN_ROUNDED_MI}MB" >> $BASE/postgresql_overrides.conf
+  002_calculate_memory_settings.sh: |
+    #!/bin/bash
+    # Script used to calculate the memory/cache sizes based on the total
+    # available memory and the maximum number of database connections.
+    set -e
+
+    BASE=/data/pgdata
+
+    TOTAL_MEM={{ .Values.db.resources.limits.memory }}
+    MAX_CONNECTIONS={{ .Values.postgresql.config.max_connections }}
+
+    # These calculations are based on https://www.enterprisedb.com/postgres-tutorials/how-tune-postgresql-memory
+    SHARED_BUFFERS_PERCENT={{ .Values.db.sharedBuffersPercent }}
+    WORK_MEM_PERCENT={{ .Values.db.workMemPercent }}
+    MAINTENANCE_WORK_MEM_PERCENT={{ .Values.db.maintenanceWorkMemPercent }}
+    EFFECTIVE_CACHE_SIZE_PERCENT={{ .Values.db.effectiveCacheSizePercent }}
+
+    BYTES_PER_MB=1048576
+    BYTES_PER_GB=1073741824
+
+    # Convert the total memory to bytes
+    if [[ $TOTAL_MEM == *Gi ]]; then
+        TOTAL_MEM_BYTES=$((${TOTAL_MEM::-2} * $BYTES_PER_GB))
+    else
+        TOTAL_MEM_BYTES=$((${TOTAL_MEM::-2} * $BYTES_PER_MB))
+    fi
+
+    SHARED_BUFFERS_MB=$(($TOTAL_MEM_BYTES / 100 * $SHARED_BUFFERS_PERCENT / $BYTES_PER_MB))
+    WORK_MEM_MB=$(($TOTAL_MEM_BYTES / 100 * $WORK_MEM_PERCENT / $MAX_CONNECTIONS / $BYTES_PER_MB))
+    MAINTENANCE_WORK_MEM_MB=$(($TOTAL_MEM_BYTES / 100 * $MAINTENANCE_WORK_MEM_PERCENT / $BYTES_PER_MB))
+    EFFECTIVE_CACHE_SIZE_MB=$(($TOTAL_MEM_BYTES / 100 * $EFFECTIVE_CACHE_SIZE_PERCENT / $BYTES_PER_MB))
+
+    echo "Setting shared_buffers=${SHARED_BUFFERS_MB}MB"
+    echo "shared_buffers=${SHARED_BUFFERS_MB}MB" >> $BASE/postgresql_overrides.conf
+
+    echo "Setting effective_cache_size=${EFFECTIVE_CACHE_SIZE_MB}MB"
+    echo "effective_cache_size=${EFFECTIVE_CACHE_SIZE_MB}MB" >> $BASE/postgresql_overrides.conf
+
+    echo "Setting work_mem=${WORK_MEM_MB}MB"
+    echo "work_mem=${WORK_MEM_MB}MB" >> $BASE/postgresql_overrides.conf
+
+    echo "Setting maintenance_work_mem=${MAINTENANCE_WORK_MEM_MB}MB"
+    echo "maintenance_work_mem=${MAINTENANCE_WORK_MEM_MB}MB" >> $BASE/postgresql_overrides.conf

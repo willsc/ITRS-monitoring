@@ -1,0 +1,77 @@
+{{- $logQueries := or .Values.queryLoggingEnabled .Values.sink.queryLoggingEnabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "obcerv-app-query-service-sink.fullname" . }}
+data:
+  config.yaml: |-
+    monitoring:
+      health-probe:
+        listen-port: {{ .Values.healthProbePort | default 8080 }}
+
+    services:
+      - type: permissions
+        iam-service-name: {{ ((.Values.internal).iam).host | default "keycloak" }}
+        iam-service-port: {{ ((.Values.internal).iam).port | default 8080 }}
+        realm: {{ ((.Values.internal).iam).realm | default "obcerv" }}
+        client-application-name: {{ ((.Values.internal).iam).clientName | default "obcerv-apps" }}
+        public-key-cache-ttl-days: 1
+
+      - type: platform-client-supplier
+        services:
+        - type: entity-service
+          hostname: entity.{{ .Release.Namespace }}.svc.cluster.local
+          port: 7159
+        - type: signal-service
+          hostname: signals.{{ .Release.Namespace }}.svc.cluster.local
+          port: 7161
+
+      - type: pg-data-source
+        name: postgres
+        url: "jdbc:postgresql://{{ include "obcerv-app-query-service-db.fullname" . }}:${env:OBCERV_APP_QUERY_SERVICE_DB_SERVICE_PORT}/${env:POSTGRES_DB}"
+        username: ${env:POSTGRES_USER}
+        password: ${env:POSTGRES_PASSWORD}
+        keepAliveMs: {{ .Values.sink.keepAliveMs | default 300000 }}
+        maxConnections: {{ .Values.sink.maxConnections | default 4 }}
+        autoCommit: {{ .Values.sink.autoCommit | default true }}
+        readOnly: false
+
+      - type: sink
+        {{- if .Values.sink.queueSize }}
+        queueSize: {{ .Values.sink.queueSize }}
+        {{- end }}
+        entityQueueSize: {{ (.Values.sink.queue).entities | default 900000 }}
+        attributeQueueSize: {{ (.Values.sink.queue).attributes | default 900000 }}
+        signalsQueueSize: {{ (.Values.sink.queue).signals | default 900000 }}
+        attributeLookbackPeriod: {{ .Values.sink.attributeLookbackPeriod | default "P7D" }}
+        batchSize: {{ .Values.sink.batchSize | default 100 }}
+        queueDirectory: {{ (.Values.sink.queue).directory | default "/tmp/obcerv-app-query-service/queue" }}
+        {{- if (.Values.sink.retention).entities }}
+        # The query service disregards any entities that it receives from the platform
+        # if they haven't been updated for longer than the supplied duration.
+        entityRetention: {{ (.Values.sink.retention).entities }}
+        {{- end }}
+        minQueryLogDuration: {{ .Values.sink.minQueryLogDuration | default "PT10S" }}
+        dataSourceService: postgres
+
+  logback.xml: |-
+    <configuration>
+      <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+          <pattern>%d{"yyyy-MM-dd'T'HH:mm:ss.SSSXXX", UTC} [%thread] %-5level %logger - %msg%n</pattern>
+        </encoder>
+      </appender>
+
+    {{- if $logQueries }}
+      <logger name="queryservice.QueryPerformanceLogger" level="debug"/>
+    {{- end }}
+
+      <logger name="io.grpc" level="info"/>
+      <logger name="io.netty" level="info"/>
+      <logger name="org.jooq.Constants" level="error"/>
+      <logger name="org.jooq.tools.LoggerListener" level="info"/>
+
+      <root level="{{ .Values.loglevel | default "INFO" }}">
+        <appender-ref ref="stdout" />
+      </root>
+    </configuration>

@@ -1,0 +1,21 @@
+{{- $ingress := .Values.ingress | default dict -}}
+{{- $enabled := $ingress.enabled | default true -}}
+{{- $service := .Values.service | default dict -}}
+{{- $defaultImage := printf "docker.itrsgroup.com/%s" .Release.Name -}}
+{{- $defaultPath := printf "/%s/" .Release.Name -}}
+
+You have installed {{ .Chart.Name }} as a release named {{ .Release.Name }}.
+Application Version:  {{ .Values.image.repository | default $defaultImage }}:{{ .Chart.AppVersion  }}
+Helm Chart Version:   {{ .Chart.Version }}
+
+To learn more about the release, try:
+
+  $ helm status {{ .Release.Name }}
+  $ helm get all {{ .Release.Name }}
+
+ACCESSING {{ .Release.Name }} :
+{{- if $enabled }}
+  https://{{ .Values.externalHostname | trim }}{{ $ingress.path | default $defaultPath | trim }}
+{{- end }}
+
+Note: The application might not be immediately accessible. Wait for the pod to become "ready" before connecting.

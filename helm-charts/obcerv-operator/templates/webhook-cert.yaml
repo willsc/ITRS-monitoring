@@ -1,0 +1,51 @@
+{{- if .Values.webhook.tls.selfSigned }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ include "obcerv-operator.fullname" . }}-webhook
+spec:
+  issuerRef:
+    name: {{ include "obcerv-operator.fullname" . }}-selfsigned
+  secretName: {{ include "obcerv-operator.fullname" . }}-webhook-tls
+  # 5 years
+  duration: 43800h
+  # 7 days
+  renewBefore: 168h
+  subject:
+    organizations:
+    - Obcerv
+  isCA: false
+  usages:
+  - server auth
+  commonName: Obcerv Webhook
+  dnsNames:
+  - {{ include "obcerv-operator.fullname" . }}-webhook.{{ .Release.Namespace }}.svc
+  keystores:
+    pkcs12:
+      create: true
+      passwordSecretRef:
+        name: {{ include "obcerv-operator.fullname" . }}-webhook-tls-password
+        key: password
+---
+{{- $full := include "obcerv-operator.fullname" . }}
+{{- $sec := printf "%s-webhook-tls-password" $full -}}
+{{- $oldSec := lookup "v1" "Secret" .Release.Namespace $sec }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ $sec }}
+  annotations:
+    # Don't delete this on uninstall.  Cert-manager by default doesn't delete the secrets
+    # generated from a certificate, so on re-install, a new password here will not match
+    # the password that was used to generate the previous cert and its secret.
+    "helm.sh/resource-policy": keep
+type: Opaque
+# Helm will overwrite the secret if it exists, so make sure previous value is retained.
+{{- if or (not $oldSec) (not $oldSec.data) }}
+stringData:
+  password: {{ randAlphaNum 32 }}
+{{- else }}
+data:
+  password: {{ index $oldSec.data "password" }}
+{{- end }}
+{{- end }}

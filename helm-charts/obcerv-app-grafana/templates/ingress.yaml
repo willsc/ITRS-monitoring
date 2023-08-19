@@ -1,0 +1,46 @@
+{{- if .Values.ingress.enabled -}}
+{{- $apiV1 := .Capabilities.APIVersions.Has "networking.k8s.io/v1/Ingress" -}}
+{{- $fullName := include "obcerv-app-grafana.fullname" . -}}
+
+{{- if $apiV1 -}}
+apiVersion: networking.k8s.io/v1
+{{- else }}
+apiVersion: networking.k8s.io/v1beta1
+{{- end }}
+kind: Ingress
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "obcerv-app-grafana.labels" . | nindent 4 }}
+    {{- with .Values.ingress.labels }}
+    {{ toYaml . | indent 4 }}
+    {{- end }}
+  {{- if .Values.ingress.annotations }}
+  annotations:
+    {{- range $k, $v := .Values.ingress.annotations }}
+    {{ $k }}: {{ tpl $v $ | quote }}
+    {{- end }}
+  {{- end }}
+spec:
+  {{- with .Values.ingress.ingressClassName }}
+  ingressClassName: {{ . }}
+  {{- end }}
+  rules:
+  - http:
+      paths:
+      - path: {{ .Values.ingress.path }}
+        pathType: {{ .Values.ingress.pathType }}
+        backend:
+          {{- if $apiV1 }}
+          service:
+            name: {{ $fullName }}
+            port:
+              number: {{ .Values.service.port }}
+          {{- else }}
+          serviceName: {{ $fullName }}
+          servicePort: {{ .Values.service.port }}
+          {{- end }}
+    {{- with .Values.externalHostname }}
+    host: {{ . }}
+    {{- end }}
+{{- end }}

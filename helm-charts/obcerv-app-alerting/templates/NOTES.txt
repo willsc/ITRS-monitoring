@@ -1,0 +1,2 @@
+Alerting app daemon {{ .Chart.AppVersion }}
+

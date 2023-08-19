@@ -1,0 +1,13 @@
+docker:
+  registry: docker.itrsgroup.com
+
+iam:
+  image:
+    repository: /obcerv/iam-tools
+    tag: "1.0.0"
+    pullPolicy: IfNotPresent
+  redirectUri: "https://localhost:*"
+  insecureUri: "http://127.0.0.1:*"
+  allowInsecure: false
+  uiClientName: "geneos-ui"
+  gwClientName: "geneos-gw"

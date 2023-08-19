@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "obcerv-app-query-service-db.fullname" . }}
+spec:
+  strategy:
+    type: Recreate
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "obcerv-app-query-service-db.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- if .Values.podAnnotations }}
+      {{- with .Values.podAnnotations }}
+      annotations:
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- else }}
+      annotations:
+        linkerd.io/inject: enabled
+        config.linkerd.io/proxy-cpu-request: "0.2"
+        config.linkerd.io/proxy-cpu-limit: "0.2"
+        config.linkerd.io/proxy-memory-request: 256Mi
+        config.linkerd.io/proxy-memory-limit: 256Mi
+      {{- end }}
+      labels:
+      {{- include "obcerv-app-query-service-db.labels" . | nindent 8 }}
+    spec:
+      # Issuing the final checkpoints on a busy database may take considerable time.
+      # Unfinished checkpoints will require more time during startup, so the tradeoff
+      # here is time spent in shutdown/time spent in startup.
+      # We choose shutdown here, especially as during the largest part of the shutdown
+      # we can still serve clients.
+      terminationGracePeriodSeconds: 600
+      containers:
+        - name: {{ include "obcerv-app-query-service-db.fullname" . }}
+          image: "{{ .Values.docker.thirdPartyRegistry }}{{ .Values.db.image.repository }}:{{ .Values.db.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.db.image.pullPolicy | default "IfNotPresent"}}
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: {{ include "obcerv-app-query-service-db.fullname" . }}
+          resources:
+            {{- toYaml (.Values.db).resources | nindent 12 }}
+          volumeMounts:
+            - mountPath: /dev/shm
+              name: dshm
+            - name: app-query-service-data
+              mountPath: /data
+            - name: app-query-service-wal
+              mountPath: /wal
+              # Scripts to be executed by Postgres on startup.
+            - name: postgres-scripts
+              mountPath: /docker-entrypoint-initdb.d
+              readOnly: true
+              # Postgres config overrides.
+            - name: config
+              mountPath: /tmp/postgresql_overrides.conf
+              subPath: postgresql_overrides.conf
+      volumes:
+        # Docker only allocate 64MB by default to /dev/shm
+        # This is too little for a Postgres instance as shared memory is
+        # used by queries (and is dependent on the number of parallel workers)
+        # We mount /dev/shm to a memory volume to increase the amount of
+        # available shared memory.
+        - name: dshm
+          emptyDir:
+            medium: Memory
+        - name: app-query-service-data
+          persistentVolumeClaim:
+            claimName: app-query-service-data
+        - name: app-query-service-wal
+          persistentVolumeClaim:
+            claimName: app-query-service-wal
+        - name: postgres-scripts
+          configMap:
+            name: postgres-scripts
+            defaultMode: 0555
+        - name: config
+          configMap:
+            name: {{ include "obcerv-app-query-service-db.fullname" . }}

@@ -1,0 +1,26 @@
+{{- $service := .Values.service | default dict }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "obcerv-app-signal-forecaster-ui.fullname" . }}
+  labels:
+    {{- include "obcerv-app-signal-forecaster-ui.labels" . | nindent 4 }}
+  {{- with $service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  type: {{ $service.type | default "ClusterIP" }}
+  ports:
+    - port: {{ $service.port | default 8080 }}
+      targetPort: http
+      protocol: TCP
+      name: http
+    - port: {{ $service.management | default 9998 }}
+      targetPort: http
+      protocol: TCP
+      name: management
+    - port: 5701
+      name: hazelcast
+  selector:
+    {{- include "obcerv-app-signal-forecaster-ui.selectorLabels" . | nindent 4 }}

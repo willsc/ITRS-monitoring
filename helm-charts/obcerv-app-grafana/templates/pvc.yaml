@@ -1,0 +1,20 @@
+{{ if not .Values.persistence.existingClaim }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "obcerv-app-grafana.fullname" . }}
+  labels:
+    {{- include "obcerv-app-grafana.labels" . | nindent 4 }}
+  annotations:
+    # Prevent helm from deleting data when uninstalling the instance.
+    helm.sh/resource-policy: "keep"
+spec:
+  accessModes:
+  - ReadWriteOnce
+  {{- with .Values.persistence.storageClass }}
+  storageClassName: {{ . }}
+  {{- end }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.size }}
+{{ end }}

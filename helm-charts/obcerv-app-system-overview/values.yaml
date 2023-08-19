@@ -1,0 +1,31 @@
+# DNS name via which external clients will access the ui (required).
+externalHostname: ""
+
+docker:
+  registry: docker.itrsgroup.com
+
+image:
+  repository: /obcerv/app/obcerv-app-system-overview-ui
+ingress:
+  path: /system-overview/
+env:
+  - name: OBCERV_APP_QUERY_SERVICE_BFF_SERVICE_HOST
+    value: obcerv-app-query-service-bff
+
+grpcLoggingEnabled: false
+
+iam:
+  image:
+    repository: /obcerv/iam-tools
+    tag: "1.0.0"
+    pullPolicy: IfNotPresent
+
+internal:
+  mesh:
+    enabled: true
+    annotations:
+      linkerd.io/inject: enabled
+      config.linkerd.io/proxy-cpu-request: "0.4"
+      config.linkerd.io/proxy-cpu-limit: "1"
+      config.linkerd.io/proxy-memory-request: 512Mi
+      config.linkerd.io/proxy-memory-limit: 512Mi

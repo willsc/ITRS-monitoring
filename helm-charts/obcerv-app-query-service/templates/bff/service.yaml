@@ -1,0 +1,33 @@
+{{- $bffOverrides := mergeOverwrite .Values.service .Values.bff -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "obcerv-app-query-service-bff.fullname" . }}
+  labels:
+    {{- include "obcerv-app-query-service-bff.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ $bffOverrides.port | default 50052 }}
+      targetPort: {{ $bffOverrides.port | default 50052 }}
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "obcerv-app-query-service-bff.selectorLabels" . | nindent 4 }}
+---
+# This is required for backwards compatibility with 1.0.0 of Alerting and Overview.
+apiVersion: v1
+kind: Service
+metadata:
+  name: obcerv-app-query-service
+  labels:
+    {{- include "obcerv-app-query-service-bff.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+  - port: {{ $bffOverrides.port | default 50052 }}
+    targetPort: {{ $bffOverrides.port | default 50052 }}
+    protocol: TCP
+    name: http
+  selector:
+    {{- include "obcerv-app-query-service-bff.selectorLabels" . | nindent 4 }}

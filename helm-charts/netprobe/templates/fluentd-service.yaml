@@ -1,0 +1,19 @@
+{{- if and (eq .Values.mode "Deployment") .Values.fluentd.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  {{- if .Values.fluentd.service.name }}
+  name: {{ .Values.fluentd.service.name }}
+  {{- else }}
+  name: {{ include "netprobe.fullname" . }}-fluentd
+  {{- end }}
+  labels:
+    {{- include "netprobe.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  selector:
+    {{- include "netprobe.selectorLabels" . | nindent 4 }}
+  ports:
+  - protocol: TCP
+    port: {{ .Values.fluentd.port }}
+{{- end }}

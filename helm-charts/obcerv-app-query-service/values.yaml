@@ -1,0 +1,141 @@
+# Sets the logging level for the bff and sink deployments
+loglevel: INFO
+
+service: { }
+
+docker:
+  registry: docker.itrsgroup.com
+  thirdPartyRegistry: ""
+
+# Enables logging of queries for the sink and bff deployments. If enabled, it overrides the
+# corresponding setting in each deployment.
+queryLoggingEnabled: true
+
+grpcLogging:
+  # Enables gRPC request logging for the bff deployment.
+  enabled: false
+  # Enables logging of gRPC responses
+  responses: false
+  # Service & Method Include/Exclude Filters
+  # If only an include filter is present then only services & methods defined in the filter will be logged.
+  # If an include and an exclude filter is present then only services & methods defined in the include
+  # filter and not defined in the exclude filter will be logged.
+  # If only an exclude filter is present then all services & methods besides the ones defined in the
+  # exclude filter will be logged.
+  # By default, calls to/from the ConsensusKeyValueService are excluded.
+  # In the following example only calls the ConsensusKeyValueService will be logged and its 'Get' and
+  # 'Put' methods will be excluded.
+  # and 'Put'.
+#  include:
+#    - name: "ConsensusKeyValueService"
+#    - name: "EntityService"
+#  exclude:
+#    - name: "ConsensusKeyValueService"
+#      methods:
+#       - "Get"
+#       - "Put"
+
+bff:
+  image:
+    repository: /obcerv/app/obcerv-app-query-service-bff-daemon
+    tag: ""
+    pullPolicy: IfNotPresent
+
+  # Timeout applied to calls to the platform
+  rpcCallTimeout: PT30S
+
+  # If query logging is enabled then only queries
+  # that exceed this duration will be logged to reduce log noise.
+  minQueryLogDuration: PT1S
+
+  # Enables logging of queries that exceed minQueryLogDuration.
+  queryLoggingEnabled: true
+
+sink:
+  image:
+    repository: /obcerv/app/obcerv-app-query-service-sink-daemon
+    tag: ""
+    pullPolicy: IfNotPresent
+
+  # If query logging is enabled (by enabling debug logging) then only queries
+  # that exceed this duration will be logged to reduce log noise.
+  minQueryLogDuration: PT10S
+
+  # Enables logging of queries that exceed minQueryLogDuration.
+  queryLoggingEnabled: true
+
+  retention:
+    # The query service will disregard entities older than the supplied
+    # duration unless are triggered or snoozed.
+    entities: P7D
+
+  queue:
+    # The entity subscription queue size
+    entities: 900000
+    # The entity attribute subscription queue size
+    attributes: 900000
+    # The signals subscription queue size
+    signals: 900000
+
+db:
+  image:
+    repository: postgres
+    tag: "15.0"
+    pullPolicy: IfNotPresent
+  dataDiskSize: 20Gi
+  walDiskSize: 5Gi
+  resources:
+    requests:
+      memory: "4Gi"
+      cpu: "1"
+    limits:
+      memory: "8Gi"
+      cpu: "4"
+
+  # Determines how much memory is dedicated to the db for caching data.
+  sharedBuffersPercent: 25
+
+  # Provides the amount of memory to be used by internal sort operations and hash tables before
+  # writing to temporary disk files. Sort operations are used for order by, distinct, and merge join
+  # operations. Hash tables are used in hash joins and hash-based aggregation.
+  workMemPercent: 25
+
+  # Provides the maximum amount of memory to be used by maintenance operations like vacuum, create
+  # index, and alter table add foreign key operations.
+  maintenanceWorkMemPercent: 5
+
+  # Estimates how much memory is available for disk caching by the operating system and within the
+  # database itself. The PostgreSQL query planner decides whether it’s fixed in RAM or not. Index
+  # scans are most likely to be used against higher values; otherwise, sequential scans will be used
+  # if the value is low. Recommendations are to set it at 50% of the container’s total RAM.
+  effectiveCacheSizePercent: 50
+
+postgresql:
+  config:
+    autovacuum_max_workers: 4
+    max_connections: 30
+    max_parallel_maintenance_workers: 2
+    max_parallel_workers: 8
+    max_parallel_workers_per_gather: 2
+    max_wal_senders: 0
+    max_worker_processes: 8
+    synchronous_commit: off
+    wal_level: minimal
+    log_checkpoints: on
+    log_min_duration_statement: 1500ms
+    # The database can be recreated from the Platform, so we do not need the
+    # default durability guarantees.
+    fsync: off
+    full_page_writes: off
+
+iam:
+  image:
+    repository: /obcerv/iam-tools
+    tag: "1.0.0"
+    pullPolicy: IfNotPresent
+
+utils:
+  image:
+    repository: busybox
+    tag: "1.34.0"
+    pullPolicy: IfNotPresent

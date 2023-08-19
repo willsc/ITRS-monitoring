@@ -1,0 +1,8 @@
+You have installed the {{ .Chart.Description }} as a release named {{ .Release.Name }}.
+
+To learn more about the release, try:
+
+  $ helm status {{ .Release.Name }}
+  $ helm get all {{ .Release.Name }}
+
+Note: The application might not be immediately accessible. Wait for all pods to become "Ready" before connecting.

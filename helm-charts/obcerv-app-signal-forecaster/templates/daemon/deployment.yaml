@@ -1,0 +1,117 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "obcerv-app-signal-forecaster.fullname" . }}
+  labels:
+    {{- include "obcerv-app-signal-forecaster.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "obcerv-app-signal-forecaster.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "obcerv-app-signal-forecaster.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Values.forecaster.name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.docker.registry }}{{ .Values.forecaster.image.repository }}:{{ .Values.forecaster.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.forecaster.image.pullPolicy }}
+          ports:
+            - name: service
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+
+          command:
+            - java
+            - -XX:+UseContainerSupport
+            - -XX:InitialRAMPercentage=75
+            - -XX:MaxRAMPercentage=75
+            - -Dlogback.configurationFile=/app/config/logback.xml
+            - -jar
+            - /app/obcerv-app-signal-forecaster-daemon-{{ .Chart.AppVersion }}.jar
+            - /app/config/config.yaml
+
+          env:
+            - name: IAM_CLIENT_ID
+              value: {{ .Values.internal.iam.clientName }}
+            - name: IAM_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.internal.iam.clientSecret }}
+                  key: client-secret
+            - name: STATSD_SERVER
+              valueFrom:
+                fieldRef:
+                  {{- if(.Values.statsd).server }}
+                  fieldPath: {{ (.Values.statsd).server }}
+                  {{- else }}
+                  fieldPath: status.hostIP
+                  {{- end }}
+            - name: STATSD_PROTOCOL
+              value: "{{ .Values.statsd.protocol }}"
+            - name: STATSD_PORT
+              value: "{{ .Values.statsd.port }}"
+            - name: NODE
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: CONTAINER
+              value: {{ include "obcerv-app-signal-forecaster.fullname" . }}
+
+          readinessProbe:
+            httpGet:
+              port: {{ .Values.healthProbePort }}
+              path: /healthcheck
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 6
+
+          livenessProbe:
+            httpGet:
+              port: {{ .Values.healthProbePort }}
+              path: /healthcheck
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 6
+
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/config
+      volumes:
+        - name: config-volume
+          configMap:
+            name: {{ include "obcerv-app-signal-forecaster.fullname" . }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

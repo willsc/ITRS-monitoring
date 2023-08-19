@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: app-query-service-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  # If no storage class is set, the default storage class is used.
+  # List the available storage classes with "kubectl get sc"
+  storageClassName: {{ default "" (.Values.db).dataStorageClass }}
+  resources:
+    requests:
+      storage: {{ .Values.db.dataDiskSize }}
