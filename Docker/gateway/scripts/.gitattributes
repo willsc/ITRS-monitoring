@@ -1,0 +1,8 @@
+wait_ccprovider.sh filter=lfs diff=lfs merge=lfs -text
+wait_for_it.sh filter=lfs diff=lfs merge=lfs -text
+wait_hub.sh filter=lfs diff=lfs merge=lfs -text
+LICENCE_README.txt filter=lfs diff=lfs merge=lfs -text
+gateway.gci filter=lfs diff=lfs merge=lfs -text
+gateway.sh filter=lfs diff=lfs merge=lfs -text
+gateway2.linux_64 filter=lfs diff=lfs merge=lfs -text
+geneos-gateway-6.4.0-linux-x64.tar filter=lfs diff=lfs merge=lfs -text
