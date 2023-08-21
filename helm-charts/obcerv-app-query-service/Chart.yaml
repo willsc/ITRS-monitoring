@@ -1,6 +1,3 @@
-apiVersion: v2
-appVersion: 1.7.0
-description: Obcerv Query Service App
-name: obcerv-app-query-service
-type: application
-version: 1.7.0
+version https://git-lfs.github.com/spec/v1
+oid sha256:34387f92ca8ab26ab4cb433150538026a9d110fd88410fea8cd57b593923c8e0
+size 135

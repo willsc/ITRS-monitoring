@@ -1,6 +1,3 @@
-apiVersion: v2
-appVersion: 1.2.0
-description: Obcerv Capacity Planner App
-name: obcerv-app-capacity-planner
-type: application
-version: 1.2.0
+version https://git-lfs.github.com/spec/v1
+oid sha256:b3de5850946acb25030a45d042d6e9f9ae79b8848a4cb1f234a30fbfbd9987ad
+size 141

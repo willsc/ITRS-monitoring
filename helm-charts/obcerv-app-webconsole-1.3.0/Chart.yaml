@@ -1,5 +1,3 @@
-apiVersion: v2
-name: obcerv-app-webconsole
-type: application
-version: 1.3.0
-appVersion: 1.3.0
+version https://git-lfs.github.com/spec/v1
+oid sha256:ed0dfd08702a3c5110458052eb40f07cffbc3cb418452432f41a990d4864d21d
+size 93

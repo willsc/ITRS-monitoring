@@ -1,18 +1,3 @@
-You have installed {{ .Chart.Name }} as a release named {{ .Release.Name }}.
-
-To learn more about the release, try:
-
-  $ helm status {{ .Release.Name }}
-  $ helm get all {{ .Release.Name }}
-
-PERSISTENCE:
-{{- if .Values.persistence.enabled }}
-Gateway configuration will be persisted via a PersistentVolumeClaim.
-
-Helm will not delete the PVC if the release is uninstalled.  This allows for reinstalling
-the chart and keeping your existing data - however you must use the same release name "{{ .Release.Name }}".
-
-If you do not wish keep any data, you must manually delete the PVC.
-{{- else }}
-Warning: Persistence is disabled - all Gateway configuration changes will be lost if the pod terminates.
-{{- end }}
+version https://git-lfs.github.com/spec/v1
+oid sha256:026f46fe1b8f2331ac2da04d73073a0f9ae282faa0c6c6a27cd2a1eb7a584213
+size 707

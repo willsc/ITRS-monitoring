@@ -1,0 +1,3478 @@
+##################################################################################################################################
+LicenceType:Apache 1.1
+Component:Webserver,ActiveConsole
+Library:Apache Jakarta BCEL, Apache Jakarta Commons Collections, Apache Jakarta Commons DBCP, Apache Jakarta Commons FileUpload
+Library:Apache Jakarta Commons Modeler, Apache Jakarta Taglibs, Apache Jakarta Velocity, Apache log4j, Apache ORO, Apache Regexp
+Library:Apache Tomcat, Apache Web Services XML-RPC, Apache Xerces Java 1 XML Parser, Apache Xerces Java XML Parser
+
+"This product includes software developed by the Apache Software Foundation (http://www.apache.org/)."
+* The Apache Software License, Version 1.1
+ *
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
+ * reserved.
+
+##################################################################################################################################
+LicenceType:BSD
+Component:Webserver
+Library:ANTLR
+
+[The BSD License]
+Copyright (c) 2010 Terence Parr
+All rights reserved. 
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following 
+conditions are met: 
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following 
+	disclaimer in the documentation and/or other materials provided with the distribution. 
+	Neither the name of the author nor the names of its contributors may be used to endorse or promote products derived from
+	this software without specific prior written permission. 
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, 
+BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT 
+SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE 
+OR OTHERWISE) 
+
+
+##################################################################################################################################
+LicenceType:Apache2.0
+Component:Netprobe,Gateway,ActiveConsole,Gateway Setup Editor,Webserver,EUEM
+Library:Apache XMLBeans, Apache Ant, Apache Axis2/Java, Apache Cassandra, Apache Geronimo, Apache Jakarta Commons BeanUtils
+Library:Apache Jakarta Commons Codec, Apache Jakarta Commons Digester, Apache Jakarta Commons Logging, Apache Jakarta Commons Pool
+Library:Apache Jakarta Commons Validator, Apache Jakarta HTTP Client, Apache Jakarta Lang, Apache Jakarta Log4j, 
+Library:Apache Xerces C++ XML Parser, Apache Xerces Java XML Parser, Apache XML-Commons Resolver, Apache-Jakarta Collections, 
+Library:Apache Jakarta Commons FileUpload, Apache ActiveMQ, Google Web Toolkit SDK, google-web-toolkit,
+Library:Apache HttpClient, Apache HttpClient Windows,
+Library:Jakarta Commons-IO, Jetty - Java HTTP, Google Guava, Selenium IDE, Quartz, Jackson, jackson-jq, jersey, Bean Validation,
+Library:Nimbus JOSE+JWT, Spring LDAP, Spring Security, HikariCP, sqlite-jdbc, JSON Small And Fast Parser,
+Library:ASM Based Accessors Helper Used By JSON Smart, Guava InternalFutureFailureAccess and InternalFutures, gRPC, Netty,
+Library:Perfmark-API, OkHttp, Okio, Java Native Access, Kotlin
+Font: Open Sans
+
+---------------------------------------------------------------------------------
+
+Apache-ant:
+   =========================================================================
+   ==  NOTICE file corresponding to the section 4 d of                    ==
+   ==  the Apache License, Version 2.0,                                   ==
+   ==  in this case for the Apache Ant distribution.                      ==
+   =========================================================================
+   Apache Ant
+   Copyright 1999-2008 The Apache Software Foundation
+   This product includes software developed by
+   The Apache Software Foundation (http://www.apache.org/).
+   This product includes also software developed by :
+     - the W3C consortium (http://www.w3c.org) ,
+     - the SAX project (http://www.saxproject.org)
+   The <sync> task is based on code Copyright (c) 2002, Landmark
+   Graphics Corp that has been kindly donated to the Apache Software
+   Foundation.
+   Portions of this software were originally based on the following:
+     - software copyright (c) 1999, IBM Corporation., http://www.ibm.com.
+     - software copyright (c) 1999, Sun Microsystems., http://www.sun.com.
+     - voluntary contributions made by Paul Eng on behalf of the 
+       Apache Software Foundation that were originally developed at iClick, Inc.,
+       software copyright (c) 1999.
+       
+---------------------------------------------------------------------------------
+
+Apache axis2:
+=========================================================================
+==  NOTICE file corresponding to the section 4 d of                    ==
+==  the Apache License, Version 2.0,                                   ==
+==  in this case for the Apache Axis2 distribution.                    ==
+=========================================================================
+This product includes software developed by
+The Apache Software Foundation (http://www.apache.org/).
+Portions Copyright 2006 International Business Machines Corp.
+Portions Copyright 2005-2007 WSO2, Inc.
+
+This product also includes schemas and specification developed by:
+- the W3C consortium (http://www.w3c.org)
+This product also includes WS-* schemas developed by International
+Business Machines Corporation, Microsoft Corporation, BEA Systems, 
+TIBCO Software, SAP AG, Sonic Software, and VeriSign
+
+This product also includes a WSDL developed by salesforce.com
+- Copyright 1999-2006 salesforce.com, inc.
+
+Portions of the included xmlbeans library were originally based on the following:
+- software copyright (c) 2000-2003, BEA Systems, <http://www.bea.com/>.
+
+Please read the different LICENSE files present in the lib directory of
+this distribution.
+
+Apache Cassandra – web dashboard
+Apache Cassandra
+Copyright 2009, 2010 The Apache Software Foundation
+
+This product includes software developed by The Apache Software
+Foundation (http://www.apache.org/).
+
+Some alternate data structures provided by high-scale-lib from
+http://sourceforge.net/projects/high-scale-lib/.
+Written by Cliff Click and released as Public Domain.
+
+Some alternate data structures provided by concurrentlinkedhashmap
+from http://code.google.com/p/concurrentlinkedhashmap/.
+Copyright 2009 Benjamin Manes
+
+Alternative collection types provided by google-collections from
+http://code.google.com/p/google-collections/.
+Copyright (C) 2007 Google Inc.
+
+JSON (de)serialization provided by jackson (http://jackson.codehaus.org).
+Copyright (C) 2010 Tatu Saloranta and others.
+
+Alternative JSON (de)serialization by json-simple from
+(http://code.google.com/p/json-simple).
+Copyright (C) 2009 Fang Yidong and Chris Nokleberg
+
+This product includes the Jetty HTTP server
+(http://jetty.codehaus.org/jetty/).
+Copyright 1995-2006 Mort Bay Consulting Pty Ltd
+
+YAML support provided by snakeyaml (http://code.google.com/p/snakeyaml/).
+Copyright (c) 2008-2010 Andrey Somov
+
+Compression support provided by snappy-java (http://code.google.com/p/snappy-java/)
+Written by Taro L. Saito.
+
+Streaming compression support provided by ning-compress
+(https://github.com/ning/compress)
+Copyright 2009-2010 Ning, Inc.
+
+---------------------------------------------------------------------------------
+
+Apache Jakarta-commons beanutils:
+Apache Commons BeanUtils
+Copyright 2000-2010 The Apache Software Foundation
+
+This product includes software developed by
+The Apache Software Foundation (http://www.apache.org/).
+
+---------------------------------------------------------------------------------
+
+Apache Jakarta-commons Logging:
+Apache Commons Logging
+Copyright 2003-2007 The Apache Software Foundation
+
+This product includes software developed by
+The Apache Software Foundation (http://www.apache.org/).
+
+---------------------------------------------------------------------------------
+
+Apache Jakarta Commons Pool:
+Apache Commons Pool
+Copyright 1999-2009 The Apache Software Foundation
+
+This product includes software developed by
+The Apache Software Foundation (http://www.apache.org/).
+
+---------------------------------------------------------------------------------
+
+Apache xerces C++:
+   =========================================================================
+   ==  NOTICE file corresponding to section 4(d) of the Apache License,   ==
+   ==  Version 2.0, in this case for the Apache Xerces distribution.      ==
+   =========================================================================
+
+   This product includes software developed by
+   The Apache Software Foundation (http://www.apache.org/).
+
+   Portions of this software were originally based on the following:
+     - software copyright (c) 1999, IBM Corporation., http://www.ibm.com.
+
+---------------------------------------------------------------------------------
+
+Apache Xerces Java:
+   =========================================================================
+   ==  NOTICE file corresponding to section 4(d) of the Apache License,   ==
+   ==  Version 2.0, in this case for the Apache Xerces Java distribution. ==
+   =========================================================================
+
+   Apache Xerces Java
+   Copyright 1999-2018 The Apache Software Foundation
+
+   This product includes software developed at
+   The Apache Software Foundation (http://www.apache.org/).
+
+   Portions of this software were originally based on the following:
+     - software copyright (c) 1999, IBM Corporation., http://www.ibm.com.
+     - software copyright (c) 1999, Sun Microsystems., http://www.sun.com.
+     - voluntary contributions made by Paul Eng on behalf of the 
+       Apache Software Foundation that were originally developed at iClick, Inc.,
+       software copyright (c) 1999.
+
+---------------------------------------------------------------------------------
+
+Apache Jakarta Collections:
+    Apache Commons Collections
+    Copyright 2001-2008 The Apache Software Foundation
+
+    This product includes software developed by
+    The Apache Software Foundation (http://www.apache.org/).
+
+---------------------------------------------------------------------------------
+
+Apache Jakarta Commons FileUpload:
+Apache Commons FileUpload
+Copyright 2002-2017 The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
+
+---------------------------------------------------------------------------------
+
+Apache HttpClient
+Copyright 1999-2020 The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
+
+---------------------------------------------------------------------------------
+
+Apache HttpClient Windows features
+Copyright 1999-2020 The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
+
+---------------------------------------------------------------------------------
+
+Apache ActiveMQ:
+// ------------------------------------------------------------------
+// NOTICE file corresponding to the section 4d of The Apache License,
+// Version 2.0, in this case for Apache ActiveMQ
+// ------------------------------------------------------------------
+
+Apache ActiveMQ
+Copyright 2005-2008 The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
+
+
+ActiveMQ :: All JAR bundle
+Copyright 2005-2021 The Apache Software Foundation
+
+ActiveMQ :: Camel
+Copyright 2005-2021 The Apache Software Foundation
+
+Camel :: JMS
+Copyright 2007-2020 The Apache Software Foundation
+
+   =========================================================================
+   ==  NOTICE file corresponding to the section 4 d of                    ==
+   ==  the Apache License, Version 2.0,                                   ==
+   ==  in this case for the Apache Camel distribution.                    ==
+   =========================================================================
+
+   This product includes software developed by
+   The Apache Software Foundation (http://www.apache.org/).
+
+   Please read the different LICENSE files present in the licenses directory of
+   this distribution.
+
+Camel :: Core
+Copyright 2007-2020 The Apache Software Foundation
+
+Camel :: Spring
+Copyright 2007-2020 The Apache Software Foundation
+
+Spring Framework 4.3.30.RELEASE
+Copyright (c) 2002-2020 Pivotal, Inc.
+
+This product is licensed to you under the Apache License, Version 2.0
+(the "License"). You may not use this product except in compliance with
+the License.
+
+This product may include a number of subcomponents with separate
+copyright notices and license terms. Your use of the source code for
+these subcomponents is subject to the terms and conditions of the
+subcomponent's license, as noted in the license.txt file.
+
+ActiveMQ :: Spring
+Copyright 2005-2021 The Apache Software Foundation
+
+ActiveMQ :: Pool
+Copyright 2005-2021 The Apache Software Foundation
+
+ActiveMQ :: Console
+Copyright 2005-2021 The Apache Software Foundation
+
+Apache Geronimo 
+Copyright 2003-2008 The Apache Software Foundation
+
+This product includes software developed by
+The Apache Software Foundation (http://www.apache.org/).
+
+Apache XBean :: Spring
+Copyright 2005-2020 The Apache Software Foundation
+
+   Copyright (c) 2007-2010, The JASYPT team (http://www.jasypt.org)
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+---------------------------------
+
+This distribution includes cryptographic software.  The country in 
+which you currently reside may have restrictions on the import, 
+possession, use, and/or re-export to another country, of 
+encryption software.  BEFORE using any encryption software, please 
+check your country's laws, regulations and policies concerning the
+import, possession, or use, and re-export of encryption software, to 
+see if this is permitted.  See http://www.wassenaar.org/ for more
+information.
+
+The U.S. Government Department of Commerce, Bureau of Industry and
+Security (BIS), has classified this software as Export Commodity 
+Control Number (ECCN) 5D002.C.1, which includes information security
+software using or performing cryptographic functions with asymmetric
+algorithms.  The form and manner of this distribution makes it 
+eligible for export under the License Exception ENC Technology 
+Software Unrestricted (TSU) exception (see the BIS Export 
+Administration Regulations, Section 740.13) for both object code and 
+source code.
+
+The following provides more details on the cryptographic software 
+used (note that this software is not included in the distribution):
+
+  * The PBE Encryption facilities require the Java Cryptography 
+    extensions: http://java.sun.com/javase/technologies/security/.
+
+Distributions of this software may include software developed by
+The Apache Software Foundation (http://www.apache.org/).
+
+ICU License - ICU 1.8.1 and later
+
+COPYRIGHT AND PERMISSION NOTICE
+
+Copyright (c) 1995-2006 International Business Machines 
+Corporation and others
+
+All rights reserved.
+
+Permission is hereby granted, free of charge, to any 
+person obtaining a copy of this software and associated 
+documentation files (the "Software"), to deal in the 
+Software without restriction, including without limitation 
+the rights to use, copy, modify, merge, publish, 
+distribute, and/or sell copies of the Software, and to 
+permit persons to whom the Software is furnished to do so, 
+provided that the above copyright notice(s) and this 
+permission notice appear in all copies of the Software and 
+that both the above copyright notice(s) and this 
+permission notice appear in supporting documentation.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY 
+KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE 
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR 
+PURPOSE AND NONINFRINGEMENT OF THIRD PARTY RIGHTS. IN NO 
+EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS INCLUDED IN 
+THIS NOTICE BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL 
+INDIRECT OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES 
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, 
+WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER 
+TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE 
+USE OR PERFORMANCE OF THIS SOFTWARE.
+
+Except as contained in this notice, the name of a copyright 
+holder shall not be used in advertising or otherwise to 
+promote the sale, use or other dealings in this Software 
+without prior written authorization of the copyright holder. 
+
+ActiveMQ :: STOMP Protocol
+Copyright 2005-2021 The Apache Software Foundation
+
+ActiveMQ :: Broker
+Copyright 2005-2021 The Apache Software Foundation
+
+ActiveMQ :: AMQP
+Copyright 2005-2021 The Apache Software Foundation
+
+ActiveMQ :: MQTT Protocol
+Copyright 2005-2021 The Apache Software Foundation
+
+=========================================================================
+==  Apache Notice                                                      ==
+=========================================================================
+
+=========================================================================
+==  Protocol Buffers Notice                                            ==
+=========================================================================
+
+This product includes software developed by the Protocol Buffers
+project (http://code.google.com/apis/protocolbuffers).
+
+ActiveMQ :: HTTP Protocol Support
+Copyright 2005-2021 The Apache Software Foundation
+
+ActiveMQ :: KahaDB Store
+Copyright 2005-2021 The Apache Software Foundation
+
+ActiveMQ :: JDBC Store
+Copyright 2005-2021 The Apache Software Foundation
+
+ActiveMQ :: LevelDB Store
+Copyright 2005-2021 The Apache Software Foundation
+
+Apache log4j
+Copyright 2007 The Apache Software Foundation
+
+ActiveMQ :: Client
+Copyright 2005-2021 The Apache Software Foundation
+
+ActiveMQ :: Openwire Legacy Support
+Copyright 2005-2021 The Apache Software Foundation
+
+ActiveMQ :: JAAS
+Copyright 2005-2021 The Apache Software Foundation
+
+ActiveMQ :: Shiro
+Copyright 2005-2021 The Apache Software Foundation
+
+ActiveMQ :: Generic JMS Pool
+Copyright 2005-2021 The Apache Software Foundation
+
+---------------------------------------------------------------------------------
+
+Google Web Toolkit SDK:
+    GOOGLE WEB TOOLKIT LICENSE INFORMATION
+    
+    March 3, 2008
+    The Google Web Toolkit software and sample code developed by Google is 
+    licensed under the Apache License, v. 2.0. Other software included in this 
+    distribution is provided under other licenses, as listed in the Included 
+    Software and Licenses section at the bottom of this page. Source code for 
+    software included in this distribution is available from the Google Web 
+    Toolkit project or as otherwise indicated at the bottom of this page. 
+    Please note that the executable version of the Google Web Toolkit 
+    distributed by Google will communicate with Google's servers to check for 
+    available updates. If updates are available, you will receive the option to 
+    install them. 
+    =====
+
+---------------------------------------------------------------------------------
+
+Jetty - Java HTTP Servlet Server:
+    ==============================================================
+     Jetty Web Container
+     Copyright 1995-2018 Mort Bay Consulting Pty Ltd.
+    ==============================================================
+
+    The Jetty Web Container is Copyright Mort Bay Consulting Pty Ltd
+    unless otherwise noted.
+
+    Jetty is dual licensed under both
+
+      * The Apache 2.0 License
+        http://www.apache.org/licenses/LICENSE-2.0.html
+
+          and
+
+      * The Eclipse Public 1.0 License
+        http://www.eclipse.org/legal/epl-v10.html
+
+    Jetty may be distributed under either license.
+
+    ------
+    Eclipse
+
+    The following artifacts are EPL.
+     * org.eclipse.jetty.orbit:org.eclipse.jdt.core
+
+    The following artifacts are EPL and ASL2.
+     * org.eclipse.jetty.orbit:javax.security.auth.message
+
+
+    The following artifacts are EPL and CDDL 1.0.
+     * org.eclipse.jetty.orbit:javax.mail.glassfish
+
+
+    ------
+    Oracle
+
+    The following artifacts are CDDL + GPLv2 with classpath exception.
+    https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html
+
+     * javax.servlet:javax.servlet-api
+     * javax.annotation:javax.annotation-api
+     * javax.transaction:javax.transaction-api
+     * javax.websocket:javax.websocket-api
+
+    ------
+    Oracle OpenJDK
+
+    If ALPN is used to negotiate HTTP/2 connections, then the following
+    artifacts may be included in the distribution or downloaded when ALPN 
+    module is selected. 
+
+     * java.sun.security.ssl
+
+    These artifacts replace/modify OpenJDK classes.  The modififications
+    are hosted at github and both modified and original are under GPL v2 with 
+    classpath exceptions.
+    http://openjdk.java.net/legal/gplv2+ce.html
+
+
+    ------
+    OW2
+
+    The following artifacts are licensed by the OW2 Foundation according to the
+    terms of http://asm.ow2.org/license.html
+
+    org.ow2.asm:asm-commons
+    org.ow2.asm:asm
+
+
+    ------
+    Apache
+
+    The following artifacts are ASL2 licensed.
+
+    org.apache.taglibs:taglibs-standard-spec
+    org.apache.taglibs:taglibs-standard-impl
+
+
+    ------
+    MortBay
+
+    The following artifacts are ASL2 licensed.  Based on selected classes from 
+    following Apache Tomcat jars, all ASL2 licensed.
+
+    org.mortbay.jasper:apache-jsp
+      org.apache.tomcat:tomcat-jasper
+      org.apache.tomcat:tomcat-juli
+      org.apache.tomcat:tomcat-jsp-api
+      org.apache.tomcat:tomcat-el-api
+      org.apache.tomcat:tomcat-jasper-el
+      org.apache.tomcat:tomcat-api
+      org.apache.tomcat:tomcat-util-scan
+      org.apache.tomcat:tomcat-util
+
+    org.mortbay.jasper:apache-el
+      org.apache.tomcat:tomcat-jasper-el
+      org.apache.tomcat:tomcat-el-api
+
+
+    ------
+    Mortbay
+
+    The following artifacts are CDDL + GPLv2 with classpath exception.
+
+    https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html
+
+    org.eclipse.jetty.toolchain:jetty-schemas
+
+    ------
+    Assorted
+
+    The UnixCrypt.java code implements the one way cryptography used by
+    Unix systems for simple password protection.  Copyright 1996 Aki Yoshida,
+    modified April 2001  by Iris Van den Broeke, Daniel Deville.
+    Permission to use, copy, modify and distribute UnixCrypt
+    for non-commercial or commercial purposes and without fee is
+    granted provided that the copyright notice appears in all copies.
+    
+---------------------------------------------------------------------------------
+
+Joda - Time - joda-time:
+    =============================================================================
+    = NOTICE file corresponding to section 4d of the Apache License Version 2.0 =
+    =============================================================================
+    This product includes software developed by
+    Joda.org (http://www.joda.org/).
+
+---------------------------------------------------------------------------------
+
+Quartz:
+    Quartz Scheduler
+    Copyright 2001-2009 Terracotta, Inc.
+
+---------------------------------------------------------------------------------
+
+Selenium IDE:
+  Copyright 2005 Shinya Kasatani
+
+---------------------------------------------------------------------------------
+
+Jackson
+    This copy of Jackson JSON processor streaming parser/generator is licensed under the
+    Apache (Software) License, version 2.0 ("the License").
+    See the License for details about distribution rights, and the
+    specific rights regarding derivate works.
+    You may obtain a copy of the License at:
+    http://www.apache.org/licenses/LICENSE-2.0
+	
+    # Jackson JSON processor
+    Jackson is a high-performance, Free/Open Source JSON processing library.
+    It was originally written by Tatu Saloranta (tatu.saloranta@iki.fi), and has
+    been in development since 2007.
+    It is currently developed by a community of developers, as well as supported
+    commercially by FasterXML.com.
+    ## Licensing
+    Jackson core and extension components may be licensed under different licenses.
+    To find the details that apply to this artifact see the accompanying LICENSE file.
+    For more information, including possible other licensing options, contact
+    FasterXML.com (http://fasterxml.com).
+    ## Credits
+    A list of contributors may be found from CREDITS file, which is included
+    in some artifacts (usually source distributions); but is always available
+    from the source code management (SCM) system project uses.
+
+---------------------------------------------------------------------------------
+	
+jackson-jq
+	Copyright (C) 2015 Eiichi Sato
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+
+---------------------------------------------------------------------------------
+
+jersey
+
+	# Notice for Jersey 
+	This content is produced and maintained by the Eclipse Jersey project.
+
+	*  Project home: https://projects.eclipse.org/projects/ee4j.jersey
+
+	## Trademarks
+	Eclipse Jersey is a trademark of the Eclipse Foundation.
+
+	## Copyright
+
+	All content is the property of the respective authors or their employers. For
+	more information regarding authorship of content, please consult the listed
+	source code repository logs.
+
+	## Declared Project Licenses
+
+	This program and the accompanying materials are made available under the terms
+	of the Eclipse Public License v. 2.0 which is available at
+	http://www.eclipse.org/legal/epl-2.0. This Source Code may also be made
+	available under the following Secondary Licenses when the conditions for such
+	availability set forth in the Eclipse Public License v. 2.0 are satisfied: GNU
+	General Public License, version 2 with the GNU Classpath Exception which is
+	available at https://www.gnu.org/software/classpath/license.html.
+
+	SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+	## Source Code
+	The project maintains the following source code repositories:
+
+	* https://github.com/eclipse-ee4j/jersey
+
+	## Third-party Content
+
+	Angular JS, v1.6.6
+	* License MIT (http://www.opensource.org/licenses/mit-license.php)
+	* Project: http://angularjs.org
+	* Coyright: (c) 2010-2017 Google, Inc.
+
+	aopalliance Version 1
+	* License: all the source code provided by AOP Alliance is Public Domain.
+	* Project: http://aopalliance.sourceforge.net
+	* Copyright: Material in the public domain is not protected by copyright
+
+	Bean Validation API 2.0.2
+	* License: Apache License, 2.0
+	* Project: http://beanvalidation.org/1.1/
+	* Copyright: 2009, Red Hat, Inc. and/or its affiliates, and individual contributors
+	* by the @authors tag.
+
+	Hibernate Validator CDI, 6.1.2.Final 
+	* License: Apache License, 2.0
+	* Project: https://beanvalidation.org/
+	* Repackaged in org.glassfish.jersey.server.validation.internal.hibernate
+
+	Bootstrap v3.3.7
+	* License: MIT license (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+	* Project: http://getbootstrap.com
+	* Copyright: 2011-2016 Twitter, Inc
+
+	Google Guava Version 18.0
+	* License: Apache License, 2.0
+	* Copyright (C) 2009 The Guava Authors
+
+	javax.inject Version: 1
+	* License: Apache License, 2.0
+	* Copyright (C) 2009 The JSR-330 Expert Group
+
+	Javassist Version 3.25.0-GA
+	* License: Apache License, 2.0
+	* Project: http://www.javassist.org/
+	* Copyright (C) 1999- Shigeru Chiba. All Rights Reserved.
+
+	Jackson JAX-RS Providers Version 2.10.1
+	* License: Apache License, 2.0
+	* Project: https://github.com/FasterXML/jackson-jaxrs-providers
+	* Copyright: (c) 2009-2011 FasterXML, LLC. All rights reserved unless otherwise indicated.
+
+	jQuery v1.12.4
+	* License: jquery.org/license
+	* Project: jquery.org
+	* Copyright: (c) jQuery Foundation
+
+	jQuery Barcode plugin 0.3
+	* License: MIT & GPL (http://www.opensource.org/licenses/mit-license.php & http://www.gnu.org/licenses/gpl.html)
+	* Project:  http://www.pasella.it/projects/jQuery/barcode
+	* Copyright: (c) 2009 Antonello Pasella antonello.pasella@gmail.com
+
+	JSR-166 Extension - JEP 266
+	* License: CC0
+	* No copyright
+	* Written by Doug Lea with assistance from members of JCP JSR-166 Expert Group and released to the public domain, as explained at http://creativecommons.org/publicdomain/zero/1.0/
+
+	KineticJS, v4.7.1
+	* License: MIT license (http://www.opensource.org/licenses/mit-license.php)
+	* Project: http://www.kineticjs.com, https://github.com/ericdrowell/KineticJS
+	* Copyright: Eric Rowell
+
+	org.objectweb.asm Version 8.0
+	* License: Modified BSD (http://asm.objectweb.org/license.html)
+	* Copyright (c) 2000-2011 INRIA, France Telecom. All rights reserved.
+
+	org.osgi.core version 6.0.0
+	* License: Apache License, 2.0
+	* Copyright (c) OSGi Alliance (2005, 2008). All Rights Reserved.
+
+	org.glassfish.jersey.server.internal.monitoring.core
+	* License: Apache License, 2.0
+	* Copyright (c) 2015-2018 Oracle and/or its affiliates. All rights reserved.
+	* Copyright 2010-2013 Coda Hale and Yammer, Inc.
+
+	W3.org documents
+	* License: W3C License
+	* Copyright: Copyright (c) 1994-2001 World Wide Web Consortium, (Massachusetts Institute of Technology, Institut National de Recherche en Informatique et en Automatique, Keio University). All Rights Reserved. http://www.w3.org/Consortium/Legal/
+
+---------------------------------------------------------------------------------
+
+Nimbus JOSE+JWT
+	Copyright (c) 2012-2019 Connect2id Ltd.
+
+---------------------------------------------------------------------------------
+
+Spring LDAP
+   ======================================================================
+   == NOTICE file corresponding to section 4 d of the Apache License,  ==
+   == Version 2.0, for the Spring LDAP distribution.                   ==
+   ======================================================================
+
+   This product includes software developed by
+   the Apache Software Foundation (http://www.apache.org).
+
+   The end-user documentation included with a redistribution, if any,
+   must include the following acknowledgement:
+
+     "This product includes software developed by the Spring LDAP
+      Project (http://www.springframework.org/ldap)."
+
+   Alternately, this acknowledgement may appear in the software itself,
+   if and wherever such third-party acknowledgements normally appear.
+
+---------------------------------------------------------------------------------
+
+Spring Security
+	Copyright (c) 2013-2019 Pivotal Software
+
+---------------------------------------------------------------------------------
+
+HikariCP
+
+	Copyright (C) 2013,2014 Brett Wooldridge
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+
+---------------------------------------------------------------------------------
+
+sqlite-jdbc
+
+  Copyright (c) 2006, David Crawshaw.  All rights reserved.
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+
+  THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+  SUCH DAMAGE.
+
+---------------------------------------------------------------------------------
+
+JSON Small And Fast Parser
+
+    https://mvnrepository.com/artifact/net.minidev/json-smart
+
+---------------------------------------------------------------------------------
+
+ASM Based Accessors Helper Used By JSON Smart
+
+    https://mvnrepository.com/artifact/net.minidev/accessors-smart
+
+---------------------------------------------------------------------------------
+
+gRPC
+
+  Copyright 2014 gRPC authors.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+---------------------------------------------------------------------------------
+
+Netty
+
+								The Netty Project
+								=================
+
+	Please visit the Netty web site for more information:
+
+	  * https://netty.io/
+
+	Copyright 2014 The Netty Project
+
+	The Netty Project licenses this file to you under the Apache License,
+	version 2.0 (the "License"); you may not use this file except in compliance
+	with the License. You may obtain a copy of the License at:
+
+	  https://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+	WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+	License for the specific language governing permissions and limitations
+	under the License.
+
+	Also, please refer to each LICENSE.<component>.txt file, which is located in
+	the 'license' directory of the distribution file, for the license terms of the
+	components that this product depends on.
+
+	-------------------------------------------------------------------------------
+	This product contains the extensions to Java Collections Framework which has
+	been derived from the works by JSR-166 EG, Doug Lea, and Jason T. Greene:
+
+	  * LICENSE:
+		* license/LICENSE.jsr166y.txt (Public Domain)
+	  * HOMEPAGE:
+		* http://gee.cs.oswego.edu/cgi-bin/viewcvs.cgi/jsr166/
+		* http://viewvc.jboss.org/cgi-bin/viewvc.cgi/jbosscache/experimental/jsr166/
+
+	This product contains a modified version of Robert Harder's Public Domain
+	Base64 Encoder and Decoder, which can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.base64.txt (Public Domain)
+	  * HOMEPAGE:
+		* http://iharder.sourceforge.net/current/java/base64/
+
+	This product contains a modified portion of 'Webbit', an event based
+	WebSocket and HTTP server, which can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.webbit.txt (BSD License)
+	  * HOMEPAGE:
+		* https://github.com/joewalnes/webbit
+
+	This product contains a modified portion of 'SLF4J', a simple logging
+	facade for Java, which can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.slf4j.txt (MIT License)
+	  * HOMEPAGE:
+		* https://www.slf4j.org/
+
+	This product contains a modified portion of 'Apache Harmony', an open source
+	Java SE, which can be obtained at:
+
+	  * NOTICE:
+		* license/NOTICE.harmony.txt
+	  * LICENSE:
+		* license/LICENSE.harmony.txt (Apache License 2.0)
+	  * HOMEPAGE:
+		* https://archive.apache.org/dist/harmony/
+
+	This product contains a modified portion of 'jbzip2', a Java bzip2 compression
+	and decompression library written by Matthew J. Francis. It can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.jbzip2.txt (MIT License)
+	  * HOMEPAGE:
+		* https://code.google.com/p/jbzip2/
+
+	This product contains a modified portion of 'libdivsufsort', a C API library to construct
+	the suffix array and the Burrows-Wheeler transformed string for any input string of
+	a constant-size alphabet written by Yuta Mori. It can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.libdivsufsort.txt (MIT License)
+	  * HOMEPAGE:
+		* https://github.com/y-256/libdivsufsort
+
+	This product contains a modified portion of Nitsan Wakart's 'JCTools', Java Concurrency Tools for the JVM,
+	 which can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.jctools.txt (ASL2 License)
+	  * HOMEPAGE:
+		* https://github.com/JCTools/JCTools
+
+	This product optionally depends on 'JZlib', a re-implementation of zlib in
+	pure Java, which can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.jzlib.txt (BSD style License)
+	  * HOMEPAGE:
+		* http://www.jcraft.com/jzlib/
+
+	This product optionally depends on 'Compress-LZF', a Java library for encoding and
+	decoding data in LZF format, written by Tatu Saloranta. It can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.compress-lzf.txt (Apache License 2.0)
+	  * HOMEPAGE:
+		* https://github.com/ning/compress
+
+	This product optionally depends on 'lz4', a LZ4 Java compression
+	and decompression library written by Adrien Grand. It can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.lz4.txt (Apache License 2.0)
+	  * HOMEPAGE:
+		* https://github.com/jpountz/lz4-java
+
+	This product optionally depends on 'lzma-java', a LZMA Java compression
+	and decompression library, which can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.lzma-java.txt (Apache License 2.0)
+	  * HOMEPAGE:
+		* https://github.com/jponge/lzma-java
+
+	This product optionally depends on 'zstd-jni', a zstd-jni Java compression
+	and decompression library, which can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.zstd-jni.txt (Apache License 2.0)
+	  * HOMEPAGE:
+		* https://github.com/luben/zstd-jni
+
+	This product contains a modified portion of 'jfastlz', a Java port of FastLZ compression
+	and decompression library written by William Kinney. It can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.jfastlz.txt (MIT License)
+	  * HOMEPAGE:
+		* https://code.google.com/p/jfastlz/
+
+	This product contains a modified portion of and optionally depends on 'Protocol Buffers', Google's data
+	interchange format, which can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.protobuf.txt (New BSD License)
+	  * HOMEPAGE:
+		* https://github.com/google/protobuf
+
+	This product optionally depends on 'Bouncy Castle Crypto APIs' to generate
+	a temporary self-signed X.509 certificate when the JVM does not provide the
+	equivalent functionality.  It can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.bouncycastle.txt (MIT License)
+	  * HOMEPAGE:
+		* https://www.bouncycastle.org/
+
+	This product optionally depends on 'Snappy', a compression library produced
+	by Google Inc, which can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.snappy.txt (New BSD License)
+	  * HOMEPAGE:
+		* https://github.com/google/snappy
+
+	This product optionally depends on 'JBoss Marshalling', an alternative Java
+	serialization API, which can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.jboss-marshalling.txt (Apache License 2.0)
+	  * HOMEPAGE:
+		* https://github.com/jboss-remoting/jboss-marshalling
+
+	This product optionally depends on 'Caliper', Google's micro-
+	benchmarking framework, which can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.caliper.txt (Apache License 2.0)
+	  * HOMEPAGE:
+		* https://github.com/google/caliper
+
+	This product optionally depends on 'Apache Commons Logging', a logging
+	framework, which can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.commons-logging.txt (Apache License 2.0)
+	  * HOMEPAGE:
+		* https://commons.apache.org/logging/
+
+	This product optionally depends on 'Apache Log4J', a logging framework, which
+	can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.log4j.txt (Apache License 2.0)
+	  * HOMEPAGE:
+		* https://logging.apache.org/log4j/
+
+	This product optionally depends on 'Aalto XML', an ultra-high performance
+	non-blocking XML processor, which can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.aalto-xml.txt (Apache License 2.0)
+	  * HOMEPAGE:
+		* https://wiki.fasterxml.com/AaltoHome
+
+	This product contains a modified version of 'HPACK', a Java implementation of
+	the HTTP/2 HPACK algorithm written by Twitter. It can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.hpack.txt (Apache License 2.0)
+	  * HOMEPAGE:
+		* https://github.com/twitter/hpack
+		
+	This product contains a modified version of 'HPACK', a Java implementation of
+	the HTTP/2 HPACK algorithm written by Cory Benfield. It can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.hyper-hpack.txt (MIT License)
+	  * HOMEPAGE:
+		* https://github.com/python-hyper/hpack/
+
+	This product contains a modified version of 'HPACK', a Java implementation of
+	the HTTP/2 HPACK algorithm written by Tatsuhiro Tsujikawa. It can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.nghttp2-hpack.txt (MIT License)
+	  * HOMEPAGE:
+		* https://github.com/nghttp2/nghttp2/
+
+	This product contains a modified portion of 'Apache Commons Lang', a Java library
+	provides utilities for the java.lang API, which can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.commons-lang.txt (Apache License 2.0)
+	  * HOMEPAGE:
+		* https://commons.apache.org/proper/commons-lang/
+
+
+	This product contains the Maven wrapper scripts from 'Maven Wrapper', that provides an easy way to ensure a user has everything necessary to run the Maven build.
+
+	  * LICENSE:
+		* license/LICENSE.mvn-wrapper.txt (Apache License 2.0)
+	  * HOMEPAGE:
+		* https://github.com/takari/maven-wrapper
+
+	This product contains the dnsinfo.h header file, that provides a way to retrieve the system DNS configuration on MacOS.
+	This private header is also used by Apple's open source
+	 mDNSResponder (https://opensource.apple.com/tarballs/mDNSResponder/).
+
+	 * LICENSE:
+		* license/LICENSE.dnsinfo.txt (Apple Public Source License 2.0)
+	  * HOMEPAGE:
+		* https://www.opensource.apple.com/source/configd/configd-453.19/dnsinfo/dnsinfo.h
+
+	This product optionally depends on 'Brotli4j', Brotli compression and
+	decompression for Java., which can be obtained at:
+
+	  * LICENSE:
+		* license/LICENSE.brotli4j.txt (Apache License 2.0)
+	  * HOMEPAGE:
+		* https://github.com/hyperxpro/Brotli4j
+
+---------------------------------------------------------------------------------
+
+Perfmark-API
+
+  Copyright 2019 Google LLC
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  -----------------------------------------------------------------------
+
+  This product contains a modified portion of 'Catapult', an open source
+  Trace Event viewer for Chome, Linux, and Android applications, which can 
+  be obtained at:
+
+    * LICENSE:
+      * traceviewer/src/main/resources/io/perfmark/traceviewer/third_party/catapult/LICENSE (New BSD License)
+    * HOMEPAGE:
+      * https://github.com/catapult-project/catapult
+
+  This product contains a modified portion of 'Polymer', a library for Web
+  Components, which can be obtained at:
+    * LICENSE:
+      * traceviewer/src/main/resources/io/perfmark/traceviewer/third_party/polymer/LICENSE (New BSD License)
+    * HOMEPAGE:
+      * https://github.com/Polymer/polymer
+
+---------------------------------------------------------------------------------
+
+OkHttp
+
+    https://square.github.io/okhttp/
+
+    Copyright 2019 Square, Inc.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+---------------------------------------------------------------------------------
+
+Okio
+
+    https://square.github.io/okio/
+
+    Copyright 2013 Square, Inc.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+---------------------------------------------------------------------------------
+
+Java Native Access
+
+    https://github.com/java-native-access/jna
+
+    SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1
+
+    Java Native Access (JNA) is licensed under the LGPL, version 2.1
+    or later, or (from version 4.0 onward) the Apache License,
+    version 2.0.
+
+    You can freely decide which license you want to apply to the project.
+
+    You may obtain a copy of the LGPL License at:
+
+    http://www.gnu.org/licenses/licenses.html
+
+    A copy is also included in the downloadable source code package
+    containing JNA, in file "LGPL2.1", under the same directory
+    as this file.
+
+    You may obtain a copy of the Apache License at:
+
+    http://www.apache.org/licenses/
+
+    A copy is also included in the downloadable source code package
+    containing JNA, in file "AL2.0", under the same directory
+    as this file.
+
+    Commercial support may be available, please e-mail
+    twall[at]users[dot]sf[dot]net.
+
+---------------------------------------------------------------------------------
+
+Kotlin
+
+    =========================================================================
+    ==  NOTICE file corresponding to the section 4 d of                    ==
+    ==  the Apache License, Version 2.0,                                   ==
+    ==  in this case for the Kotlin Compiler distribution.                 ==
+    =========================================================================
+
+    Kotlin Compiler
+    Copyright 2010-2020 JetBrains s.r.o and respective authors and developers
+
+##################################################################################################################################
+LicenceType:BSD
+Component:Gateway,ActiveConsole
+Library:FlexLexer
+
+// -*-C++-*-
+// FlexLexer.h -- define interfaces for lexical analyzer classes generated
+// by flex
+
+// Copyright (c) 1993 The Regents of the University of California.
+// All rights reserved.
+//
+// This code is derived from software contributed to Berkeley by
+// Kent Williams and Tom Epperly.
+//
+//  Redistribution and use in source and binary forms, with or without
+//  modification, are permitted provided that the following conditions
+//  are met:
+
+//  1. Redistributions of source code must retain the above copyright
+//  notice, this list of conditions and the following disclaimer.
+//  2. Redistributions in binary form must reproduce the above copyright
+//  notice, this list of conditions and the following disclaimer in the
+//  documentation and/or other materials provided with the distribution.
+
+//  Neither the name of the University nor the names of its contributors
+//  may be used to endorse or promote products derived from this software
+//  without specific prior written permission.
+
+//  THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR
+//  IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
+//  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+//  PURPOSE.
+
+##################################################################################################################################
+LicenceType:MIT Derivative
+Component:Gateway,Netprobe
+Library:libxml
+
+    Except where otherwise noted in the source code (e.g. the files hash.c,
+    list.c and the trio files, which are covered by a similar licence but
+    with different Copyright notices) all the files are:
+
+     Copyright (C) 1998-2003 Daniel Veillard.  All Rights Reserved.
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is fur-
+    nished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FIT-
+    NESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+    DANIEL VEILLARD BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CON-
+    NECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+    Except as contained in this notice, the name of Daniel Veillard shall not
+    be used in advertising or otherwise to promote the sale, use or other deal-
+    ings in this Software without prior written authorization from him.
+
+##################################################################################################################################
+LicenceType:BSD Derivative
+Component:ActiveConsole
+Library:SimpleFileFilter
+
+/*
+ * Copyright (c) Ian F. Darwin, http://www.darwinsys.com/, 1996-2002.
+ * All rights reserved. Software written by Ian F. Darwin and others.
+ * $Id: LICENSE,v 1.8 2004/02/09 03:33:38 ian Exp $
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ * 
+ * Java, the Duke mascot, and all variants of Sun's Java "steaming coffee
+ * cup" logo are trademarks of Sun Microsystems. Sun's, and James Gosling's,
+ * pioneering role in inventing and promulgating (and standardizing) the Java 
+ * language and environment is gratefully acknowledged.
+ * 
+ * The pioneering role of Dennis Ritchie and Bjarne Stroustrup, of AT&T, for
+ * inventing predecessor languages C and C++ is also gratefully acknowledged.
+ */
+
+##################################################################################################################################
+LicenceType:MIT
+Component:Netprobe,Gateway,ActiveConsole,Webserver,EUEM
+Library:Libcurl,jQuery.ScrollTo,Jqueryjs,Simple Logging facade for Java,Lua,LuaJIT
+Library:Bloomberg Open API (BLPAPI),CasperJS
+Library:yaml-cpp,libxml2,libxslt
+
+---------------------------------------------------------------------------------
+
+Libcurl:
+    COPYRIGHT AND PERMISSION NOTICE
+     
+    Copyright (c) 1996 - 2011, Daniel Stenberg, <daniel@haxx.se>.
+     
+    All rights reserved.
+
+---------------------------------------------------------------------------------
+
+jQuery.ScrollTo:
+ * Copyright (c) 2007-2008 Ariel Flesler - aflesler(at)gmail(dot)com | http://flesler.blogspot.com
+ * Dual licensed under MIT and GPL.
+ * Date: 9/11/2008
+
+---------------------------------------------------------------------------------
+
+Jqueryjs:
+/*
+ * jQuery 1.2.6 - New Wave Javascript
+ *
+ * Copyright (c) 2008 John Resig (jquery.com)
+ * Dual licensed under the MIT (MIT-LICENSE.txt)
+ * and GPL (GPL-LICENSE.txt) licenses.
+ *
+ * $Date: 2008-05-24 14:22:17 -0400 (Sat, 24 May 2008) $
+ * $Rev: 5685 $
+ */
+
+---------------------------------------------------------------------------------
+
+Simple Logging facade for Java:
+
+	 Copyright (c) 2004-2017 QOS.ch
+	 All rights reserved.
+
+	 Permission is hereby granted, free  of charge, to any person obtaining
+	 a  copy  of this  software  and  associated  documentation files  (the
+	 "Software"), to  deal in  the Software without  restriction, including
+	 without limitation  the rights to  use, copy, modify,  merge, publish,
+	 distribute,  sublicense, and/or sell  copies of  the Software,  and to
+	 permit persons to whom the Software  is furnished to do so, subject to
+	 the following conditions:
+
+	 The  above  copyright  notice  and  this permission  notice  shall  be
+	 included in all copies or substantial portions of the Software.
+
+	 THE  SOFTWARE IS  PROVIDED  "AS  IS", WITHOUT  WARRANTY  OF ANY  KIND,
+	 EXPRESS OR  IMPLIED, INCLUDING  BUT NOT LIMITED  TO THE  WARRANTIES OF
+	 MERCHANTABILITY,    FITNESS    FOR    A   PARTICULAR    PURPOSE    AND
+	 NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+	 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+	 OF CONTRACT, TORT OR OTHERWISE,  ARISING FROM, OUT OF OR IN CONNECTION
+	 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+---------------------------------------------------------------------------------
+
+Lua:
+	Copyright © 1994–2013 Lua.org, PUC-Rio.
+
+---------------------------------------------------------------------------------
+
+LuaJIT:
+	Copyright (C) 2005-2013 Mike Pall. All rights reserved.
+
+	[ LuaJIT includes code from dlmalloc, which has this license statement: ]
+
+	This is a version (aka dlmalloc) of malloc/free/realloc written by
+	Doug Lea and released to the public domain, as explained at
+	http://creativecommons.org/licenses/publicdomain
+
+---------------------------------------------------------------------------------
+
+Bloomberg Open API (BLPAPI):
+	C source code headers
+	Copyright 2012. Bloomberg Finance L.P.
+
+---------------------------------------------------------------------------------
+
+CasperJS:
+	Copyright (c) 2011-2012 Nicolas Perriault
+
+---------------------------------------------------------------------------------
+
+yaml-cpp:
+	Copyright (c) 2008-2015 Jesse Beder.
+	
+---------------------------------------------------------------------------------
+
+libxml2:
+	Copyright (C) 1998-2012 Daniel Veillard.
+	
+---------------------------------------------------------------------------------
+
+libxslt:
+	Copyright (C) 2001-2002 Daniel Veillard.
+
+##################################################################################################################################
+LicenceType:OpenSSL/SSLeay 
+Component:Netprobe,Gateway
+Library:OpenSSL
+
+/* ====================================================================
+ * Copyright (c) 1998-2011 The OpenSSL Project.  All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in
+ *    the documentation and/or other materials provided with the
+ *    distribution.
+ *
+ * 3. All advertising materials mentioning features or use of this
+ *    software must display the following acknowledgment:
+ *    "This product includes software developed by the OpenSSL Project
+ *    for use in the OpenSSL Toolkit. (http://www.openssl.org/)"
+ *
+ * 4. The names "OpenSSL Toolkit" and "OpenSSL Project" must not be used to
+ *    endorse or promote products derived from this software without
+ *    prior written permission. For written permission, please contact
+ *    openssl-core@openssl.org.
+ *
+ * 5. Products derived from this software may not be called "OpenSSL"
+ *    nor may "OpenSSL" appear in their names without prior written
+ *    permission of the OpenSSL Project.
+ *
+ * 6. Redistributions of any form whatsoever must retain the following
+ *    acknowledgment:
+ *    "This product includes software developed by the OpenSSL Project
+ *    for use in the OpenSSL Toolkit (http://www.openssl.org/)"
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT ``AS IS'' AND ANY
+ * EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE OpenSSL PROJECT OR
+ * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
+ * ====================================================================
+ *
+ * This product includes cryptographic software written by Eric Young
+ * (eay@cryptsoft.com).  This product includes software written by Tim
+ * Hudson (tjh@cryptsoft.com).
+ *
+ */
+/* Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com)
+ * All rights reserved.
+ *
+ * This package is an SSL implementation written
+ * by Eric Young (eay@cryptsoft.com).
+ * The implementation was written so as to conform with Netscapes SSL.
+ *
+ * This library is free for commercial and non-commercial use as long as
+ * the following conditions are aheared to.  The following conditions
+ * apply to all code found in this distribution, be it the RC4, RSA,
+ * lhash, DES, etc., code; not just the SSL code.  The SSL documentation
+ * included with this distribution is covered by the same copyright terms
+ * except that the holder is Tim Hudson (tjh@cryptsoft.com).
+ *
+ * Copyright remains Eric Young's, and as such any Copyright notices in
+ * the code are not to be removed.
+ * If this package is used in a product, Eric Young should be given attribution
+ * as the author of the parts of the library used.
+ * This can be in the form of a textual message at program startup or
+ * in documentation (online or textual) provided with the package.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 3. All advertising materials mentioning features or use of this software
+ *    must display the following acknowledgement:
+ *    "This product includes cryptographic software written by
+ *     Eric Young (eay@cryptsoft.com)"
+ *    The word 'cryptographic' can be left out if the rouines from the library
+ *    being used are not cryptographic related :-).
+ * 4. If you include any Windows specific code (or a derivative thereof) from
+ *    the apps directory (application code) you must include an acknowledgement:
+ *    "This product includes software written by Tim Hudson (tjh@cryptsoft.com)"
+ *
+ * THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ *
+ * The licence and distribution terms for any publically available version or
+ * derivative of this code cannot be changed.  i.e. this code cannot simply be
+ * copied and put under another distribution licence
+ * [including the GNU Public Licence.]
+ */
+##################################################################################################################################
+LicenceType:Java 
+Component:ActiveConsole,Webslinger
+Library:Java
+
+Sun Microsystems, Inc. Binary Code License Agreement
+
+for the JAVA SE DEVELOPMENT KIT (JDK), VERSION 6
+
+SUN MICROSYSTEMS, INC. ("SUN") IS WILLING TO LICENSE 
+THE SOFTWARE IDENTIFIED BELOW TO YOU ONLY UPON THE 
+CONDITION THAT YOU ACCEPT ALL OF THE TERMS CONTAINED 
+IN THIS BINARY CODE LICENSE AGREEMENT AND SUPPLEMENTAL 
+LICENSE TERMS (COLLECTIVELY "AGREEMENT").  PLEASE READ 
+THE AGREEMENT CAREFULLY.  BY DOWNLOADING OR INSTALLING 
+THIS SOFTWARE, YOU ACCEPT THE TERMS OF THE AGREEMENT. 
+INDICATE ACCEPTANCE BY SELECTING THE "ACCEPT" BUTTON 
+AT THE BOTTOM OF THE AGREEMENT. IF YOU ARE NOT WILLING 
+TO BE BOUND BY ALL THE TERMS, SELECT THE "DECLINE" 
+BUTTON AT THE BOTTOM OF THE AGREEMENT AND THE DOWNLOAD 
+OR INSTALL PROCESS WILL NOT CONTINUE. 
+
+1. DEFINITIONS. "Software" means the identified above 
+in binary form, any other machine readable materials 
+(including, but not limited to, libraries, source 
+files, header files, and data files), any updates or 
+error corrections provided by Sun, and any user 
+manuals, programming guides and other documentation 
+provided to you by Sun under this Agreement. 
+"Programs" mean Java applets and applications intended 
+to run on the Java Platform, Standard Edition (Java 
+SE) on Java-enabled general purpose desktop computers 
+and servers.
+
+2. LICENSE TO USE. Subject to the terms and conditions 
+of this Agreement, including, but not limited to the 
+Java Technology Restrictions of the Supplemental 
+License Terms, Sun grants you a non-exclusive, 
+non-transferable, limited license without license fees 
+to reproduce and use internally Software complete and 
+unmodified for the sole purpose of running Programs. 
+Additional licenses for developers and/or publishers 
+are granted in the Supplemental License Terms.
+
+3. RESTRICTIONS. Software is confidential and 
+copyrighted. Title to Software and all associated 
+intellectual property rights is retained by Sun and/or 
+its licensors. Unless enforcement is prohibited by 
+applicable law, you may not modify, decompile, or 
+reverse engineer Software.  You acknowledge that 
+Licensed Software is not designed or intended for use 
+in the design, construction, operation or maintenance 
+of any nuclear facility. Sun Microsystems, Inc. 
+disclaims any express or implied warranty of fitness 
+for such uses. No right, title or interest in or to 
+any trademark, service mark, logo or trade name of Sun 
+or its licensors is granted under this Agreement. 
+Additional restrictions for developers and/or 
+publishers licenses are set forth in the Supplemental 
+License Terms.
+
+4. LIMITED WARRANTY.  Sun warrants to you that for a 
+period of ninety (90) days from the date of purchase, 
+as evidenced by a copy of the receipt, the media on 
+which Software is furnished (if any) will be free of 
+defects in materials and workmanship under normal use.  
+Except for the foregoing, Software is provided "AS IS".  
+Your exclusive remedy and Sun's entire liability under 
+this limited warranty will be at Sun's option to 
+replace Software media or refund the fee paid for 
+Software. Any implied warranties on the Software are 
+limited to 90 days. Some states do not allow 
+limitations on duration of an implied warranty, so the 
+above may not apply to you. This limited warranty 
+gives you specific legal rights. You may have others, 
+which vary from state to state. 
+
+5. DISCLAIMER OF WARRANTY.  UNLESS SPECIFIED IN THIS 
+AGREEMENT, ALL EXPRESS OR IMPLIED CONDITIONS, 
+REPRESENTATIONS AND WARRANTIES, INCLUDING ANY IMPLIED 
+WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR 
+PURPOSE OR NON-INFRINGEMENT ARE DISCLAIMED, EXCEPT TO 
+THE EXTENT THAT THESE DISCLAIMERS ARE HELD TO BE 
+LEGALLY INVALID. 
+
+6. LIMITATION OF LIABILITY.  TO THE EXTENT NOT 
+PROHIBITED BY LAW, IN NO EVENT WILL SUN OR ITS 
+LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR 
+DATA, OR FOR SPECIAL, INDIRECT, CONSEQUENTIAL, 
+INCIDENTAL OR PUNITIVE DAMAGES, HOWEVER CAUSED 
+REGARDLESS OF THE THEORY OF LIABILITY, ARISING OUT OF 
+OR RELATED TO THE USE OF OR INABILITY TO USE SOFTWARE, 
+EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF 
+SUCH DAMAGES.  In no event will Sun's liability to you, 
+whether in contract, tort (including negligence), or 
+otherwise, exceed the amount paid by you for Software 
+under this Agreement.  The foregoing limitations will 
+apply even if the above stated warranty fails of its 
+essential purpose. Some states do not allow the 
+exclusion of incidental or consequential damages, so 
+some of the terms above may not be applicable to you. 
+
+7. TERMINATION.  This Agreement is effective until 
+terminated.  You may terminate this Agreement at any 
+time by destroying all copies of Software.  This 
+Agreement will terminate immediately without notice 
+from Sun if you fail to comply with any provision of 
+this Agreement.  Either party may terminate this 
+Agreement immediately should any Software become, or 
+in either party's opinion be likely to become, the 
+subject of a claim of infringement of any intellectual 
+property right. Upon Termination, you must destroy all 
+copies of Software. 
+
+8. EXPORT REGULATIONS. All Software and technical data 
+delivered under this Agreement are subject to US 
+export control laws and may be subject to export or 
+import regulations in other countries.  You agree to 
+comply strictly with all such laws and regulations and 
+acknowledge that you have the responsibility to obtain 
+such licenses to export, re-export, or import as may 
+be required after delivery to you. 
+
+9. TRADEMARKS AND LOGOS. You acknowledge and agree as 
+between you and Sun that Sun owns the SUN, SOLARIS, 
+JAVA, JINI, FORTE, and iPLANET trademarks and all SUN, 
+SOLARIS, JAVA, JINI, FORTE, and iPLANET-related 
+trademarks, service marks, logos and other brand 
+designations ("Sun Marks"), and you agree to comply 
+with the Sun Trademark and Logo Usage Requirements 
+currently located at 
+http://www.sun.com/policies/trademarks. Any use you 
+make of the Sun Marks inures to Sun's benefit. 
+
+10. U.S. GOVERNMENT RESTRICTED RIGHTS.  If Software is 
+being acquired by or on behalf of the U.S. Government 
+or by a U.S. Government prime contractor or 
+subcontractor (at any tier), then the Government's 
+rights in Software and accompanying documentation will 
+be only as set forth in this Agreement; this is in 
+accordance with 48 CFR 227.7201 through 227.7202-4 
+(for Department of Defense (DOD) acquisitions) and 
+with 48 CFR 2.101 and 12.212 (for non-DOD 
+acquisitions). 
+
+11. GOVERNING LAW.  Any action related to this Agreement 
+will be governed by California law and controlling 
+U.S. federal law.  No choice of law rules of any 
+jurisdiction will apply. 
+
+12. SEVERABILITY. If any provision of this Agreement 
+is held to be unenforceable, this Agreement will 
+remain in effect with the provision omitted, unless 
+omission would frustrate the intent of the parties, in 
+which case this Agreement will immediately terminate. 
+
+13. INTEGRATION.  This Agreement is the entire agreement 
+between you and Sun relating to its subject matter.  It 
+supersedes all prior or contemporaneous oral or 
+written communications, proposals, representations and 
+warranties and prevails over any conflicting or 
+additional terms of any quote, order, acknowledgment, 
+or other communication between the parties relating to 
+its subject matter during the term of this Agreement.  
+No modification of this Agreement will be binding, 
+unless in writing and signed by an authorized 
+representative of each party. 
+
+SUPPLEMENTAL LICENSE TERMS
+
+These Supplemental License Terms add to or modify the 
+terms of the Binary Code License Agreement. 
+Capitalized terms not defined in these Supplemental 
+Terms shall have the same meanings ascribed to them in 
+the Binary Code License Agreement . These Supplemental 
+Terms shall supersede any inconsistent or conflicting 
+terms in the Binary Code License Agreement, or in any 
+license contained within the Software. 
+
+A. Software Internal Use and Development License 
+Grant. Subject to the terms and conditions of this 
+Agreement and restrictions and exceptions set forth in 
+the Software "README" file incorporated herein by 
+reference, including, but not limited to the Java 
+Technology Restrictions of these Supplemental Terms, 
+Sun grants you a non-exclusive, non-transferable, 
+limited license without fees to reproduce internally 
+and use internally the Software complete and 
+unmodified for the purpose of designing, developing, 
+and testing your Programs. 
+
+B. License to Distribute Software. Subject to the 
+terms and conditions of this Agreement and 
+restrictions and exceptions set forth in the Software 
+README file, including, but not limited to the Java 
+Technology Restrictions of these Supplemental Terms, 
+Sun grants you a non-exclusive, non-transferable, 
+limited license without fees to reproduce and 
+distribute the Software, provided that (i) you 
+distribute the Software complete and unmodified and 
+only bundled as part of, and for the sole purpose of 
+running, your Programs, (ii) the Programs add 
+significant and primary functionality to the Software, 
+(iii) you do not distribute additional software 
+intended to replace any component(s) of the Software, 
+(iv) you do not remove or alter any proprietary 
+legends or notices contained in the Software, (v) you 
+only distribute the Software subject to a license 
+agreement that protects Sun's interests consistent 
+with the terms contained in this Agreement, and (vi) 
+you agree to defend and indemnify Sun and its 
+licensors from and against any damages, costs, 
+liabilities, settlement amounts and/or expenses 
+(including attorneys' fees) incurred in connection 
+with any claim, lawsuit or action by any third party 
+that arises or results from the use or distribution of 
+any and all Programs and/or Software.
+
+C. License to Distribute Redistributables. Subject to 
+the terms and conditions of this Agreement and 
+restrictions and exceptions set forth in the Software 
+README file, including but not limited to the Java 
+Technology Restrictions of these Supplemental Terms, 
+Sun grants you a non-exclusive, non-transferable, 
+limited license without fees to reproduce and 
+distribute those files specifically identified as 
+redistributable in the Software "README" file 
+("Redistributables") provided that: (i) you distribute 
+the Redistributables complete and unmodified, and only 
+bundled as part of Programs, (ii) the Programs add 
+significant and primary functionality to the 
+Redistributables, (iii) you do not distribute 
+additional software intended to supersede any 
+component(s) of the Redistributables (unless otherwise 
+specified in the applicable README file), (iv) you do 
+not remove or alter any proprietary legends or notices 
+contained in or on the Redistributables, (v) you only 
+distribute the Redistributables pursuant to a license 
+agreement that protects Sun's interests consistent 
+with the terms contained in the Agreement, (vi) you 
+agree to defend and indemnify Sun and its licensors 
+from and against any damages, costs, liabilities, 
+settlement amounts and/or expenses (including 
+attorneys' fees) incurred in connection with any 
+claim, lawsuit or action by any third party that 
+arises or results from the use or distribution of any 
+and all Programs and/or Software.
+
+D. Java Technology Restrictions.  You may not create, 
+modify, or change the behavior of, or authorize your 
+licensees to create, modify, or change the behavior 
+of, classes, interfaces, or subpackages that are in 
+any way identified as "java", "javax", "sun" or 
+similar convention as specified by Sun in any naming 
+convention designation.
+
+E. Distribution by Publishers. This section pertains 
+to your distribution of the Software with your printed 
+book or magazine (as those terms are commonly used in 
+the industry) relating to Java technology 
+("Publication"). Subject to and conditioned upon your 
+compliance with the restrictions and obligations 
+contained in the Agreement, in addition to the license 
+granted in Paragraph 1 above, Sun hereby grants to you 
+a non-exclusive, nontransferable limited right to 
+reproduce complete and unmodified copies of the 
+Software on electronic media (the "Media") for the 
+sole purpose of inclusion and distribution with your 
+Publication(s), subject to the following terms: (i) 
+You may not distribute the Software on a stand-alone 
+basis; it must be distributed with your 
+Publication(s); (ii) You are responsible for 
+downloading the Software from the applicable Sun web 
+site; (iii) You must refer to the Software as JavaTM 
+SE Development Kit 6; (iv) The Software must be 
+reproduced in its entirety and without any 
+modification whatsoever (including, without 
+limitation, the Binary Code License and Supplemental 
+License Terms accompanying the Software and 
+proprietary rights notices contained in the Software); 
+(v) The Media label shall include the following 
+information: Copyright 2006, Sun Microsystems, Inc. 
+All rights reserved. Use is subject to license terms. 
+Sun, Sun Microsystems, the Sun logo, Solaris, Java, 
+the Java Coffee Cup logo, J2SE, and all trademarks and 
+logos based on Java are trademarks or registered 
+trademarks of Sun Microsystems, Inc. in the U.S. and 
+other countries. This information must be placed on 
+the Media label in such a manner as to only apply to 
+the Sun Software; (vi) You must clearly identify the 
+Software as Sun's product on the Media holder or Media 
+label, and you may not state or imply that Sun is 
+responsible for any third-party software contained on 
+the Media; (vii) You may not include any third party 
+software on the Media which is intended to be a 
+replacement or substitute for the Software; (viii) You 
+shall indemnify Sun for all damages arising from your 
+failure to comply with the requirements of this 
+Agreement. In addition, you shall defend, at your 
+expense, any and all claims brought against Sun by 
+third parties, and shall pay all damages awarded by a 
+court of competent jurisdiction, or such settlement 
+amount negotiated by you, arising out of or in 
+connection with your use, reproduction or distribution 
+of the Software and/or the Publication. Your 
+obligation to provide indemnification under this 
+section shall arise provided that Sun: (a) provides 
+you prompt notice of the claim; (b) gives you sole 
+control of the defense and settlement of the claim; 
+(c) provides you, at your expense, with all available 
+information, assistance and authority to defend; and 
+(d) has not compromised or settled such claim without 
+your prior written consent; and (ix) You shall provide 
+Sun with a written notice for each Publication; such 
+notice shall include the following information: (1) 
+title of Publication, (2) author(s), (3) date of 
+Publication, and (4) ISBN or ISSN numbers. Such notice 
+shall be sent to Sun Microsystems, Inc., 4150 Network 
+Circle, M/S USCA12-110, Santa Clara, California 95054, 
+U.S.A , Attention: Contracts Administration.
+
+F. Source Code. Software may contain source code that, 
+unless expressly licensed for other purposes, is 
+provided solely for reference purposes pursuant to the 
+terms of this Agreement. Source code may not be 
+redistributed unless expressly provided for in this 
+Agreement.
+
+G. Third Party Code. Additional copyright notices and 
+license terms applicable to portions of the Software 
+are set forth in the THIRDPARTYLICENSEREADME.txt file. 
+In addition to any terms and conditions of any third 
+party opensource/freeware license identified in the 
+THIRDPARTYLICENSEREADME.txt file, the disclaimer of 
+warranty and limitation of liability provisions in 
+paragraphs 5 and 6 of the  Binary Code License 
+Agreement shall apply to all Software in this 
+distribution.
+
+H. Termination for Infringement. Either party may 
+terminate this Agreement immediately should any 
+Software become, or in either party's opinion be 
+likely to become, the subject of a claim of 
+infringement of any intellectual property right.
+
+I. Installation and Auto-Update.  The Software's 
+installation and auto-update processes transmit a 
+limited amount of data to Sun (or its service 
+provider) about those specific processes to help Sun 
+understand and optimize them.  Sun does not associate 
+the data with personally identifiable information.  
+You can find more information about the data Sun 
+collects at http://java.com/data/. 
+
+For inquiries please contact: Sun Microsystems, Inc., 
+4150 Network Circle, Santa  Clara, California 95054, 
+U.S.A.
+
+##################################################################################################################################
+LicenceType: 
+Component:Netprobe
+Library:HTML-tidy
+
+/** @file tidy.h - Defines HTML Tidy API implemented by tidy library.
+
+  Public interface is const-correct and doesn't explicitly depend
+  on any globals.  Thus, thread-safety may be introduced w/out
+  changing the interface.
+
+  Looking ahead to a C++ wrapper, C functions always pass 
+  this-equivalent as 1st arg.
+
+
+  Copyright (c) 1998-2008 World Wide Web Consortium
+  (Massachusetts Institute of Technology, European Research 
+  Consortium for Informatics and Mathematics, Keio University).
+  All Rights Reserved.
+
+  CVS Info :
+
+    $Author: arnaud02 $ 
+    $Date: 2008/04/22 11:00:42 $ 
+    $Revision: 1.22 $ 
+
+  Contributing Author(s):
+
+     Dave Raggett <dsr@w3.org>
+
+  The contributing author(s) would like to thank all those who
+  helped with testing, bug fixes and suggestions for improvements. 
+  This wouldn't have been possible without your help.
+
+  COPYRIGHT NOTICE:
+ 
+  This software and documentation is provided "as is," and
+  the copyright holders and contributing author(s) make no
+  representations or warranties, express or implied, including
+  but not limited to, warranties of merchantability or fitness
+  for any particular purpose or that the use of the software or
+  documentation will not infringe any third party patents,
+  copyrights, trademarks or other rights. 
+
+  The copyright holders and contributing author(s) will not be held
+  liable for any direct, indirect, special or consequential damages
+  arising out of any use of the software or documentation, even if
+  advised of the possibility of such damage.
+
+  Permission is hereby granted to use, copy, modify, and distribute
+  this source code, or portions hereof, documentation and executables,
+  for any purpose, without fee, subject to the following restrictions:
+
+  1. The origin of this source code must not be misrepresented.
+  2. Altered versions must be plainly marked as such and must
+     not be misrepresented as being the original source.
+  3. This Copyright notice may not be removed or altered from any
+     source or altered source distribution.
+ 
+  The copyright holders and contributing author(s) specifically
+  permit, without fee, and encourage the use of this source code
+  as a component for supporting the Hypertext Markup Language in
+  commercial products. If you use this source code in a product,
+  acknowledgment is not required but would be appreciated.
+
+
+  Created 2001-05-20 by Charles Reitzel
+  Updated 2002-07-01 by Charles Reitzel - 1st Implementation
+
+*/
+
+
+##################################################################################################################################
+LicenceType:BSD 2 Clause Licence
+Component:Netprobe,ActiveConsole
+Library:jersey,postgresql,librdkafka
+
+---------------------------------------------------------------------------------
+
+Library:jersey
+
+    This content is produced and maintained by the Eclipse Jersey project.
+
+	Project home: https://projects.eclipse.org/projects/ee4j.jersey
+
+	Trademarks
+	  Eclipse Jersey is a trademark of the Eclipse Foundation.
+
+	Copyright
+	  All content is the property of the respective authors or their employers. For more information regarding authorship of content, please consult the listed source code repository logs.
+
+	Declared Project Licenses
+	  This program and the accompanying materials are made available under the terms of the Eclipse Public License v. 2.0 which is available at http://www.eclipse.org/legal/epl-2.0. This Source Code may also be made available under the following Secondary Licenses when the conditions for such availability set forth in the Eclipse Public License v. 2.0 are satisfied: GNU General Public License, version 2 with the GNU Classpath Exception which is available at https://www.gnu.org/software/classpath/license.html.
+
+	  SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+---------------------------------------------------------------------------------
+
+Library:postgresql
+
+    Copyright (c) 1997, PostgreSQL Global Development Group
+
+---------------------------------------------------------------------------------
+
+Library:librdkafka
+
+	Copyright (c) 2012-2020, Magnus Edenhill
+	All rights reserved.
+
+##################################################################################################################################
+LicenceType:BSD 3 Clause Licence
+Component:EUEM
+Library:PhantomJS
+
+  Copyright (C) 2011 Ariya Hidayat <ariya.hidayat@gmail.com>
+  Copyright (C) 2011 Ivan De Marino <ivan.de.marino@gmail.com>
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of the <organization> nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+  DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+  (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+  ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+##################################################################################################################################
+LicenceType:MIT Derivative
+Component:Netprobe
+Library:Bloomberg Open API (BLPAPI) binaries
+
+Copyright 2012. Bloomberg Finance L.P.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this proprietary software and associated documentation files (the "Software"),
+to use, publish, or distribute copies of the Software, and to permit persons to
+whom the Software is furnished to do so.
+
+Any other use, including modifying, adapting, reverse engineering, decompiling,
+or disassembling, is not permitted.
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+##################################################################################################################################
+LicenceType:IBM Public License Version 1.0
+Component:Netprobe
+Library:JTOpen Library
+
+You may obtain a copy of the License at https://opensource.org/licenses/IPL-1.0
+The source code is available at https://mvnrepository.com/artifact/net.sf.jt400/jt400/10.4
+
+Copyright (C) 1996, 1999 International Business Machines Corporation and others. All Rights Reserved.
+
+THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. 
+EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR 
+OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, 
+EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, 
+THE IMPLIED WARRANTIES OF MERCHANTABILITY OR CONDITIONS OF TITLE OR 
+NON-INFRINGEMENT OR FITNESS FOR A PARTICULAR PURPOSE. 
+THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU.
+
+NEITHER RECIPIENT NOR ANY CONTRIBUTORS SHALL HAVE ANY LIABILITY FOR ANY DIRECT, 
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES 
+(INCLUDING WITHOUT LIMITATION LOST PROFITS), HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ARISING IN ANY WAY OUT OF THE USE OR DISTRIBUTION OF THE PROGRAM OR 
+THE EXERCISE OF ANY RIGHTS GRANTED HEREUNDER, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+Any provisions offered other than those in the licence are at the Contributor's risk.
+
+##################################################################################################################################
+LicenceType: Apache License 2.0
+Component: Web Montage (Web Services)
+Library: Atmosphere Framework
+
+##################################################################################################################################
+LicenceType: COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0
+Component: Web Montage (Web Services), Webserver
+Library:Atmosphere Framework, Javax Servlet API, Java Transaction API
+
+---------------------------------------------------------------------------------
+
+Atmosphere Framework
+
+Source code: https://github.com/Atmosphere/atmosphere
+
+---------------------------------------------------------------------------------
+
+Javax Servlet API
+
+https://github.com/javaee/servlet-spec/blob/master/LICENSE
+https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api/3.1.0
+
+---------------------------------------------------------------------------------
+
+Java Transaction API
+
+https://mvnrepository.com/artifact/javax.transaction/jta/1.1
+
+##################################################################################################################################
+LicenceType: COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.1
+Component: Netprobe
+Library: Javax Annotation, Javax Activation, JAXB API
+
+---------------------------------------------------------------------------------
+
+Javax Annotation
+
+https://github.com/javaee/javax.annotation/blob/master/LICENSE
+https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api/1.3.2
+
+---------------------------------------------------------------------------------
+
+Javax Activation
+
+https://github.com/javaee/activation/blob/master/LICENSE.txt
+https://mvnrepository.com/artifact/javax.activation/javax.activation-api/1.2.0
+
+---------------------------------------------------------------------------------
+
+JAXB API
+
+https://oss.oracle.com/licenses/CDDL+GPL-1.1
+https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api/2.4.0-b180830.0359
+
+
+##################################################################################################################################
+LicenceType:BSD 3 Clause Licence
+Component:Netprobe,Gateway,ActiveConsole,Webserver,EUEM
+Library:Snappy, Protocol-Buffers
+
+  Copyright 2011, Google Inc. All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of Google Inc. nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+  DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+  (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+  ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+##################################################################################################################################
+LicenceType:BSD 3 Clause Licence
+Component:Webserver
+Library:UrlRewriteFilter
+
+Copyright (c) 2005-2012, Paul Tuckey
+All rights reserved.
+====================================================================
+Licensed under the BSD License. Text as follows.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above
+    copyright notice, this list of conditions and the following
+    disclaimer in the documentation and/or other materials provided
+    with the distribution.
+  - Neither the name tuckey.org nor the names of its contributors
+    may be used to endorse or promote products derived from this
+    software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+====================================================================
+
+Please note that some code used in UrlRewriteFilter is under other
+permissive licenses.
+
+====================================================================
+
+##################################################################################################################################
+LicenceType:
+Component:Gateway
+Library:Cyrus SASL License
+
+Copyright (c) 1994-2012 Carnegie Mellon University. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+The name "Carnegie Mellon University" must not be used to endorse or promote products derived from this software without prior written permission. For permission or any other legal details, please contact
+Office of Technology Transfer
+Carnegie Mellon University
+5000 Forbes Avenue
+Pittsburgh, PA 15213-3890
+(412) 268-4387, fax: (412) 268-7395
+tech-transfer@andrew.cmu.edu
+
+Redistributions of any form whatsoever must retain the following acknowledgment:
+"This product includes software developed by Computing Services at Carnegie Mellon University (http://www.cmu.edu/computing/)."
+
+CARNEGIE MELLON UNIVERSITY DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL CARNEGIE MELLON UNIVERSITY BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+
+##################################################################################################################################
+LicenceType:MIT Licence
+Component:Netprobe
+Library:joni, jcodings, jersey
+
+---------------------------------------------------------------------------------
+
+joni
+	Copyright (c) 2017 JRuby Team
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+
+---------------------------------------------------------------------------------
+
+jcodings
+	Permission is hereby granted, free of charge, to any person obtaining a copy of
+	this software and associated documentation files (the "Software"), to deal in
+	the Software without restriction, including without limitation the rights to
+	use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+	of the Software, and to permit persons to whom the Software is furnished to do
+	so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+
+-----------------------------------------------------------------------------
+
+jersey
+
+    This content is produced and maintained by the Eclipse Jersey project.
+
+	Project home: https://projects.eclipse.org/projects/ee4j.jersey
+
+	Trademarks
+	  Eclipse Jersey is a trademark of the Eclipse Foundation.
+
+	Copyright
+	  All content is the property of the respective authors or their employers. For more information regarding authorship of content, please consult the listed source code repository logs.
+
+	Declared Project Licenses
+	  This program and the accompanying materials are made available under the terms of the Eclipse Public License v. 2.0 which is available at http://www.eclipse.org/legal/epl-2.0. This Source Code may also be made available under the following Secondary Licenses when the conditions for such availability set forth in the Eclipse Public License v. 2.0 are satisfied: GNU General Public License, version 2 with the GNU Classpath Exception which is available at https://www.gnu.org/software/classpath/license.html.
+
+	  SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+##################################################################################################################################
+LicenceType:Bouncy Castle Licence
+Component:Netprobe
+Library:Bouncy Castle PKIX, CMS, EAC, TSP, PKCS, OCSP, CMP, and CRMF APIs
+Library:Bouncy Castle Provider
+
+---------------------------------------------------------------------------------
+
+Bouncy Castle PKIX, CMS, EAC, TSP, PKCS, OCSP, CMP, and CRMF APIs
+	Copyright (c) 2000 - 2021 The Legion of the Bouncy Castle Inc. (https://www.bouncycastle.org)
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+	
+---------------------------------------------------------------------------------
+
+Bouncy Castle Provider
+	Copyright (c) 2000 - 2021 The Legion of the Bouncy Castle Inc. (https://www.bouncycastle.org)
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+##################################################################################################################################
+LicenceType:Eclipse Public License - v 2.0
+Component:Netprobe
+Library:grizzly, hk2, jakarta, jersey
+
+This software in object code form is provided "as is" and no liability is accepted for it. Both the contributors to the software and ITRS (and its affiliates) exclude all warranties and representations, either expressly or by implication, including warranties or conditions of title and non-infringement, and implied warranties or conditions of mercantability and fitness for a particular purpose. ITRS hereby excludes on behalf of all contributors all liability for damages, including direct, indirect, special, incidental and consequential damages, such as lost profits
+
+This program is available subject to the terms of the Eclipse Public License, version 2
+
+https://www.eclipse.org/legal/epl-2.0/
+
+---------------------------------------------------------------------------------
+
+grizzly
+
+    grizzly-http-all      https://mvnrepository.com/artifact/org.glassfish.grizzly/grizzly-http-all/2.4.4
+
+---------------------------------------------------------------------------------  
+  
+hk2
+
+    hk2-api                https://mvnrepository.com/artifact/org.glassfish.hk2/hk2-api/2.5.0
+    hk2-locator            https://mvnrepository.com/artifact/org.glassfish.hk2/hk2-locator/2.5.0
+    hk2-utils              https://mvnrepository.com/artifact/org.glassfish.hk2/hk2-utils/2.5.0
+  
+---------------------------------------------------------------------------------  
+                                     
+jakarta                              
+                          
+    jakarta.ws.rs-api      https://mvnrepository.com/artifact/jakarta.ws.rs/jakarta.ws.rs-api/2.1.5
+    jakarta.json.bind-api  https://mvnrepository.com/artifact/jakarta.json.bind/jakarta.json.bind-api/1.0.1
+    jakarta.inject         https://mvnrepository.com/artifact/org.glassfish.hk2.external/jakarta.inject/2.5.0
+                          
+-----------------------------------------------------------------------------
+
+jersey
+
+    This content is produced and maintained by the Eclipse Jersey project.
+
+	Project home: https://projects.eclipse.org/projects/ee4j.jersey
+
+	Trademarks
+	  Eclipse Jersey is a trademark of the Eclipse Foundation.
+
+	Copyright
+	  All content is the property of the respective authors or their employers. For more information regarding authorship of content, please consult the listed source code repository logs.
+
+	Declared Project Licenses
+	  This program and the accompanying materials are made available under the terms of the Eclipse Public License v. 2.0 which is available at http://www.eclipse.org/legal/epl-2.0. This Source Code may also be made available under the following Secondary Licenses when the conditions for such availability set forth in the Eclipse Public License v. 2.0 are satisfied: GNU General Public License, version 2 with the GNU Classpath Exception which is available at https://www.gnu.org/software/classpath/license.html.
+
+	  SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+	  
+	jersey-container-grizzly2-http    https://mvnrepository.com/artifact/org.glassfish.jersey.containers/jersey-container-grizzly2-http/ 3.0.4
+	jersey-server                     https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-server/3.0.4
+	jersey-common                     https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-common/3.0.4
+	jersey-client                     https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-client/3.0.4
+	jersey-media-json-jackson         https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson/3.0.4
+	jersey-hk2                        https://mvnrepository.com/artifact/org.glassfish.jersey.inject/jersey-hk2/3.0.4
+	jersey-entity-filtering           https://mvnrepository.com/artifact/org.glassfish.jersey.ext/jersey-entity-filtering/3.0.4
+	
+##################################################################################################################################
+LicenceType:Eclipse Distribution License - v 1.0
+Component:Netprobe
+Library:jersey, Jakarta XML Binding, Jakarta Activation, JAXB
+
+-----------------------------------------------------------------------------
+
+jersey
+
+    This content is produced and maintained by the Eclipse Jersey project.
+
+	Project home: https://projects.eclipse.org/projects/ee4j.jersey
+
+	Trademarks
+	  Eclipse Jersey is a trademark of the Eclipse Foundation.
+
+	Copyright
+	  All content is the property of the respective authors or their employers. For more information regarding authorship of content, please consult the listed source code repository logs.
+
+	Declared Project Licenses
+	  This program and the accompanying materials are made available under the terms of the Eclipse Public License v. 2.0 which is available at http://www.eclipse.org/legal/epl-2.0. This Source Code may also be made available under the following Secondary Licenses when the conditions for such availability set forth in the Eclipse Public License v. 2.0 are satisfied: GNU General Public License, version 2 with the GNU Classpath Exception which is available at https://www.gnu.org/software/classpath/license.html.
+
+	  SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-----------------------------------------------------------------------------
+
+Jakarta XML Binding
+
+    [//]: # " Copyright (c) 2018, 2022 Oracle and/or its affiliates. All rights reserved. "
+    [//]: # "  "
+    [//]: # " This program and the accompanying materials are made available under the "
+    [//]: # " terms of the Eclipse Distribution License v. 1.0, which is available at "
+    [//]: # " http://www.eclipse.org/org/documents/edl-v10.php. "
+    [//]: # "  "
+    [//]: # " SPDX-License-Identifier: BSD-3-Clause "
+
+    # Notices for Jakarta XML Binding
+
+    This content is produced and maintained by the Jakarta XML Binding
+    project.
+
+    * Project home: https://projects.eclipse.org/projects/ee4j.jaxb
+
+    ## Trademarks
+
+    Jakarta XML Binding is a trademark of the Eclipse Foundation.
+
+    ## Copyright
+
+    All content is the property of the respective authors or their employers. For
+    more information regarding authorship of content, please consult the listed
+    source code repository logs.
+
+    ## Declared Project Licenses
+
+    This program and the accompanying materials are made available under the terms
+    of the Eclipse Distribution License v. 1.0 which is available at
+    http://www.eclipse.org/org/documents/edl-v10.php.
+
+    SPDX-License-Identifier: BSD-3-Clause
+
+    ## Source Code
+
+    The project maintains the following source code repositories:
+
+    * https://github.com/eclipse-ee4j/jaxb-api
+    * https://github.com/eclipse-ee4j/jaxb-tck
+
+    ## Third-party Content
+
+    This project leverages the following third party content.
+
+    Apache River (3.0.0)
+
+    * License: Apache-2.0 AND BSD-3-Clause
+
+    ASM 7 (n/a)
+
+    * License: BSD-3-Clause
+    * Project: https://asm.ow2.io/
+    * Source:
+       https://repository.ow2.org/nexus/#nexus-search;gav~org.ow2.asm~asm-commons~~~~kw,versionexpand
+
+    JTHarness (5.0)
+
+    * License: (GPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0)
+    * Project: https://wiki.openjdk.java.net/display/CodeTools/JT+Harness
+    * Source: http://hg.openjdk.java.net/code-tools/jtharness/
+
+    normalize.css (3.0.2)
+
+    * License: MIT
+
+    SigTest (n/a)
+
+    * License: GPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+    ## Cryptography
+
+    Content may contain encryption software. The country in which you are currently
+    may have restrictions on the import, possession, and use, and/or re-export to
+    another country, of encryption software. BEFORE using any encryption software,
+    please check the country's laws, regulations and policies concerning the import,
+    possession, or use, and re-export of encryption software, to see if this is
+    permitted.
+
+-----------------------------------------------------------------------------
+
+Jakarta Activation
+
+    # Notices for Jakarta Activation
+
+    This content is produced and maintained by Jakarta Activation project.
+
+    * Project home: https://projects.eclipse.org/projects/ee4j.jaf
+
+    ## Copyright
+
+    All content is the property of the respective authors or their employers. For
+    more information regarding authorship of content, please consult the listed
+    source code repository logs.
+
+    ## Declared Project Licenses
+
+    This program and the accompanying materials are made available under the terms
+    of the Eclipse Distribution License v. 1.0,
+    which is available at http://www.eclipse.org/org/documents/edl-v10.php.
+
+    SPDX-License-Identifier: BSD-3-Clause
+
+    ## Source Code
+
+    The project maintains the following source code repositories:
+
+    * https://github.com/eclipse-ee4j/jaf
+
+-----------------------------------------------------------------------------
+
+JAXB
+
+    # Notices for Eclipse Implementation of JAXB
+
+    This content is produced and maintained by the Eclipse Implementation of JAXB
+    project.
+
+    * Project home: https://projects.eclipse.org/projects/ee4j.jaxb-impl
+
+    ## Trademarks
+
+    Eclipse Implementation of JAXB is a trademark of the Eclipse Foundation.
+
+    ## Copyright
+
+    All content is the property of the respective authors or their employers. For
+    more information regarding authorship of content, please consult the listed
+    source code repository logs.
+
+    ## Declared Project Licenses
+
+    This program and the accompanying materials are made available under the terms
+    of the Eclipse Distribution License v. 1.0 which is available at
+    http://www.eclipse.org/org/documents/edl-v10.php.
+
+    SPDX-License-Identifier: BSD-3-Clause
+
+    ## Source Code
+
+    The project maintains the following source code repositories:
+
+    * https://github.com/eclipse-ee4j/jaxb-ri
+    * https://github.com/eclipse-ee4j/jaxb-istack-commons
+    * https://github.com/eclipse-ee4j/jaxb-dtd-parser
+    * https://github.com/eclipse-ee4j/jaxb-fi
+    * https://github.com/eclipse-ee4j/jaxb-stax-ex
+    * https://github.com/eclipse-ee4j/jax-rpc-ri
+
+    ## Third-party Content
+
+    This project leverages the following third party content.
+
+    Apache Ant (1.10.2)
+
+    * License: Apache-2.0 AND W3C AND LicenseRef-Public-Domain
+
+    Apache Ant (1.10.2)
+
+    * License: Apache-2.0 AND W3C AND LicenseRef-Public-Domain
+
+    Apache Felix (1.2.0)
+
+    * License: Apache License, 2.0
+
+    args4j (2.33)
+
+    * License: MIT License
+
+    dom4j (1.6.1)
+
+    * License: Custom license based on Apache 1.1
+
+    file-management (3.0.0)
+
+    * License: Apache-2.0
+    * Project: https://maven.apache.org/shared/file-management/
+    * Source:
+       https://svn.apache.org/viewvc/maven/shared/tags/file-management-3.0.0/
+
+    JUnit (4.12)
+
+    * License: Eclipse Public License
+
+    JUnit (4.12)
+
+    * License: Eclipse Public License
+
+    maven-compat (3.5.2)
+
+    * License: Apache-2.0
+    * Project: https://maven.apache.org/ref/3.5.2/maven-compat/
+    * Source:
+       https://mvnrepository.com/artifact/org.apache.maven/maven-compat/3.5.2
+
+    maven-core (3.5.2)
+
+    * License: Apache-2.0
+    * Project: https://maven.apache.org/ref/3.5.2/maven-core/index.html
+    * Source: https://mvnrepository.com/artifact/org.apache.maven/maven-core/3.5.2
+
+    maven-plugin-annotations (3.5)
+
+    * License: Apache-2.0
+    * Project: https://maven.apache.org/plugin-tools/maven-plugin-annotations/
+    * Source:
+       https://github.com/apache/maven-plugin-tools/tree/master/maven-plugin-annotations
+
+    maven-plugin-api (3.5.2)
+
+    * License: Apache-2.0
+
+    maven-resolver-api (1.1.1)
+
+    * License: Apache-2.0
+
+    maven-resolver-api (1.1.1)
+
+    * License: Apache-2.0
+
+    maven-resolver-connector-basic (1.1.1)
+
+    * License: Apache-2.0
+
+    maven-resolver-impl (1.1.1)
+
+    * License: Apache-2.0
+
+    maven-resolver-spi (1.1.1)
+
+    * License: Apache-2.0
+
+    maven-resolver-transport-file (1.1.1)
+
+    * License: Apache-2.0
+    * Project: https://maven.apache.org/resolver/maven-resolver-transport-file/
+    * Source:
+       https://github.com/apache/maven-resolver/tree/master/maven-resolver-transport-file
+
+    maven-resolver-util (1.1.1)
+
+    * License: Apache-2.0
+
+    maven-settings (3.5.2)
+
+    * License: Apache-2.0
+    * Source:
+       https://mvnrepository.com/artifact/org.apache.maven/maven-settings/3.5.2
+
+    OSGi Service Platform Core Companion Code (6.0)
+
+    * License: Apache License, 2.0
+
+    plexus-archiver (3.5)
+
+    * License: Apache-2.0
+    * Project: https://codehaus-plexus.github.io/plexus-archiver/
+    * Source: https://github.com/codehaus-plexus/plexus-archiver
+
+    plexus-io (3.0.0)
+
+    * License: Apache-2.0
+
+    plexus-utils (3.1.0)
+
+    * License: Apache- 2.0 or Apache- 1.1 or BSD or Public Domain or Indiana
+       University Extreme! Lab Software License V1.1.1 (Apache 1.1 style)
+
+    relaxng-datatype (1.0)
+
+    * License: New BSD license
+
+    Sax (0.2)
+
+    * License: SAX-PD
+    * Project: http://www.megginson.com/downloads/SAX/
+    * Source: http://sourceforge.net/project/showfiles.php?group_id=29449
+
+    testng (6.14.2)
+
+    * License: Apache-2.0 AND (MIT OR GPL-1.0+)
+    * Project: https://testng.org/doc/index.html
+    * Source: https://github.com/cbeust/testng
+
+    wagon-http-lightweight (3.0.0)
+
+    * License: Pending
+    * Project: https://maven.apache.org/wagon/
+    * Source:
+       https://mvnrepository.com/artifact/org.apache.maven.wagon/wagon-http-lightweight/3.0.0
+
+    xz for java (1.8)
+
+    * License: LicenseRef-Public-Domain
+
+    ## Cryptography
+
+    Content may contain encryption software. The country in which you are currently
+    may have restrictions on the import, possession, and use, and/or re-export to
+    another country, of encryption software. BEFORE using any encryption software,
+    please check the country's laws, regulations and policies concerning the import,
+    possession, or use, and re-export of encryption software, to see if this is
+    permitted.
+
+##################################################################################################################################
+LicenceType:W3C
+Component:Netprobe
+Library:jersey
+
+https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+
+This software or document includes material copied from or derived from . Copyright (C) W3C (R) (MIT, ERCIM, Keio, Beihang).
+
+-----------------------------------------------------------------------------
+
+jersey
+
+	# Notice for Jersey 
+	This content is produced and maintained by the Eclipse Jersey project.
+
+	*  Project home: https://projects.eclipse.org/projects/ee4j.jersey
+
+	## Trademarks
+	Eclipse Jersey is a trademark of the Eclipse Foundation.
+
+	## Copyright
+
+	All content is the property of the respective authors or their employers. For
+	more information regarding authorship of content, please consult the listed
+	source code repository logs.
+
+	## Declared Project Licenses
+
+	This program and the accompanying materials are made available under the terms
+	of the Eclipse Public License v. 2.0 which is available at
+	http://www.eclipse.org/legal/epl-2.0. This Source Code may also be made
+	available under the following Secondary Licenses when the conditions for such
+	availability set forth in the Eclipse Public License v. 2.0 are satisfied: GNU
+	General Public License, version 2 with the GNU Classpath Exception which is
+	available at https://www.gnu.org/software/classpath/license.html.
+
+	SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+	## Source Code
+	The project maintains the following source code repositories:
+
+	* https://github.com/eclipse-ee4j/jersey
+
+	## Third-party Content
+
+	Angular JS, v1.6.6
+	* License MIT (http://www.opensource.org/licenses/mit-license.php)
+	* Project: http://angularjs.org
+	* Coyright: (c) 2010-2017 Google, Inc.
+
+	aopalliance Version 1
+	* License: all the source code provided by AOP Alliance is Public Domain.
+	* Project: http://aopalliance.sourceforge.net
+	* Copyright: Material in the public domain is not protected by copyright
+
+	Bean Validation API 2.0.2
+	* License: Apache License, 2.0
+	* Project: http://beanvalidation.org/1.1/
+	* Copyright: 2009, Red Hat, Inc. and/or its affiliates, and individual contributors
+	* by the @authors tag.
+
+	Hibernate Validator CDI, 6.1.2.Final 
+	* License: Apache License, 2.0
+	* Project: https://beanvalidation.org/
+	* Repackaged in org.glassfish.jersey.server.validation.internal.hibernate
+
+	Bootstrap v3.3.7
+	* License: MIT license (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+	* Project: http://getbootstrap.com
+	* Copyright: 2011-2016 Twitter, Inc
+
+	Google Guava Version 18.0
+	* License: Apache License, 2.0
+	* Copyright (C) 2009 The Guava Authors
+
+	javax.inject Version: 1
+	* License: Apache License, 2.0
+	* Copyright (C) 2009 The JSR-330 Expert Group
+
+	Javassist Version 3.25.0-GA
+	* License: Apache License, 2.0
+	* Project: http://www.javassist.org/
+	* Copyright (C) 1999- Shigeru Chiba. All Rights Reserved.
+
+	Jackson JAX-RS Providers Version 2.10.1
+	* License: Apache License, 2.0
+	* Project: https://github.com/FasterXML/jackson-jaxrs-providers
+	* Copyright: (c) 2009-2011 FasterXML, LLC. All rights reserved unless otherwise indicated.
+
+	jQuery v1.12.4
+	* License: jquery.org/license
+	* Project: jquery.org
+	* Copyright: (c) jQuery Foundation
+
+	jQuery Barcode plugin 0.3
+	* License: MIT & GPL (http://www.opensource.org/licenses/mit-license.php & http://www.gnu.org/licenses/gpl.html)
+	* Project:  http://www.pasella.it/projects/jQuery/barcode
+	* Copyright: (c) 2009 Antonello Pasella antonello.pasella@gmail.com
+
+	JSR-166 Extension - JEP 266
+	* License: CC0
+	* No copyright
+	* Written by Doug Lea with assistance from members of JCP JSR-166 Expert Group and released to the public domain, as explained at http://creativecommons.org/publicdomain/zero/1.0/
+
+	KineticJS, v4.7.1
+	* License: MIT license (http://www.opensource.org/licenses/mit-license.php)
+	* Project: http://www.kineticjs.com, https://github.com/ericdrowell/KineticJS
+	* Copyright: Eric Rowell
+
+	org.objectweb.asm Version 8.0
+	* License: Modified BSD (http://asm.objectweb.org/license.html)
+	* Copyright (c) 2000-2011 INRIA, France Telecom. All rights reserved.
+
+	org.osgi.core version 6.0.0
+	* License: Apache License, 2.0
+	* Copyright (c) OSGi Alliance (2005, 2008). All Rights Reserved.
+
+	org.glassfish.jersey.server.internal.monitoring.core
+	* License: Apache License, 2.0
+	* Copyright (c) 2015-2018 Oracle and/or its affiliates. All rights reserved.
+	* Copyright 2010-2013 Coda Hale and Yammer, Inc.
+
+	W3.org documents
+	* License: W3C License
+	* Copyright: Copyright (c) 1994-2001 World Wide Web Consortium, (Massachusetts Institute of Technology, Institut National de Recherche en Informatique et en Automatique, Keio University). All Rights Reserved. http://www.w3.org/Consortium/Legal/
+	  
+
+##################################################################################################################################
+LicenceType:GNU General Public License (GPL), Version 2, With Classpath Exception
+Component:Netprobe, ActiveConsole, Webserver
+Library:Jersey Core Server, Jersey Core Common, Jersey Media JSON Jackson
+Library:Javax Annotation, Javax Activation, JAXB API, Javax Servlet API, JavaHelp Libraries, OpenJDK11
+
+------------------------------------------------------------------------------------------------
+
+Jersey Core Server
+
+	https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-server/3.0.4
+
+Jersey Core Common
+
+	https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-common/3.0.4
+
+Jersey Media JSON Jackson
+
+	https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson/3.0.4
+
+	# Notice for Jersey 
+	This content is produced and maintained by the Eclipse Jersey project.
+
+	*  Project home: https://projects.eclipse.org/projects/ee4j.jersey
+
+	## Trademarks
+	Eclipse Jersey is a trademark of the Eclipse Foundation.
+
+	## Copyright
+
+	All content is the property of the respective authors or their employers. For
+	more information regarding authorship of content, please consult the listed
+	source code repository logs.
+
+	## Declared Project Licenses
+
+	This program and the accompanying materials are made available under the terms
+	of the Eclipse Public License v. 2.0 which is available at
+	http://www.eclipse.org/legal/epl-2.0. This Source Code may also be made
+	available under the following Secondary Licenses when the conditions for such
+	availability set forth in the Eclipse Public License v. 2.0 are satisfied: GNU
+	General Public License, version 2 with the GNU Classpath Exception which is
+	available at https://www.gnu.org/software/classpath/license.html.
+
+	SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+	## Source Code
+	The project maintains the following source code repositories:
+
+	* https://github.com/eclipse-ee4j/jersey
+
+	## Third-party Content
+
+	Angular JS, v1.6.6
+	* License MIT (http://www.opensource.org/licenses/mit-license.php)
+	* Project: http://angularjs.org
+	* Coyright: (c) 2010-2017 Google, Inc.
+
+	aopalliance Version 1
+	* License: all the source code provided by AOP Alliance is Public Domain.
+	* Project: http://aopalliance.sourceforge.net
+	* Copyright: Material in the public domain is not protected by copyright
+
+	Bean Validation API 2.0.2
+	* License: Apache License, 2.0
+	* Project: http://beanvalidation.org/1.1/
+	* Copyright: 2009, Red Hat, Inc. and/or its affiliates, and individual contributors
+	* by the @authors tag.
+
+	Hibernate Validator CDI, 6.1.2.Final 
+	* License: Apache License, 2.0
+	* Project: https://beanvalidation.org/
+	* Repackaged in org.glassfish.jersey.server.validation.internal.hibernate
+
+	Bootstrap v3.3.7
+	* License: MIT license (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+	* Project: http://getbootstrap.com
+	* Copyright: 2011-2016 Twitter, Inc
+
+	Google Guava Version 18.0
+	* License: Apache License, 2.0
+	* Copyright (C) 2009 The Guava Authors
+
+	javax.inject Version: 1
+	* License: Apache License, 2.0
+	* Copyright (C) 2009 The JSR-330 Expert Group
+
+	Javassist Version 3.25.0-GA
+	* License: Apache License, 2.0
+	* Project: http://www.javassist.org/
+	* Copyright (C) 1999- Shigeru Chiba. All Rights Reserved.
+
+	Jackson JAX-RS Providers Version 2.10.1
+	* License: Apache License, 2.0
+	* Project: https://github.com/FasterXML/jackson-jaxrs-providers
+	* Copyright: (c) 2009-2011 FasterXML, LLC. All rights reserved unless otherwise indicated.
+
+	jQuery v1.12.4
+	* License: jquery.org/license
+	* Project: jquery.org
+	* Copyright: (c) jQuery Foundation
+
+	jQuery Barcode plugin 0.3
+	* License: MIT & GPL (http://www.opensource.org/licenses/mit-license.php & http://www.gnu.org/licenses/gpl.html)
+	* Project:  http://www.pasella.it/projects/jQuery/barcode
+	* Copyright: (c) 2009 Antonello Pasella antonello.pasella@gmail.com
+
+	JSR-166 Extension - JEP 266
+	* License: CC0
+	* No copyright
+	* Written by Doug Lea with assistance from members of JCP JSR-166 Expert Group and released to the public domain, as explained at http://creativecommons.org/publicdomain/zero/1.0/
+
+	KineticJS, v4.7.1
+	* License: MIT license (http://www.opensource.org/licenses/mit-license.php)
+	* Project: http://www.kineticjs.com, https://github.com/ericdrowell/KineticJS
+	* Copyright: Eric Rowell
+
+	org.objectweb.asm Version 8.0
+	* License: Modified BSD (http://asm.objectweb.org/license.html)
+	* Copyright (c) 2000-2011 INRIA, France Telecom. All rights reserved.
+
+	org.osgi.core version 6.0.0
+	* License: Apache License, 2.0
+	* Copyright (c) OSGi Alliance (2005, 2008). All Rights Reserved.
+
+	org.glassfish.jersey.server.internal.monitoring.core
+	* License: Apache License, 2.0
+	* Copyright (c) 2015-2018 Oracle and/or its affiliates. All rights reserved.
+	* Copyright 2010-2013 Coda Hale and Yammer, Inc.
+
+	W3.org documents
+	* License: W3C License
+	* Copyright: Copyright (c) 1994-2001 World Wide Web Consortium, (Massachusetts Institute of Technology, Institut National de Recherche en Informatique et en Automatique, Keio University). All Rights Reserved. http://www.w3.org/Consortium/Legal/
+
+This software in object code form is provided "as is" and no liability is accepted for it. Both the contributors to the software and ITRS (and its affiliates) exclude all warranties and representations, either expressly or by implication, including warranties or conditions of title and non-infringement, and implied warranties or conditions of mercantability and fitness for a particular purpose. ITRS hereby excludes on behalf of itself and all contributors, all liability for damages, including direct, indirect, special, incidental and consequential damages, such as lost profits.
+
+ITRS hereby grants the customer the right to modify this combined work for the customer's own use and to reverse engineer it for the purpose of debugging such modifications.
+
+------------------------------------------------------------------------------------------------
+
+Javax Annotation
+
+	https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api/1.3.2
+
+This software in object code form is provided "as is" and no liability is accepted for it. Both the contributors to the software and ITRS (and its affiliates) exclude all warranties and representations, either expressly or by implication, including warranties or conditions of title and non-infringement, and implied warranties or conditions of mercantability and fitness for a particular purpose. ITRS hereby excludes on behalf of itself and all contributors, all liability for damages, including direct, indirect, special, incidental and consequential damages, such as lost profits.
+
+ITRS hereby grants the customer the right to modify this combined work for the customer's own use and to reverse engineer it for the purpose of debugging such modifications.
+
+------------------------------------------------------------------------------------------------
+
+Javax Activation
+
+	https://mvnrepository.com/artifact/javax.activation/javax.activation-api/1.2.0
+
+This software in object code form is provided "as is" and no liability is accepted for it. Both the contributors to the software and ITRS (and its affiliates) exclude all warranties and representations, either expressly or by implication, including warranties or conditions of title and non-infringement, and implied warranties or conditions of mercantability and fitness for a particular purpose. ITRS hereby excludes on behalf of itself and all contributors, all liability for damages, including direct, indirect, special, incidental and consequential damages, such as lost profits.
+
+ITRS hereby grants the customer the right to modify this combined work for the customer's own use and to reverse engineer it for the purpose of debugging such modifications.
+
+------------------------------------------------------------------------------------------------
+
+JAXB API
+
+	https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api/2.4.0-b180830.0359
+
+This software in object code form is provided "as is" and no liability is accepted for it. Both the contributors to the software and ITRS (and its affiliates) exclude all warranties and representations, either expressly or by implication, including warranties or conditions of title and non-infringement, and implied warranties or conditions of mercantability and fitness for a particular purpose. ITRS hereby excludes on behalf of itself and all contributors, all liability for damages, including direct, indirect, special, incidental and consequential damages, such as lost profits.
+
+ITRS hereby grants the customer the right to modify this combined work for the customer's own use and to reverse engineer it for the purpose of debugging such modifications.
+
+------------------------------------------------------------------------------------------------
+
+Javax Servlet API
+
+https://github.com/javaee/servlet-spec/blob/master/LICENSE
+https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api/3.1.0
+
+Copyright (c) 1997-2013 Oracle and/or its affiliates. All rights reserved.
+
+This software in object code form is provided "as is" and no liability is accepted for it. Both the contributors to the software and ITRS (and its affiliates) exclude all warranties and representations, either expressly or by implication, including warranties or conditions of title and non-infringement, and implied warranties or conditions of mercantability and fitness for a particular purpose. ITRS hereby excludes on behalf of itself and all contributors, all liability for damages, including direct, indirect, special, incidental and consequential damages, such as lost profits.
+
+ITRS hereby grants the customer the right to modify this combined work for the customer's own use and to reverse engineer it for the purpose of debugging such modifications.
+
+------------------------------------------------------------------------------------------------
+
+JavaHelp Libraries
+
+jh
+    https://mvnrepository.com/artifact/javahelp/jh/2.0
+
+jhall
+    https://mvnrepository.com/artifact/com.sun.woodstock.dependlibs/jhall/2.0
+
+jhbasic
+    https://mvnrepository.com/artifact/com.sun.woodstock.dependlibs/jhbasic/2.0
+
+Copyright (c) 2010 Sun Woodstock
+
+This software in object code form is provided "as is" and no liability is accepted for it. Both the contributors to the software and ITRS (and its affiliates) exclude all warranties and representations, either expressly or by implication, including warranties or conditions of title and non-infringement, and implied warranties or conditions of mercantability and fitness for a particular purpose. ITRS hereby excludes on behalf of itself and all contributors, all liability for damages, including direct, indirect, special, incidental and consequential damages, such as lost profits.
+
+ITRS hereby grants the customer the right to modify this combined work for the customer's own use and to reverse engineer it for the purpose of debugging such modifications.
+
+------------------------------------------------------------------------------------------------
+
+OpenJDK11
+
+https://adoptium.net/
+https://github.com/adoptium/jdk11u.git
+
+Copyright (c) 2022 Eclipse Foundation, Inc
+
+	# Notices for Eclipse Temurin
+
+	This content is produced and maintained by the Eclipse Temurin project.
+
+	 * Project home: https://projects.eclipse.org/projects/adoptium.temurin
+
+	## Trademarks
+
+	Eclipse Temurin is a trademark of the Eclipse Foundation. Eclipse, and the
+	Eclipse Logo are registered trademarks of the Eclipse Foundation.
+
+	Java and all Java-based trademarks are trademarks of Oracle Corporation in
+	the United States, other countries, or both.
+
+	## Copyright
+
+	All content is the property of the respective authors or their employers.
+	For more information regarding authorship of content, please consult the
+	listed source code repository logs.
+
+	## Declared Project Licenses
+
+	This program and the accompanying materials are made available under the terms
+	of the GNU General Public License, version 2, with the Classpath Exception.
+
+	Additional information relating to the program and accompanying materials
+	license and usage is available as follows.
+	 * For Eclipse Temurin version 8 see the LICENSE and ASSEMBLY_EXCEPTION files
+	in the top level directory of the installation.
+	 * For Eclipse Temurin version 9 or later see the files under the legal/
+	directory in the top level directory of the installation.
+
+	SPDX-License-Identifier: GPL-2.0 WITH Classpath-exception-2.0
+
+	## Source Code
+
+	The project maintains the following source code repositories which may be
+	relevant to this content:
+
+	 * https://github.com/adoptium/temurin-build
+	 * https://github.com/adoptium/jdk
+	 * https://github.com/adoptium/jdk8u
+	 * https://github.com/adoptium/jdk11u
+	 * https://github.com/adoptium/jdk16u
+	 * https://github.com/adoptium/jdk17u
+	 * and so on
+
+	## Third-party Content
+
+	This program and accompanying materials contains third-party content.
+	 * For Eclipse Temurin version 8 see the THIRD_PARTY_LICENSE file in the
+	top level directory of the installation.
+	 * For Eclipse Temurin version 9 or later see the files under the legal/
+	directory in the top level directory of the installation.
+
+	## Cryptography
+
+	Content may contain encryption software. The country in which you are currently
+	may have restrictions on the import, possession, and use, and/or re-export to
+	another country, of encryption software. BEFORE using any encryption software,
+	please check the country's laws, regulations and policies concerning the import,
+	possession, or use, and re-export of encryption software, to see if this is
+	permitted.
+
+This software in object code form is provided "as is" and no liability is accepted for it. Both the contributors to the software and ITRS (and its affiliates) exclude all warranties and representations, either expressly or by implication, including warranties or conditions of title and non-infringement, and implied warranties or conditions of mercantability and fitness for a particular purpose. ITRS hereby excludes on behalf of itself and all contributors, all liability for damages, including direct, indirect, special, incidental and consequential damages, such as lost profits.
+
+ITRS hereby grants the customer the right to modify this combined work for the customer's own use and to reverse engineer it for the purpose of debugging such modifications.
+
+##################################################################################################################################
+LicenceType:GNU Lesser General Public License, version 2.1
+Component:ActiveConsole,Webserver,Netprobe
+Library:mariadb-java-client, Logback, jTDS, SwingX
+
+---------------------------------------------------------------------------------
+
+MariaDB Java Client
+
+https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client/2.4.1
+
+Copyright (c) 2006-2019 MvnRepository
+
+This software in object code form is provided "as is" and no liability is accepted for it. Both the contributors to the software and ITRS (and its affiliates) exclude all warranties and representations, either expressly or by implication, including warranties or conditions of title and non-infringement, and implied warranties or conditions of mercantability and fitness for a particular purpose. ITRS hereby excludes on behalf of itself and all contributors, all liability for damages, including direct, indirect, special, incidental and consequential damages, such as lost profits.
+
+ITRS hereby grants the customer the right to modify this combined work for the customer's own use and to reverse engineer it for the purpose of debugging such modifications.
+
+/*
+ *
+ * MariaDB Client for Java
+ *
+ * Copyright (c) 2012-2014 Monty Program Ab.
+ * Copyright (c) 2015-2017 MariaDB Ab.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License
+ * for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License along
+ * with this library; if not, write to Monty Program Ab info@montyprogram.com.
+ *
+ * This particular MariaDB Client for Java file is work
+ * derived from a Drizzle-JDBC. Drizzle-JDBC file which is covered by subject to
+ * the following copyright and notice provisions:
+ *
+ * Copyright (c) 2009-2011, Marcus Eriksson
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ * Redistributions of source code must retain the above copyright notice, this list
+ * of conditions and the following disclaimer.
+ *
+ * Redistributions in binary form must reproduce the above copyright notice, this
+ * list of conditions and the following disclaimer in the documentation and/or
+ * other materials provided with the distribution.
+ *
+ * Neither the name of the driver nor the names of its contributors may not be
+ * used to endorse or promote products derived from this software without specific
+ * prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS  AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+ * OF SUCH DAMAGE.
+ *
+ */
+
+---------------------------------------------------------------------------------
+
+Logback
+
+logback-classic        https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+logback-core           https://mvnrepository.com/artifact/ch.qos.logback/logback-core
+
+This software in object code form is provided "as is" and no liability is accepted for it. Both the contributors to the software and ITRS (and its affiliates) exclude all warranties and representations, either expressly or by implication, including warranties or conditions of title and non-infringement, and implied warranties or conditions of mercantability and fitness for a particular purpose. ITRS hereby excludes on behalf of itself and all contributors, all liability for damages, including direct, indirect, special, incidental and consequential damages, such as lost profits.
+
+ITRS hereby grants the customer the right to modify this combined work for the customer's own use and to reverse engineer it for the purpose of debugging such modifications.
+
+Logback LICENSE
+---------------
+
+Logback: the reliable, generic, fast and flexible logging framework.
+Copyright (C) 1999-2015, QOS.ch. All rights reserved.
+
+This program and the accompanying materials are dual-licensed under
+either the terms of the Eclipse Public License v1.0 as published by
+the Eclipse Foundation
+ 
+  or (per the licensee's choosing)
+ 
+under the terms of the GNU Lesser General Public License version 2.1
+as published by the Free Software Foundation.
+
+---------------------------------------------------------------------------------
+
+jTDS
+
+https://mvnrepository.com/artifact/net.sourceforge.jtds/jtds/1.2.2
+
+Copyright (C) 2007 The jTDS Project
+
+This software in object code form is provided "as is" and no liability is accepted for it. Both the contributors to the software and ITRS (and its affiliates) exclude all warranties and representations, either expressly or by implication, including warranties or conditions of title and non-infringement, and implied warranties or conditions of mercantability and fitness for a particular purpose. ITRS hereby excludes on behalf of itself and all contributors, all liability for damages, including direct, indirect, special, incidental and consequential damages, such as lost profits.
+
+ITRS hereby grants the customer the right to modify this combined work for the customer's own use and to reverse engineer it for the purpose of debugging such modifications.
+
+---------------------------------------------------------------------------------
+
+SwingX
+
+https://mvnrepository.com/artifact/org.swinglabs/swingx/1.0
+
+Copyright (C) 2009 Sun Microsystems, Inc.
+
+This software in object code form is provided "as is" and no liability is accepted for it. Both the contributors to the software and ITRS (and its affiliates) exclude all warranties and representations, either expressly or by implication, including warranties or conditions of title and non-infringement, and implied warranties or conditions of mercantability and fitness for a particular purpose. ITRS hereby excludes on behalf of itself and all contributors, all liability for damages, including direct, indirect, special, incidental and consequential damages, such as lost profits.
+
+ITRS hereby grants the customer the right to modify this combined work for the customer's own use and to reverse engineer it for the purpose of debugging such modifications.
+
+##################################################################################################################################
+LicenceType:GNU General Public License version 3
+Component:Gateway,Netprobe,Webserver
+Library:libstdc++.so.6
+
+Copyright (c) 2008-2019 Free Software Foundation, Inc.
+
+GNU General Public License version 3: https://gcc.gnu.org/onlinedocs/libstdc++/manual/appendix_gpl.html
+GCC RUNTIME LIBRARY EXCEPTION: https://gcc.gnu.org/onlinedocs/libstdc++/manual/license.html
+
+THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW.
+EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES
+PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS 
+FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM 
+IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY 
+SERVICING, REPAIR OR CORRECTION.
+
+##################################################################################################################################
+LicenceType:SIL Open Font License, Version 1.1
+Component:ActiveConsole,Gateway Setup Editor
+Font: Cairo
+
+Copyright (c) 2009, The Cairo Project Authors (gaber@gaberism.net),
+with Reserved Font Name Cairo.
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+
+https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web
+
+##################################################################################################################################
+LicenceType:Boost Software Licence, Version 1.0
+Component:ActiveConsole,Gateway,Netprobe,Webslinger,LicenseDaemon,Webserver,GatewayRecorder,FixAnalyser2Netprobe,FileAgent
+Library:boost
+
+##################################################################################################################################
+LicenceType:Curl License
+Component:Netprobe,Gateway
+Library:curl
+
+##################################################################################################################################
+LicenceType:Eclipse Public License - v 1.0
+Component:Webserver,Netprobe
+Library:Jetty, Logback
+
+    jetty-client           https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-client
+    jetty-continuation     https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-continuation
+    jetty-http             https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-http
+    jetty-io               https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-io
+    jetty-security         https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-security
+    jetty-server           https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server
+    jetty-servlet          https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet
+    jetty-servlets         https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlets
+    jetty-util             https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-util
+    jetty-webapp           https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp
+    jetty-xml              https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-xml
+    logback-classic        https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+    logback-core           https://mvnrepository.com/artifact/ch.qos.logback/logback-core
+
+Eclipse Public License v1.0: https://www.eclipse.org/legal/epl-v10.html
+
+This software in object code form is provided "as is" and no liability is accepted for it. Both the contributors to the software and ITRS (and its affiliates) exclude all warranties and representations, either expressly or by implication, including warranties or conditions of title and non-infringement, and implied warranties or conditions of mercantability and fitness for a particular purpose. ITRS hereby excludes on behalf of all contributors all liability for damages, including direct, indirect, special, incidental and consequential damages, such as lost profits.
+Any licence terms that differ from those of the EPL v.1 are offered by ITRS alone.
+
+This program is available subject to the terms of the Eclipse Public License, version 1.
+
+##################################################################################################################################
+LicenceType:BSD
+Component:Gateway,Gateway Setup Editor,Netprobe
+Library:PCRE
+
+THE BASIC LIBRARY FUNCTIONS
+---------------------------
+
+Written by:       Philip Hazel
+Email local part: ph10
+Email domain:     cam.ac.uk
+
+University of Cambridge Computing Service,
+Cambridge, England.
+
+Copyright (c) 1997-2020 University of Cambridge
+All rights reserved.
+
+
+PCRE JUST-IN-TIME COMPILATION SUPPORT
+-------------------------------------
+
+Written by:       Zoltan Herczeg
+Email local part: hzmester
+Email domain:     freemail.hu
+
+Copyright(c) 2010-2020 Zoltan Herczeg
+All rights reserved.
+
+
+STACK-LESS JUST-IN-TIME COMPILER
+--------------------------------
+
+Written by:       Zoltan Herczeg
+Email local part: hzmester
+Email domain:     freemail.hu
+
+Copyright(c) 2009-2020 Zoltan Herczeg
+All rights reserved.
+
+
+THE C++ WRAPPER FUNCTIONS
+-------------------------
+
+Contributed by:   Google Inc.
+
+Copyright (c) 2007-2012, Google Inc.
+All rights reserved.
+
+
+THE "BSD" LICENCE
+-----------------
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice,
+      this list of conditions and the following disclaimer.
+
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+
+    * Neither the name of the University of Cambridge nor the name of Google
+      Inc. nor the names of their contributors may be used to endorse or
+      promote products derived from this software without specific prior
+      written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+
+##################################################################################################################################
+LicenceType:JIDE Paid Licence
+Component:ActiveConsole,Gateway Setup Editor,Webserver
+Library:JIDE
+
+http://www.jidesoft.com/purchase/SLA.htm
+
+Copyright (c) 2002 - 2020 JIDE Software, Inc, all rights reserved.
+
+##################################################################################################################################
+LicenseType: MIT License
+Component:Netprobe
+Library: shared_string
+
+https://github.com/sschanel/shared_string
+
+Copyright (c) 2015 Scott Schanel, all rights reserved.
+
+##################################################################################################################################
+LicenseType: Oracle Free License
+Component:ActiveConsole,Webserver
+Library: Ojdbc10
+
+https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc10/19.15.0.0.1
+
+##################################################################################################################################

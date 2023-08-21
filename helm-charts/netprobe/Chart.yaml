@@ -1,6 +1,3 @@
-apiVersion: v2
-appVersion: 6.3.0
-description: ITRS Geneos Netprobe for Kubernetes
-name: netprobe
-type: application
-version: 6.3.0
+version https://git-lfs.github.com/spec/v1
+oid sha256:65142bc1813297afc477c7188c9be6ba6acac3527d3154264b2d348e2e632f9e
+size 130

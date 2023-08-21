@@ -1,6 +1,3 @@
-apiVersion: v2
-appVersion: 1.6.0
-description: Obcerv Alerting app
-name: obcerv-app-alerting
-type: application
-version: 1.6.0
+version https://git-lfs.github.com/spec/v1
+oid sha256:da0830cba1e34ca2f561a11852ec5fd6532a0657ea00bf3e94a18b7e3f49317e
+size 125

@@ -1,6 +1,3 @@
-apiVersion: v2
-appVersion: 6.3.0
-description: ITRS Geneos Gateway
-name: gateway
-type: application
-version: 6.3.0
+version https://git-lfs.github.com/spec/v1
+oid sha256:016d3517eca3d751c10767fe0ec1ad7c6050c9bc5eda67e916c9bdec2fa354f5
+size 113

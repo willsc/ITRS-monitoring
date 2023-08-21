@@ -1,5 +1,3 @@
-apiVersion: v2
-description: Keycloak clients for Geneos
-name: geneos-clients
-type: application
-version: 1.0.0
+version https://git-lfs.github.com/spec/v1
+oid sha256:494ee3db31aa08a69c1a0308e0934782f1f0f241d24a070f884a3716c0daa077
+size 110

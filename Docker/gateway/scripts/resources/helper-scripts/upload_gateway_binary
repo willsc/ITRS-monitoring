@@ -1,0 +1,94 @@
+#!/usr/bin/python
+import argparse
+import sys
+import subprocess
+import json
+
+def exit(msg, details):
+	print(msg)
+	print('Details\n'+details)
+	sys.exit()
+
+def run_curl(curl_args):
+	ret={}
+	curl_result=subprocess.check_output(curl_args, stderr=subprocess.STDOUT)
+	lines=curl_result.splitlines(False)
+	ret['code']=lines.pop(-1)
+	output=''
+	for l in lines:
+		output +=  l+'\n'
+	ret['output']=output
+	return ret
+
+def upload_gateway(args):
+	curl_args=['curl','-k','-s','-S','-F','gateway=@'+args.file_name, '--write-out','\n%{http_code}\n']
+	if args.auth:
+		curl_args.append('-H')
+		curl_args.append("Authorization: Bearer "+args.token)
+	curl_args.append(args.gatewayHub+'/v0/admin/artifacts')
+	try:
+		curl_result=run_curl(curl_args)
+		if curl_result['code'] != '201':		
+			exit('Upload failed : Code='+curl_result['code'], curl_result['output'])
+	except subprocess.CalledProcessError as e:
+		exit('Upload failed', e.output)
+
+def get_gateway_versions(args):
+	curl_args=['curl','-k','-s','-S','--write-out','\n%{http_code}\n']
+	if args.auth:
+		curl_args.append('-H')
+		curl_args.append("Authorization: Bearer "+args.token)
+	curl_args.append(args.gatewayHub+'/v0/admin/artifacts/gateways')
+	try:
+		curl_result=run_curl(curl_args)
+		if curl_result['code'] != '200':		
+			exit('Version query failed : Code='+curl_result['code'], curl_result['output'])
+		versions=json.loads(curl_result['output'])['versions']
+		for v in versions:
+			print('  '+v+'\n')
+	except subprocess.CalledProcessError as e:
+		exit('Version query failed', e.output)
+
+def get_token(args):
+	curl_args=['curl','-k', '-s','-S','--negotiate','-u',':','--write-out','\n%{http_code}\n', args.ssoAgent+'/authorize?response_type=token&client_id=rest&state=IGNORE&nonce=IGNORE']
+	try:
+		curl_result=run_curl(curl_args)
+		if curl_result['code'] != '200':		
+			exit('Token request failed : Code='+curl_result['code'], curl_result['output'])
+		args.token=json.loads(curl_result['output'])['access_token']
+		if args.token == None or args.token == '':
+			exit('Token request failed', curl_result['output'])
+	except subprocess.CalledProcessError as e:
+		exit('Token request failed', e.output)
+
+parser = argparse.ArgumentParser(prog='upload_gateway_binary', description='Upload gateway binary into Gateway Hub.')
+
+parser.add_argument('--gateway-hub', dest='gatewayHub', required=True, metavar='url', help='rest location of Gateway-Hub')
+parser.add_argument('--file', dest='file_name', required=True, metavar='gateway-binary', help='GZipped tar file containing a full Gateway distribution')
+parser.add_argument('--sso-agent', dest='ssoAgent', required=False, metavar='url', help='rest location of the SSO-Agent')
+parser.add_argument('--kerberos-principal', dest='principal', required=False, metavar='principal', help='Kerberos principal to use when authenticating')
+parser.add_argument('--kerberos-keytab', dest='keytab', required=False, metavar='keytab', help='Kerberos keytab to use when authenticating')
+
+args = parser.parse_args()
+
+if args.ssoAgent == None:
+	args.ssoAgent = args.gatewayHub
+if args.principal == None:
+	args.auth = False
+else:
+	args.auth = True
+	if args.keytab == None:
+		subprocess.call(['kinit',args.principal])
+	else:
+		subprocess.call(['kinit','-k','-t',args.keytab,args.principal])
+	ret=subprocess.call(['klist','-s'])
+	if ret == 1:
+		print("No Kerberos credentials have been obtained")
+		sys.exit()
+
+if args.auth:
+	get_token(args)
+
+upload_gateway(args)
+print("Hub now supports these Gateway versions")
+get_gateway_versions(args)

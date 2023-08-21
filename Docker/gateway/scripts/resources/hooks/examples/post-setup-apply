@@ -1,0 +1,34 @@
+#!/bin/bash
+if [[ "$_COMMENT"  == "" ]]; then
+  _COMMENT="Comment missing"
+fi
+if [[ "$_USER" == "" ]]; then
+  _USER="unknown"
+fi
+if [[ "$_WORKSTATION" == "" ]]; then
+  _WORKSTATION="unknown"
+fi
+w=$_WORKSTATION
+fu=$_USER
+su=${fu#*\\}
+
+
+if [[ ! -e .git ]]; then 
+   git init > /dev/null
+fi
+
+echo "$_COMMENT" > comment.txt
+echo "$_FILES" > file-info.xml
+
+git add *.xml  */*.xml > /dev/null
+
+git commit --file=comment.txt --author="$fu <$su@$w>" > /dev/null
+rm comment.txt
+
+ver=`git log --format="%h" -n 1`
+echo "<setup><files>"
+for f in $( ls *.xml */*.xml); do
+	echo "<file><path>$f</path><version>$ver</version></file>"
+done
+echo "</files></setup>"
+

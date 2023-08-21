@@ -1,13 +1,3 @@
-docker:
-  registry: docker.itrsgroup.com
-
-iam:
-  image:
-    repository: /obcerv/iam-tools
-    tag: "1.0.0"
-    pullPolicy: IfNotPresent
-  redirectUri: "https://localhost:*"
-  insecureUri: "http://127.0.0.1:*"
-  allowInsecure: false
-  uiClientName: "geneos-ui"
-  gwClientName: "geneos-gw"
+version https://git-lfs.github.com/spec/v1
+oid sha256:ed4be35c02ff60530bd2905b5dcb90a5854795fa0537e78cfc78aa0dca50a77d
+size 288

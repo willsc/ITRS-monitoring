@@ -1,33 +1,3 @@
-{{- $bffOverrides := mergeOverwrite .Values.service .Values.bff -}}
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ include "obcerv-app-query-service-bff.fullname" . }}
-  labels:
-    {{- include "obcerv-app-query-service-bff.labels" . | nindent 4 }}
-spec:
-  type: ClusterIP
-  ports:
-    - port: {{ $bffOverrides.port | default 50052 }}
-      targetPort: {{ $bffOverrides.port | default 50052 }}
-      protocol: TCP
-      name: http
-  selector:
-    {{- include "obcerv-app-query-service-bff.selectorLabels" . | nindent 4 }}
----
-# This is required for backwards compatibility with 1.0.0 of Alerting and Overview.
-apiVersion: v1
-kind: Service
-metadata:
-  name: obcerv-app-query-service
-  labels:
-    {{- include "obcerv-app-query-service-bff.labels" . | nindent 4 }}
-spec:
-  type: ClusterIP
-  ports:
-  - port: {{ $bffOverrides.port | default 50052 }}
-    targetPort: {{ $bffOverrides.port | default 50052 }}
-    protocol: TCP
-    name: http
-  selector:
-    {{- include "obcerv-app-query-service-bff.selectorLabels" . | nindent 4 }}
+version https://git-lfs.github.com/spec/v1
+oid sha256:e5d5c7e50a0a47036ea7ffbd48e964dcdcee09a486b3b3285f8e40a57cc6dec9
+size 1030

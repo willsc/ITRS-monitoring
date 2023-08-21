@@ -1,6 +1,3 @@
-apiVersion: v2
-appVersion: 1.0.1
-description: Notifications App
-name: obcerv-app-notifications
-type: application
-version: 1.0.1
+version https://git-lfs.github.com/spec/v1
+oid sha256:066a9cd929e62ed6858f2efa4724f1ba97c1b2e39c3e61a3792d993885dcce29
+size 128

@@ -1,20 +1,3 @@
-{{ if not .Values.persistence.existingClaim }}
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: {{ include "obcerv-app-grafana.fullname" . }}
-  labels:
-    {{- include "obcerv-app-grafana.labels" . | nindent 4 }}
-  annotations:
-    # Prevent helm from deleting data when uninstalling the instance.
-    helm.sh/resource-policy: "keep"
-spec:
-  accessModes:
-  - ReadWriteOnce
-  {{- with .Values.persistence.storageClass }}
-  storageClassName: {{ . }}
-  {{- end }}
-  resources:
-    requests:
-      storage: {{ .Values.persistence.size }}
-{{ end }}
+version https://git-lfs.github.com/spec/v1
+oid sha256:8c19370c8026d78b8e71ae45241ebd61c4d4edaf744fa74ab5e5d1c57ea41e5d
+size 555

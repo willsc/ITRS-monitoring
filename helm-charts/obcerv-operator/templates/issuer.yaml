@@ -1,10 +1,3 @@
-{{- if .Values.webhook.tls.selfSigned }}
-apiVersion: cert-manager.io/v1
-kind: Issuer
-metadata:
-  name: {{ include "obcerv-operator.fullname" . }}-selfsigned
-  labels:
-    {{- include "obcerv-operator.labels" . | nindent 4 }}
-spec:
-  selfSigned: {}
-{{- end }}
+version https://git-lfs.github.com/spec/v1
+oid sha256:80498350adf8758c42ebc96b6ddd5c173d12b3295ab8d1c40eed99cec79f0b16
+size 258
