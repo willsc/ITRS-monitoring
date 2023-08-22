@@ -29,5 +29,5 @@ USER geneos
 WORKDIR /gateway
 EXPOSE 7038
 EXPOSE 7039
-#ENTRYPOINT ["/bin/sh", "-c", "/opt/gateway/gateway.sh"]
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+ENTRYPOINT ["/bin/sh", "-c", "/opt/gateway/gateway.sh"]
+#ENTRYPOINT ["tail", "-f", "/dev/null"]
