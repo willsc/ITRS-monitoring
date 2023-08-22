@@ -19,7 +19,7 @@ RUN  mkdir -p /gateway/initial_setup
 COPY ./scripts/gateway/initial_setup/gateway.setup.xml /gateway/initial_setup/
 COPY ./scripts/gateway /
 COPY ./scripts/gateway.gci /gateway/config/gateway.gci 
-RUN useradd geneos
+RUN useradd --system geneos
 RUN usermod -a -G root geneos    \
     && mkdir -p /gateway/persist/setup /gateway/persist/data    \
     && chmod a+w /gateway /gateway/persist /gateway/persist/setup /gateway/persist/data    \
@@ -29,5 +29,5 @@ USER geneos
 WORKDIR /gateway
 EXPOSE 7038
 EXPOSE 7039
-ENTRYPOINT ["/bin/sh", "-c", "/opt/gateway/gateway.sh"]
-#ENTRYPOINT ["tail", "-f", "/dev/null"]
+#ENTRYPOINT ["/bin/sh", "-c", "/opt/gateway/gateway.sh"]
+ENTRYPOINT ["tail", "-f", "/dev/null"]
