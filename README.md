@@ -2,6 +2,71 @@ version https://git-lfs.github.com/spec/v1
 oid sha256:525d28cb5fde879bca0dc9d50d6bd984b781a594d86ee4eff7950eda4db73cab
 size 17
 
+```
+test.json:
+
+{
+  "status": "success",
+  "data": {
+    "resultType": "vector",
+    "result": [
+      {
+        "metric": {
+          "__name__": "up",
+          "instance": "localhost:9090",
+          "job": "prometheus"
+        },
+        "value": [
+          1693680914.307,
+          "1"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "up",
+          "instance": "localhost:9100",
+          "job": "prometheus"
+        },
+        "value": [
+          1693680914.307,
+          "1"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "up",
+          "instance": "localhost:9256",
+          "job": "prometheus"
+        },
+        "value": [
+          1693680914.307,
+          "1"
+        ]
+      }
+    ]
+  }
+}
+
+
+
+cat test.json | jq -r '
+  .data.result[]
+  | [
+    .metric.instance,
+    .metric.job,
+    (.value[0] | tostring),
+    .value[1]
+  ]
+  | @csv'
+"localhost:9090","prometheus","1693680914.307","1"
+"localhost:9100","prometheus","1693680914.307","1"
+"localhost:9256","prometheus","1693680914.307","1"
+
+
+```
+
+
+
 
 
 ```
